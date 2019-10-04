@@ -1,0 +1,183 @@
+<?php
+
+namespace Medialeads\Apiv3Client\Model;
+
+class Price implements \JsonSerializable
+{
+    /**
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @var int
+     */
+    private $fromQuantity;
+
+    /**
+     * @var float
+     */
+    private $value;
+
+    /**
+     * @var float
+     */
+    private $reducedValue;
+
+    /**
+     * @var float
+     */
+    private $calculationValue;
+
+    /**
+     * @var array
+     */
+    private $supplierProfiles;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return Price
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFromQuantity()
+    {
+        return $this->fromQuantity;
+    }
+
+    /**
+     * @param int $fromQuantity
+     *
+     * @return Price
+     */
+    public function setFromQuantity($fromQuantity)
+    {
+        $this->fromQuantity = $fromQuantity;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param float $value
+     *
+     * @return Price
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getReducedValue()
+    {
+        return $this->reducedValue;
+    }
+
+    /**
+     * @param float $reducedValue
+     *
+     * @return Price
+     */
+    public function setReducedValue($reducedValue)
+    {
+        $this->reducedValue = $reducedValue;
+
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getCalculationValue()
+    {
+        return $this->calculationValue;
+    }
+
+    /**
+     * @param float $calculationValue
+     *
+     * @return Price
+     */
+    public function setCalculationValue($calculationValue)
+    {
+        $this->calculationValue = $calculationValue;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSupplierProfiles()
+    {
+        return $this->supplierProfiles;
+    }
+
+    /**
+     * @param array $supplierProfiles
+     *
+     * @return Price
+     */
+    public function setSupplierProfiles($supplierProfiles)
+    {
+        $this->supplierProfiles = $supplierProfiles;
+
+        return $this;
+    }
+
+    /**
+     * @param SupplierProfile $supplierProfil
+     *
+     * @return Price
+     */
+    public function addSupplierProfile(SupplierProfile $supplierProfil)
+    {
+        $this->supplierProfiles[] = $supplierProfil;
+
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'from_quantity' => $this->fromQuantity,
+            'value' => $this->value,
+            'reduced_value' => $this->reducedValue,
+            'calculation_value' => $this->calculationValue,
+            'supplier_profiles' => $this->supplierProfiles
+        ];
+    }
+}
