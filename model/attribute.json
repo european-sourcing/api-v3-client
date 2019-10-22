@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "http://product-api.europeansourcing.com/schemas/attribute.json",
+  "title": "Attribute",
+  "description": "Describe an attribute object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "Unique id of the brand"
+    },
+    "type": {
+      "type": "string",
+      "description": "Possible values: multiple (like colors) or simple (like size)"
+    },
+    "value": {
+      "type": "string",
+      "description": "The value of the attribute"
+    },
+    "slug": {
+      "type": "string",
+      "description": "Unique slug of the attribute's value"
+    },
+    "full_hierarchy_value": {
+      "type": "string",
+      "description": "Breadcrumb of all parents (full hierarchy) values - the separator is '>'"
+    },
+    "parent": {
+      "$ref": "http://product-api.europeansourcing.com/schemas/attribute.json",
+      "description": "Parent attribute. For example if value is 'light blue', parent is 'blue'"
+    }
+  }
+}

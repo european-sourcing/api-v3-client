@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Normalizer;
+namespace Medialeads\Apiv3Client\Normalizer;
 
 use Medialeads\Apiv3Client\Model\SupplierProfile;
 
@@ -15,10 +15,9 @@ class SupplierProfileNormalizer
     {
         $supplierProfile = new SupplierProfile();
         $supplierProfile->setId($data['id']);
-        $supplierProfile->setName($data['name']);
 
-        if (isset($data['count'])) {
-            $supplierProfile->setCount($data['count']);
+        if (isset($data['name'])) {
+            $supplierProfile->setName($data['name']);
         }
 
         if (isset($data['country_code'])) {

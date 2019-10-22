@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Normalizer;
+namespace Medialeads\Apiv3Client\Normalizer;
 
 use Medialeads\Apiv3Client\Model\AttributeGroup;
 
@@ -17,7 +17,6 @@ class AttributeGroupNormalizer
         $group->setId($data['id']);
         $group->setName($data['name']);
         $group->setSlug($data['slug']);
-        $group->setAdditionalTextData($data['additional_text_data']);
 
         return $group;
     }

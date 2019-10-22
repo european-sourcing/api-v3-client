@@ -27,11 +27,6 @@ class Attribute implements \JsonSerializable
     /**
      * @var string
      */
-    private $additionalTextData;
-
-    /**
-     * @var string
-     */
     private $fullHierarchyValue;
 
     /**
@@ -120,26 +115,6 @@ class Attribute implements \JsonSerializable
     public function setSlug($slug)
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAdditionalTextData()
-    {
-        return $this->additionalTextData;
-    }
-
-    /**
-     * @param string $additionalTextData
-     *
-     * @return Attribute
-     */
-    public function setAdditionalTextData($additionalTextData)
-    {
-        $this->additionalTextData = $additionalTextData;
 
         return $this;
     }

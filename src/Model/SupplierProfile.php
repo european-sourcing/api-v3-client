@@ -2,7 +2,9 @@
 
 namespace Medialeads\Apiv3Client\Model;
 
-class SupplierProfile
+use Medialeads\Apiv3Client\Common\AggregableInterface;
+
+class SupplierProfile implements \JsonSerializable
 {
     /**
      * @var int
@@ -43,11 +45,6 @@ class SupplierProfile
      * @var string
      */
     private $addressLine2;
-
-    /**
-     * @var int
-     */
-    private $count;
 
     /**
      * @return int
@@ -105,26 +102,6 @@ class SupplierProfile
     public function setCountryCode($countryCode)
     {
         $this->countryCode = $countryCode;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCount()
-    {
-        return $this->count;
-    }
-
-    /**
-     * @param int $count
-     *
-     * @return SupplierProfile
-     */
-    public function setCount($count)
-    {
-        $this->count = $count;
 
         return $this;
     }

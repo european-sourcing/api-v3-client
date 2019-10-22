@@ -30,11 +30,6 @@ class Brand implements \JsonSerializable
     private $logo;
 
     /**
-     * @var int
-     */
-    private $count;
-
-    /**
      * @return int
      */
     public function getId()
@@ -135,26 +130,6 @@ class Brand implements \JsonSerializable
     }
 
     /**
-     * @return int
-     */
-    public function getCount()
-    {
-        return $this->count;
-    }
-
-    /**
-     * @param int $count
-     *
-     * @return Brand
-     */
-    public function setCount($count)
-    {
-        $this->count = $count;
-
-        return $this;
-    }
-
-    /**
      * @inheritDoc
      */
     public function jsonSerialize()
@@ -164,8 +139,7 @@ class Brand implements \JsonSerializable
             'name' => $this->name,
             'slug' => $this->slug,
             'suffix' => $this->suffix,
-            'logo' => $this->logo,
-            'count' => $this->count
+            'logo' => $this->logo
         ];
     }
 }

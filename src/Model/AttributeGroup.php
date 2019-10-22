@@ -20,11 +20,6 @@ class AttributeGroup implements \JsonSerializable
     private $slug;
 
     /**
-     * @var string
-     */
-    private $additionalTextData;
-
-    /**
      * @return int
      */
     public function getId()
@@ -85,26 +80,6 @@ class AttributeGroup implements \JsonSerializable
     }
 
     /**
-     * @return string
-     */
-    public function getAdditionalTextData()
-    {
-        return $this->additionalTextData;
-    }
-
-    /**
-     * @param string $additionalTextData
-     *
-     * @return AttributeGroup
-     */
-    public function setAdditionalTextData($additionalTextData)
-    {
-        $this->additionalTextData = $additionalTextData;
-
-        return $this;
-    }
-
-    /**
      * Specify data which should be serialized to JSON
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return mixed data which can be serialized by <b>json_encode</b>,
@@ -117,7 +92,6 @@ class AttributeGroup implements \JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'additional_text_data' => $this->additionalTextData
         ];
     }
 }

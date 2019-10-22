@@ -1,11 +1,16 @@
 <?php
 
-namespace Medialeads\Normalizer;
+namespace Medialeads\Apiv3Client\Normalizer;
 
 use Medialeads\Apiv3Client\Model\Category;
 
 class CategoriesNormalizer
 {
+    /**
+     * @param array $data
+     *
+     * @return array
+     */
     public function denormalize(array $data)
     {
         $categories = [];
@@ -26,6 +31,6 @@ class CategoriesNormalizer
             }
         }
 
-        return $categories;
+        return array_values($categories);
     }
 }

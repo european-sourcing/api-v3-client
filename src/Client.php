@@ -2,32 +2,23 @@
 
 namespace Medialeads\Apiv3Client;
 
-use Medialeads\Apiv3Client\Common\ClientInterface;
-use Medialeads\Apiv3Client\DataCollector\ApiCollector;
-use Medialeads\Apiv3Client\Model\Search;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\BrandNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoryNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
+use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
+use Medialeads\Apiv3Client\Response\SearchResponse;
 
-
-/**
- * Class Client
- *
- * @package EasyWeb\FrontBundle\Apiv3
- *
- * @todo sort
- * @todo hierarchize categories colonne gauche
- * @todo marking
- * @todo order declinations
- */
-class Client implements ClientInterface
+class Client
 {
     /**
-     * Wrapper de cUrl
      * @var \GuzzleHttp\Client
      */
     private $guzzle;
 
     /**
-     * L'url de l'api v3
      * @var String
      */
     private $apiUrl;
@@ -38,97 +29,89 @@ class Client implements ClientInterface
     private $token;
 
     /**
-     * @var ApiCollector
-     */
-    private $dataCollector;
-
-    /**
-     * Constructor
-     *
-     * @param \GuzzleHttp\Client $client
-     * @param String $apiUrl
+     * @param \GuzzleHttp\Client $guzzle
+     * @param $apiUrl
+     * @param $token
      */
     public function __construct(
         \GuzzleHttp\Client $guzzle,
-        ApiCollector $apiCollector,
-        ParameterBagInterface $parameterBag
+        $apiUrl,
+        $token
     ) {
         $this->guzzle = $guzzle;
-        $this->apiUrl = $parameterBag->get('api_url');
-        $this->transform = $transform;
-        $this->dataCollector = $apiCollector;
+        $this->apiUrl = $apiUrl;
+        $this->token = $token;
     }
 
     /**
-     * @param Search $model
-     * @param $language
-     * @param $page
-     * @param $perpage
-     * @param $sort
-     * @param $sens
+     * @param QueryHandler $queryHandler
      *
-     * @return \EasyWeb\FrontBundle\ElasticSearch\Model\ResultSet
+     * @return SearchResponse
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      */
-    public function search(Search $model, $language, $page=1, $perpage=100, $sort='score', $sens='desc')
+    public function search(QueryHandler $queryHandler)
     {
-        //$model->setSupplierIds([]);
-
-        // v1 to v3 sort
-        switch($sort) {
-            case 'score':
-                $sort = 'relevance';
-                break;
-            case 'update':
-                $sort = 'last_indexed_at';
-                break;
-            case 'price':
-                break;
-        }
-
-        $start = microtime(1);
-
         $body = \json_encode(
-            array_merge(
-                $model->getApiV3Parameters(),
-                [
-                    'lang' => $language,
-                    'page' => $page,
-                    'limit' => $perpage,
-                    'sort_field' => $sort,
-                    'sort_direction' => $sens
-                ]
-            )
+            $queryHandler->export()
         );
 
-        $results = $this->guzzle->request('POST', $this->apiUrl.'/search', [
+        $response = $this->guzzle->request('POST', $this->apiUrl.'/search', [
             'body' => $body,
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
         ]);
 
-        $this->dataCollector->add('search', [
-            'time' => (microtime(1) - $start),
-            'body' => $body
-        ]);
+        $results = \json_decode($response->getBody(), true);
 
-        return $this->transform->resultSet(
-            \json_decode($results->getBody()),
-            $language
-        );
-    }
+        $productsNormalizer = new ProductsNormalizer();
+        $products = $productsNormalizer->denormalize($results['products']);
 
-    /**
-     * @param Search $model
-     * @param $language
-     * @return \EasyWeb\FrontBundle\ElasticSearch\Model\ResultSet
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function ids(Search $model, $language)
-    {
-        return $this->search($model, $language, 1, 10, 'score', 'desc');
+        $searchResponse = new SearchResponse();
+        $searchResponse->setProducts($products);
+        $searchResponse->setTotalProducts($results['pagination']['total_items']);
+
+        if (!empty($results['aggregations'])) {
+            foreach ($results['aggregations'] as $aggregation) {
+                $objectNormalizer = null;
+
+                switch($aggregation['name']) {
+                    case 'marking':
+                        $objectNormalizerName = MarkingNormalizer::class;
+                        break;
+
+                    case 'brands':
+                        $objectNormalizerName = BrandNormalizer::class;
+                        break;
+
+                    case 'supplier_profiles':
+                        $objectNormalizerName = SupplierProfileNormalizer::class;
+                        break;
+
+                    case 'attributes':
+                        $objectNormalizerName = AttributeNormalizer::class;
+                        break;
+
+                    case 'categories':
+                        $objectNormalizerName = CategoryNormalizer::class;
+                        break;
+                }
+
+                if (null !== $objectNormalizerName) {
+                    $normalizer = new AggregationNormalizer();
+                    $searchResponse->addAggregation(
+                        $normalizer->denormalize(
+                            $aggregation,
+                            $objectNormalizerName
+                        )
+                    );
+                }
+            }
+        }
+
+        return $searchResponse;
     }
 
     /**
@@ -139,8 +122,6 @@ class Client implements ClientInterface
      */
     public function id($id, $language)
     {
-        $start = microtime(1);
-
         $body = \json_encode([
             'search_handlers' => [
                 [
@@ -159,11 +140,6 @@ class Client implements ClientInterface
             ]
         ]);
 
-        $this->dataCollector->add('id', [
-            'time' => (microtime(1) - $start),
-            'body' => $body
-        ]);
-
         return $this->transform->id(
             \json_decode($results->getBody())
         );
@@ -178,17 +154,10 @@ class Client implements ClientInterface
      */
     public function categories(Search $model, $language, $schema = 'tree')
     {
-        $start = microtime(1);
-
         $results = $this->guzzle->request('GET', $this->apiUrl.'/categories/'.$language, [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
-        ]);
-
-        $this->dataCollector->add('categories', [
-            'time' => (microtime(1) - $start),
-            'body' => null
         ]);
 
         return $this->transform->categories(
@@ -206,17 +175,10 @@ class Client implements ClientInterface
      */
     public function brands(Search $model, $language = null)
     {
-        $start = microtime(1);
-
         $results = $this->guzzle->request('GET', $this->apiUrl.'/brands', [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
-        ]);
-
-        $this->dataCollector->add('categories', [
-            'time' => (microtime(1) - $start),
-            'body' => null
         ]);
 
         return $this->transform->brands(
@@ -230,17 +192,10 @@ class Client implements ClientInterface
      */
     public function supplierProfiles()
     {
-        $start = microtime(1);
-
         $results = $this->guzzle->request('GET', $this->apiUrl.'/supplier_profiles', [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
-        ]);
-
-        $this->dataCollector->add('categories', [
-            'time' => (microtime(1) - $start),
-            'body' => null
         ]);
 
         return $this->transform->supplierProfiles(
@@ -264,16 +219,5 @@ class Client implements ClientInterface
     public function getToken()
     {
         return $this->token;
-    }
-
-    /**
-     * @param string $token
-     * @return Client
-     */
-    public function setToken($token)
-    {
-        $this->token = $token;
-
-        return $this;
     }
 }

@@ -3,12 +3,16 @@
   "description": "Client for enropeansourcing client",
   "license": "proprietary",
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=7.0",
+    "ext-json": "*",
     "guzzlehttp/guzzle": "^6.3"
   },
   "autoload": {
     "psr-4": {
       "Medialeads\\Apiv3Client\\": "src/"
     }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^4.3"
   }
 }

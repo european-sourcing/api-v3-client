@@ -20,11 +20,6 @@ class Category implements \JsonSerializable
     private $breadcrumb;
 
     /**
-     * @var int
-     */
-    private $count;
-
-    /**
      * @var Category
      */
     private $parent;
@@ -95,26 +90,6 @@ class Category implements \JsonSerializable
     public function setBreadcrumb($breadcrumb)
     {
         $this->breadcrumb = $breadcrumb;
-
-        return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCount()
-    {
-        return $this->count;
-    }
-
-    /**
-     * @param int $count
-     *
-     * @return Category
-     */
-    public function setCount($count)
-    {
-        $this->count = $count;
 
         return $this;
     }
@@ -204,7 +179,6 @@ class Category implements \JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'breadcrumb' => $this->breadcrumb,
-            'count' => $this->count,
             'parent' => $this->parent,
             'children' => $this->children
         ];

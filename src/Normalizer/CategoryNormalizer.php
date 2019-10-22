@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Normalizer;
+namespace Medialeads\Apiv3Client\Normalizer;
 
 use Medialeads\Apiv3Client\Model\Category;
 
@@ -16,12 +16,8 @@ class CategoryNormalizer
         $category = new Category();
         $category->setId($data['id']);
         $category->setName($data['name']);
-        $category->setBreadcrumb($data['breadcrumb']);
+        $category->setBreadcrumb($data['full_hierarchy_name']);
         $category->setParentId($data['parent_id']);
-
-        if (isset($data['count'])) {
-            $category->setCount($data['count']);
-        }
 
         return $category;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Normalizer;
+namespace Medialeads\Apiv3Client\Normalizer;
 
 use Medialeads\Apiv3Client\Model\Brand;
 
@@ -17,10 +17,9 @@ class BrandNormalizer
         $brand->setId($data['id']);
         $brand->setName($data['name']);
         $brand->setSlug($data['slug']);
-        $brand->setSuffix($data['suffix']);
 
-        if (isset($data['count'])) {
-            $brand->setCount($data['count']);
+        if (!empty($data['suffix'])) {
+            $brand->setSuffix($data['suffix']);
         }
 
         if (!empty($data['logo'])) {

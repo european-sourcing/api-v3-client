@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "http://product-api.europeansourcing.com/schemas/image.json",
+  "title": "Image",
+  "description": "Descrive an image object",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number",
+      "description": "Unique id of the image"
+    },
+    "url": {
+      "type": "string",
+      "description": "The absolute URL of the image"
+    },
+    "original_filename": {
+      "type": "string",
+      "description": "The original filename of the image"
+    }
+  }
+}
