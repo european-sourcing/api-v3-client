@@ -27,9 +27,19 @@ class Category implements \JsonSerializable, CountableAggregableInterface
     private $count;
 
     /**
+     * @var Category
+     */
+    private $parent;
+
+    /**
      * @var int
      */
     private $parentId;
+
+    /**
+     * @var array
+     */
+    private $children;
 
     /**
      * @return int
@@ -127,6 +137,58 @@ class Category implements \JsonSerializable, CountableAggregableInterface
     public function setParentId($parentId)
     {
         $this->parentId = $parentId;
+
+        return $this;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param Category $parent
+     *
+     * @return Category
+     */
+    public function setParent(Category $parent)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param array $children
+     *
+     * @return Category
+     */
+    public function setChildren(array $children)
+    {
+        $this->children = $children;
+
+        return $this;
+    }
+
+    /**
+     * @param Category $category
+     *
+     * @return $this
+     */
+    public function addChildren(Category $category)
+    {
+        $this->children[] = $category;
 
         return $this;
     }

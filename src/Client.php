@@ -5,6 +5,7 @@ namespace Medialeads\Apiv3Client;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\BrandNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoriesNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoryNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
@@ -75,7 +76,7 @@ class Client
 
         if (!empty($results['aggregations'])) {
             foreach ($results['aggregations'] as $aggregation) {
-                $objectNormalizer = null;
+                $objectNormalizerName = null;
 
                 switch($aggregation['name']) {
                     case 'marking':
@@ -146,24 +147,25 @@ class Client
     }
 
     /**
-     * @param Search $model
-     * @param $language
+     * @param QueryHandler $queryHandler
      * @param string $schema
+     *
      * @return array
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function categories(Search $model, $language, $schema = 'tree')
+    public function categories(QueryHandler $queryHandler, $schema = 'tree')
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/categories/'.$language, [
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/categories/'.$queryHandler->getLanguage(), [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
         ]);
 
-        return $this->transform->categories(
-            \json_decode($results->getBody()),
-            null,
-            $schema
+        $categoriesNormalizer = new CategoriesNormalizer();
+
+        return $categoriesNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
         );
     }
 

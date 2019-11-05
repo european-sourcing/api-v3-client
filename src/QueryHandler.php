@@ -35,6 +35,11 @@ class QueryHandler
     private $oneVariant;
 
     /**
+     * @var bool
+     */
+    private $enableAggregations;
+
+    /**
      * @var array
      */
     private $searchHandlers;
@@ -47,6 +52,8 @@ class QueryHandler
         $this->sortField = 'relevance';
         $this->sortDirection = 'desc';
         $this->oneVariant = false;
+        $this->enableAggregations = false;
+        $this->language = $language;
     }
 
     /**
@@ -66,7 +73,8 @@ class QueryHandler
             'limit' => $this->perpage,
             'sort_field' => $this->sortField,
             'sort_direction' => $this->sortDirection,
-            'one_variant' => $this->oneVariant
+            'one_variant' => $this->oneVariant,
+            'enable_aggregations' => $this->enableAggregations
         ];
     }
 
@@ -193,7 +201,7 @@ class QueryHandler
     /**
      * @return bool
      */
-    public function isOneVariant(): bool
+    public function isOneVariant()
     {
         return $this->oneVariant;
     }
@@ -203,9 +211,29 @@ class QueryHandler
      *
      * @return QueryHandler
      */
-    public function setOneVariant(bool $oneVariant): QueryHandler
+    public function setOneVariant($oneVariant)
     {
         $this->oneVariant = $oneVariant;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnableAggregations()
+    {
+        return $this->enableAggregations;
+    }
+
+    /**
+     * @param bool $enableAggregations
+     *
+     * @return QueryHandler
+     */
+    public function setEnableAggregations($enableAggregations)
+    {
+        $this->enableAggregations = $enableAggregations;
 
         return $this;
     }

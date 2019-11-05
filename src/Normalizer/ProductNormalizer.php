@@ -27,19 +27,6 @@ class ProductNormalizer
         $product->setCreatedAt(new \DateTime($data['created_at']));
         $product->setUpdatedAt(new \DateTime($data['updated_at']));
 
-        // images
-        if (!empty($data['variant_images'])) {
-            $imageNormalizer = new ImageNormalizer();
-            foreach ($data['variant_images'] as $row) {
-                $image = $imageNormalizer->denormalize($row);
-                $product->addImage($image);
-
-                if ($row['id'] == $data['main_variant_image_id']) {
-                    $product->setMainImage($image);
-                }
-            }
-        }
-
         if (!empty($data['variants'])) {
             $variantNormalizer = new VariantNormalizer();
             foreach ($data['variants'] as $row) {

@@ -2,6 +2,7 @@
 
 namespace Medialeads\Apiv3Client\Normalizer;
 
+use Medialeads\Apiv3Client\Model\Price;
 use Medialeads\Apiv3Client\Model\Variant;
 
 class VariantNormalizer
@@ -81,9 +82,18 @@ class VariantNormalizer
         // prices
         if (!empty($data['variant_prices'])) {
             $priceNormalizer = new PriceNormalizer();
+            $lowestPrice = null;
             foreach ($data['variant_prices'] as $row) {
-                $variant->addPrice($priceNormalizer->denormalize($row));
+                /** @var Price $price */
+                $price = $priceNormalizer->denormalize($row);
+                $variant->addPrice($price);
+
+                if ((null === $lowestPrice) || ($price->getCalculationValue() < $lowestPrice->getCalculationValue())) {
+                    $lowestPrice = $price;
+                }
             }
+
+            $variant->setLowestPrice($price);
         }
 
         // sample_prices

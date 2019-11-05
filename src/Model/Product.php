@@ -49,11 +49,6 @@ class Product
     private $updatedAt;
 
     /**
-     * @var Image
-     */
-    private $mainImage;
-
-    /**
      * @var array
      */
     private $images;
@@ -269,26 +264,6 @@ class Product
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * @return Image
-     */
-    public function getMainImage()
-    {
-        return $this->mainImage;
-    }
-
-    /**
-     * @param Image $mainImage
-     *
-     * @return Product
-     */
-    public function setMainImage($mainImage)
-    {
-        $this->mainImage = $mainImage;
 
         return $this;
     }

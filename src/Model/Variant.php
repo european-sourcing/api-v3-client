@@ -105,6 +105,11 @@ class Variant implements \JsonSerializable
     private $prices;
 
     /**
+     * @var Price
+     */
+    private $lowestPrice;
+
+    /**
      * @var array
      */
     private $samplePrices;
@@ -578,13 +583,13 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @param array $prices
+     * @param Price $price
      *
      * @return Variant
      */
-    public function setPrices($prices)
+    public function setPrice(Price $price)
     {
-        $this->prices = $prices;
+        $this->price = $price;
 
         return $this;
     }
@@ -597,6 +602,26 @@ class Variant implements \JsonSerializable
     public function addPrice(Price $price)
     {
         $this->prices[] = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return Price
+     */
+    public function getLowestPrice()
+    {
+        return $this->lowestPrice;
+    }
+
+    /**
+     * @param Price $lowestPrice
+     *
+     * @return Variant
+     */
+    public function setLowestPrice(Price $lowestPrice)
+    {
+        $this->lowestPrice = $lowestPrice;
 
         return $this;
     }

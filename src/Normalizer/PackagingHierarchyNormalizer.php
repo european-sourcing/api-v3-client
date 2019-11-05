@@ -23,7 +23,7 @@ class PackagingHierarchyNormalizer
         foreach ($parents as &$packaging) {
             if (null !== $packaging->getParentId()) {
                 /** @var Packaging $parent */
-                $parent = $parents[$parent->getParentId()];
+                $parent = $parents[$packaging->getParentId()];
                 $packaging->setParent($parent);
             }
         }

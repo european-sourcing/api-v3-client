@@ -17,8 +17,11 @@ class CategoryNormalizer
         $category->setId($data['id']);
         $category->setName($data['name']);
         $category->setBreadcrumb($data['full_hierarchy_name']);
-        $category->setParentId($data['parent']);
         $category->setCount($data['count']);
+
+        if (isset($data['parent'])) {
+            $category->setParentId($data['parent']);
+        }
 
         return $category;
     }

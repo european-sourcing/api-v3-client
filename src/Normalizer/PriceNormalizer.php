@@ -17,7 +17,12 @@ class PriceNormalizer
         $price->setId($data['id']);
         $price->setValue($data['value']);
         $price->setReducedValue($data['reduced_value']);
-        $price->setFromQuantity($data['from_quantity']);
+
+        // for sample price
+        if (isset($data['from_quantity'])) {
+            $price->setFromQuantity($data['from_quantity']);
+        }
+
         $price->setCalculationValue($data['calculation_value']);
 
         if (!empty($data['supplier_profiles'])) {
