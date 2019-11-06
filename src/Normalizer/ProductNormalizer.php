@@ -37,6 +37,12 @@ class ProductNormalizer
                     $product->setMainVariant($variant);
                 }
             }
+
+            // if we search by variant with "one_variant",
+            // the only variant may be nor bast_variant nor main_variant by just the first variant
+            if (null === $product->getMainVariant()) {
+                $product->setMainVariant($data['variants'][0]);
+            }
         }
 
         if (!empty($data['categories'])) {
