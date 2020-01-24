@@ -109,6 +109,35 @@ class Product
     }
 
     /**
+     * Generate all attributes of all variants
+     */
+    public function processAttributes()
+    {
+        $groups = [];
+
+        /** @var Variant $variant */
+        foreach ($this->variants as $variant) {
+            /** @var Attribute $attribute */
+            foreach ($variant->processAttributes() as $groupId => $group) {
+                if (empty($groups[$groupId])) {
+                    $groups[$groupId] = [
+                        'id' => $group['id'],
+                        'name' => $group['name'],
+                        'slug' => $group['slug'],
+                        'attributes' => []
+                    ];
+                }
+
+                foreach ($group['attributes'] as $attribute) {
+                    $groups[$groupId]['attributes'][$variant->getId()][] = $attribute;
+                }
+            }
+        }
+
+        return $groups;
+    }
+
+    /**
      * @return string
      */
     public function getSupplierBaseReference()

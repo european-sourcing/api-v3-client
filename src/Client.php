@@ -7,6 +7,7 @@ use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\BrandNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoriesNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoryNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\CountryNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
 use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
@@ -78,6 +79,13 @@ class Client
             foreach ($results['aggregations'] as $aggregation) {
                 $objectNormalizerName = null;
 
+                if ($aggregation['name'] === 'categories') {
+                    $normalizer = new CategoriesNormalizer();
+                    $searchResponse->addAggregation(
+                        $normalizer->denormalize($aggregation['rows'])
+                    );
+                }
+
                 switch($aggregation['name']) {
                     case 'marking':
                         $objectNormalizerName = MarkingNormalizer::class;
@@ -87,16 +95,16 @@ class Client
                         $objectNormalizerName = BrandNormalizer::class;
                         break;
 
+                    case 'country':
+                        $objectNormalizerName = CountryNormalizer::class;
+                        break;
+
                     case 'supplier_profiles':
                         $objectNormalizerName = SupplierProfileNormalizer::class;
                         break;
 
                     case 'attributes':
                         $objectNormalizerName = AttributeNormalizer::class;
-                        break;
-
-                    case 'categories':
-                        $objectNormalizerName = CategoryNormalizer::class;
                         break;
                 }
 

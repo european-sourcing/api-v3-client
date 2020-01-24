@@ -2,6 +2,7 @@
 
 namespace Medialeads\Apiv3Client\Normalizer\Aggregation;
 
+use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
 use Medialeads\Apiv3Client\Model\Aggregation\Category;
 
 class CategoriesNormalizer
@@ -31,6 +32,9 @@ class CategoriesNormalizer
             }
         }
 
-        return array_values($categories);
+        $aggreation = new Aggregation('categories');
+        $aggreation->setRows(array_values($categories));
+
+        return $aggreation;
     }
 }

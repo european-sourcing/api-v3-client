@@ -22,6 +22,7 @@ class Aggregation implements \JsonSerializable
     public function __construct(string $name)
     {
         $this->name = $name;
+        $this->rows = [];
     }
 
     /**

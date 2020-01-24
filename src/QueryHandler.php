@@ -17,6 +17,11 @@ class QueryHandler
     /**
      * @var int
      */
+    private $offset;
+
+    /**
+     * @var int
+     */
     private $perpage;
 
     /**
@@ -48,6 +53,7 @@ class QueryHandler
     {
         $this->searchHandlers = [];
         $this->page = 1;
+        $this->offset = null;
         $this->perpage = 10;
         $this->sortField = 'relevance';
         $this->sortDirection = 'desc';
@@ -66,16 +72,23 @@ class QueryHandler
             $searchExports[] = $searchHandler->export();
         }
 
-        return [
+        $export = [
             'search_handlers' => $searchExports,
             'lang' => $this->language,
-            'page' => $this->page,
             'limit' => $this->perpage,
             'sort_field' => $this->sortField,
             'sort_direction' => $this->sortDirection,
             'one_variant' => $this->oneVariant,
             'enable_aggregations' => $this->enableAggregations
         ];
+
+        if (null !== $this->offset) {
+            $export['offset'] = $this->offset;
+        } else {
+            $export['page'] = $this->page;
+        }
+
+        return $export;
     }
 
     /**
@@ -102,6 +115,26 @@ class QueryHandler
     public function setPage($page)
     {
         $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOffset()
+    {
+        return $this->offset;
+    }
+
+    /**
+     * @param int $offset
+     *
+     * @return QueryHandler
+     */
+    public function setOffset($offset)
+    {
+        $this->offset = $offset;
 
         return $this;
     }

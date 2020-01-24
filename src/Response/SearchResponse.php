@@ -84,6 +84,26 @@ class SearchResponse implements \ArrayAccess,\Iterator, \Countable
     }
 
     /**
+     * @return array
+     */
+    public function getAggregations()
+    {
+        return $this->aggregations;
+    }
+
+    /**
+     * @param array $aggregations
+     *
+     * @return SearchResponse
+     */
+    public function setAggregations(array $aggregations): SearchResponse
+    {
+        $this->aggregations = $aggregations;
+
+        return $this;
+    }
+
+    /**
      * @inheritDoc
      */
     public function offsetExists($offset)

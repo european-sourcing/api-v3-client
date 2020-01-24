@@ -93,7 +93,7 @@ class VariantNormalizer
                 }
             }
 
-            $variant->setLowestPrice($price);
+            $variant->setLowestPrice($lowestPrice);
         }
 
         // sample_prices

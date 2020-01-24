@@ -135,6 +135,41 @@ class Variant implements \JsonSerializable
     private $deliveryTimes;
 
     /**
+     * @var Product
+     */
+    private $product;
+
+    public function __construct()
+    {
+        $this->minimumQuantities = [];
+        $this->prices = [];
+        $this->attributes = [];
+        $this->supplierProfiles = [];
+    }
+
+    public function processAttributes()
+    {
+        /** @var Attribute $attribute */
+        foreach ($this->getAttributes() as $attribute) {
+            if (empty($groups[$attribute->getGroup()->getId()])) {
+                $groups[$attribute->getGroup()->getId()] = [
+                    'id' => $attribute->getGroup()->getId(),
+                    'name' => $attribute->getGroup()->getName(),
+                    'slug' => $attribute->getGroup()->getSlug(),
+                    'attributes' => []
+                ];
+            }
+
+            $groups[$attribute->getGroup()->getId()]['attributes'][] = [
+                'id' => $attribute->getId(),
+                'value' => $attribute->getValue()
+            ];
+        }
+
+        return $groups;
+    }
+
+    /**
      * @return int
      */
     public function getId()
@@ -391,6 +426,23 @@ class Variant implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getFormatedSizes()
+    {
+        $values = array_map(function(Size $size) {
+            /*if (null !== $size->getType()) {
+
+                return sprintf('(%s: %s)', $size->getType(), round($size->getValue(), 2));
+            }*/
+
+            return round($size->getValue(), 2);
+        }, $this->sizes);
+
+        return implode('x', $values);
+    }
+
+    /**
      * @return float
      */
     public function getNetWeight()
@@ -575,6 +627,41 @@ class Variant implements \JsonSerializable
     }
 
     /**
+     * Minimal command quantity
+     *
+     * @return MinimumQuantity|mixed|null
+     */
+    public function getLowestMinimumQuantity()
+    {
+        $lowestMinimumQuantity = null;
+        /** @var MinimumQuantity $minimumQuantity */
+        foreach ($this->minimumQuantities as $minimumQuantity) {
+            if ((null === $lowestMinimumQuantity) || ($minimumQuantity->getValue() < $lowestMinimumQuantity->getValue())) {
+                $lowestMinimumQuantity = $minimumQuantity;
+            }
+        }
+
+        return $lowestMinimumQuantity;
+    }
+
+    /**
+     * Minimal quantity price
+     * @return int
+     */
+    public function getLowestQuantity()
+    {
+        $lowestQuantity = null;
+        /** @var Price $price */
+        foreach ($this->prices as $price) {
+            if ((null === $lowestQuantity) || ($price->getFromQuantity() < $lowestQuantity)) {
+                $lowestQuantity = $price->getFromQuantity();
+            }
+        }
+
+        return $lowestQuantity;
+    }
+
+    /**
      * @return array
      */
     public function getPrices()
@@ -592,6 +679,27 @@ class Variant implements \JsonSerializable
         $this->price = $price;
 
         return $this;
+    }
+
+    /**
+     * @param int $quantity
+     *
+     * @return Price
+     */
+    public function getPriceForQuantity($quantity)
+    {
+        $lowestQuantity = null;
+        $bestPrice = null;
+
+        /** @var Price $price */
+        foreach ($this->prices as $price) {
+
+            if (($price->getFromQuantity() > $lowestQuantity) && ($price->getFromQuantity() < $quantity)) {
+                $bestPrice = $price;
+            }
+        }
+
+        return $bestPrice;
     }
 
     /**
@@ -782,6 +890,25 @@ class Variant implements \JsonSerializable
     public function addDeliveryTime(DeliveryTime $deliveryTime)
     {
         $this->deliveryTimes[] = $deliveryTime;
+
+        return $this;
+    }
+
+    /**
+     * @return Product
+     */
+    public function getProduct(): Product
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param Product $product
+     * @return Variant
+     */
+    public function setProduct(Product $product): Variant
+    {
+        $this->product = $product;
 
         return $this;
     }

@@ -193,7 +193,6 @@ class Attribute implements \JsonSerializable
             'type' => $this->type,
             'value' => $this->value,
             'slug' => $this->slug,
-            'additional_text_data' => $this->additionalTextData,
             'full_hierarchy_value' => $this->fullHierarchyValue,
             'parent' => $this->parent,
             'group' => $this->group

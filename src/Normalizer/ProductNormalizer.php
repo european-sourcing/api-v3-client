@@ -31,6 +31,7 @@ class ProductNormalizer
             $variantNormalizer = new VariantNormalizer();
             foreach ($data['variants'] as $row) {
                 $variant = $variantNormalizer->denormalize($row);
+                $variant->setProduct($product);
                 $product->addVariant($variant);
 
                 if ($row['id'] == $data['main_variant_id']) {
@@ -41,7 +42,8 @@ class ProductNormalizer
             // if we search by variant with "one_variant",
             // the only variant may be nor bast_variant nor main_variant by just the first variant
             if (null === $product->getMainVariant()) {
-                $product->setMainVariant(reset($product->getVariants()));
+                $variants = $product->getVariants();
+                $product->setMainVariant(reset($variants));
             }
         }
 
