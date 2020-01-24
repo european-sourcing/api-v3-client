@@ -43,7 +43,8 @@ class ProductNormalizer
             // the only variant may be nor bast_variant nor main_variant by just the first variant
             if (null === $product->getMainVariant()) {
                 $variants = $product->getVariants();
-                $product->setMainVariant(reset($variants));
+                $variant = reset($variants);
+                $product->setMainVariant($variant);
             }
         }
 
