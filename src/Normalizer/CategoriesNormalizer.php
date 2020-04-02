@@ -11,7 +11,7 @@ class CategoriesNormalizer
      *
      * @return array
      */
-    public function denormalize(array $data)
+    public function denormalize(array $data): array
     {
         $categories = [];
         $categoryNormalizer = new CategoryNormalizer();

@@ -3,6 +3,7 @@
 namespace Medialeads\Apiv3Client\Request;
 
 use Medialeads\Apiv3Client\Common\RequestElementInterface;
+use Medialeads\Apiv3Client\Exception\InvalidArgumentException;
 
 class LastIndexed implements RequestElementInterface
 {
@@ -17,10 +18,10 @@ class LastIndexed implements RequestElementInterface
     private $date;
 
     /**
-     * @param string $type
      * @param \DateTime $date
+     * @param string $type
      */
-    public function __construct(string $type, \DateTime $date)
+    public function __construct(\DateTime $date, string $type)
     {
         $this->type = $type;
         $this->date = $date;
@@ -28,9 +29,14 @@ class LastIndexed implements RequestElementInterface
 
     /**
      * @return array
+     * @throws InvalidArgumentException
      */
     public function export()
     {
+        if (!in_array($this->type, ['since', 'before'])) {
+            throw new InvalidArgumentException(sprintf('Invalid type "%s"', $this->type));
+        }
+
         return [
             'last_indexed' => [
                 $this->type => $this->date->format('c')

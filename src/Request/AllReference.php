@@ -18,10 +18,10 @@ class AllReference implements RequestElementInterface
     private $type;
 
     /**
-     * @param string $type
      * @param array $allReferences
+     * @param string $type
      */
-    public function __construct(string $type, array $allReferences)
+    public function __construct(array $allReferences, string $type)
     {
         $this->type = $type;
         $this->allReferences = $allReferences;

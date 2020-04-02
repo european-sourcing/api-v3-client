@@ -18,10 +18,10 @@ class InternalReference extends AbstractIncludeExclude implements RequestElement
     private $type;
 
     /**
-     * @param string $type
      * @param array $internalReferences
+     * @param string $type
      */
-    public function __construct(string $type, array $internalReferences)
+    public function __construct(array $internalReferences, string $type)
     {
         $this->type = $type;
         $this->internalReferences = $internalReferences;

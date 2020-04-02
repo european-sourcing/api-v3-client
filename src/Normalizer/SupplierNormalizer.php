@@ -18,7 +18,10 @@ class SupplierNormalizer
         $supplier->setId($data['id']);
         $supplier->setName($data['name']);
         $supplier->setSlug($data['slug']);
-        $supplier->setLegalName($data['legal_name']);
+
+        if (isset($data['legal_name'])) {
+            $supplier->setLegalName($data['legal_name']);
+        }
 
         if (isset($data['count'])) {
             $supplier->setCount($data['count']);

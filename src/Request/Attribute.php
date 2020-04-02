@@ -19,8 +19,9 @@ class Attribute extends AbstractIncludeExclude implements RequestElementInterfac
 
     /**
      * @param array $attributeIds
+     * @param string $operator
      */
-    public function __construct(string $operator, array $attributeIds)
+    public function __construct(array $attributeIds, string $operator)
     {
         $this->operator = $operator;
         $this->attributeIds = $attributeIds;

@@ -18,10 +18,10 @@ class SupplierBaseReference extends AbstractIncludeExclude implements RequestEle
     private $type;
 
     /**
-     * @param string $type
      * @param array $supplierBaseReferences
+     * @param string $type
      */
-    public function __construct(string $type, array $supplierBaseReferences)
+    public function __construct(array $supplierBaseReferences, string $type)
     {
         $this->type = $type;
         $this->supplierBaseReferences = $supplierBaseReferences;

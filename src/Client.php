@@ -2,14 +2,16 @@
 
 namespace Medialeads\Apiv3Client;
 
+use Medialeads\Apiv3Client\Model\Variant;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\BrandNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoriesNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoryNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\CountryNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
+use Medialeads\Apiv3Client\Normalizer\BrandsNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
 use Medialeads\Apiv3Client\Response\SearchResponse;
 
@@ -162,7 +164,7 @@ class Client
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function categories(QueryHandler $queryHandler, $schema = 'tree')
+    public function categories(QueryHandler $queryHandler)
     {
         $results = $this->guzzle->request('GET', $this->apiUrl.'/categories/'.$queryHandler->getLanguage(), [
             'headers' => [
@@ -178,12 +180,11 @@ class Client
     }
 
     /**
-     * @param Search $model
-     * @param $language
+     * @param QueryHandler $queryHandler
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function brands(Search $model, $language = null)
+    public function brands(QueryHandler $queryHandler)
     {
         $results = $this->guzzle->request('GET', $this->apiUrl.'/brands', [
             'headers' => [
@@ -191,8 +192,10 @@ class Client
             ]
         ]);
 
-        return $this->transform->brands(
-            \json_decode($results->getBody())
+        $brandsNormalizer = new BrandsNormalizer();
+
+        return $brandsNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
         );
     }
 
@@ -213,15 +216,25 @@ class Client
         );
     }
 
-    /*public function lastModified(Search $model, $language)
+    public function marking(int $variantId, string $lang)
     {
-        $results = $this->guzzle->call(new HttpPostJson($this->apiUrl.'/last-modified', array_merge(
-            $model->getElasticparameters(),
-            array('lang' => $language)
-        )));
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/markings/'.$lang.'/'.$variantId, [
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ]);
 
-        return $this->transform->lastModified($results);
-    }*/
+        $variantMarkingsNormalizer = new VariantMarkingsNormalizer();
+
+        return $variantMarkingsNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
+        );
+    }
+
+    public function calculateMarking()
+    {
+
+    }
 
     /**
      * @return string

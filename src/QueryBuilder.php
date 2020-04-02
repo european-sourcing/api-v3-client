@@ -26,14 +26,14 @@ use Medialeads\Apiv3Client\Request\Variant;
 
 class QueryBuilder
 {
-    public function allReference(string $type, array $references): AllReference
+    public function allReference(array $references, string $type = 'strict'): AllReference
     {
-        return new AllReference($type, $references);
+        return new AllReference($references, $type);
     }
 
-    public function attribute(string $operator, array $attributeIds): Attribute
+    public function attribute(array $attributeIds, string $operator = 'and'): Attribute
     {
-        return new Attribute($operator, $attributeIds);
+        return new Attribute($attributeIds, $operator);
     }
 
     public function brand(array $brandIds): Brand
@@ -61,9 +61,9 @@ class QueryBuilder
         return new Id($ids);
     }
 
-    public function internalReference(string $type, array $internalReferences): InternalReference
+    public function internalReference(array $internalReferences, string $type = 'strict'): InternalReference
     {
-        return new InternalReference($type, $internalReferences);
+        return new InternalReference($internalReferences, $type);
     }
 
     public function label(array $labelIds): Label
@@ -71,9 +71,9 @@ class QueryBuilder
         return new Label($labelIds);
     }
 
-    public function lastIndexed(string $type, \DateTime $date): LastIndexed
+    public function lastIndexed(\DateTime $date, string $type = 'since'): LastIndexed
     {
-        return new LastIndexed($type, $date);
+        return new LastIndexed($date, $type);
     }
 
     public function marking(array $markingIds): Marking
@@ -106,9 +106,9 @@ class QueryBuilder
         return new Supplier($supplierIds);
     }
 
-    public function supplierBaseReference(string $type, array $supplierBaseReferences): SupplierBaseReference
+    public function supplierBaseReference(array $supplierBaseReferences, string $type = 'strict'): SupplierBaseReference
     {
-        return new SupplierBaseReference($type, $supplierBaseReferences);
+        return new SupplierBaseReference($supplierBaseReferences, $type);
     }
 
     public function supplierProfile(array $supplierProfileIds): SupplierProfile
@@ -116,9 +116,9 @@ class QueryBuilder
         return new SupplierProfile($supplierProfileIds);
     }
 
-    public function supplierReference(string $type, array $supplierReferences): SupplierReference
+    public function supplierReference(array $supplierReferences, string $type = 'strict'): SupplierReference
     {
-        return new SupplierReference($type, $supplierReferences);
+        return new SupplierReference($supplierReferences, $type);
     }
 
     public function variant(array $variantIds): Variant

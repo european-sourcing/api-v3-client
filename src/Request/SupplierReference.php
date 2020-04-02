@@ -18,10 +18,10 @@ class SupplierReference extends AbstractIncludeExclude implements RequestElement
     private $type;
 
     /**
-     * @param string $type
      * @param array $supplierReferences
+     * @param string $type
      */
-    public function __construct(string $type, array $supplierReferences)
+    public function __construct(array $supplierReferences, string $type)
     {
         $this->type = $type;
         $this->supplierReferences = $supplierReferences;
