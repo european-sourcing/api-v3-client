@@ -2,22 +2,19 @@
 
 namespace Medialeads\Apiv3Client\Normalizer;
 
+use Medialeads\Apiv3Client\Common\Collection;
+
 class BrandsNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Collection
     {
-        $brands = [];
+        $brands = new Collection();
         $brandNormalizer = new BrandNormalizer();
 
         foreach ($data as $row) {
-            $brands[$row['id']] = $brandNormalizer->denormalize($row);
+            $brands->add($row['id'], $brandNormalizer->denormalize($row));
         }
 
-        return array_values($brands);
+        return $brands;
     }
 }

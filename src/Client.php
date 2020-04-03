@@ -2,6 +2,7 @@
 
 namespace Medialeads\Apiv3Client;
 
+use Medialeads\Apiv3Client\Common\Collection;
 use Medialeads\Apiv3Client\Model\Variant;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
@@ -13,6 +14,7 @@ use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
 use Medialeads\Apiv3Client\Normalizer\BrandsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
+use Medialeads\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
 use Medialeads\Apiv3Client\Response\SearchResponse;
 
 class Client
@@ -164,9 +166,9 @@ class Client
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function categories(QueryHandler $queryHandler)
+    public function categories(string $language)
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/categories/'.$queryHandler->getLanguage(), [
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/categories/'.$language, [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -180,11 +182,9 @@ class Client
     }
 
     /**
-     * @param QueryHandler $queryHandler
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function brands(QueryHandler $queryHandler)
+    public function brands(): Collection
     {
         $results = $this->guzzle->request('GET', $this->apiUrl.'/brands', [
             'headers' => [
@@ -200,10 +200,27 @@ class Client
     }
 
     /**
-     * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function supplierProfiles()
+    public function suppliers(): Collection
+    {
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/brands', [
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ]);
+
+        $suppliersNormalizer = new BrandsNormalizer();
+
+        return $suppliersNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
+        );
+    }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function supplierProfiles(): Collection
     {
         $results = $this->guzzle->request('GET', $this->apiUrl.'/supplier_profiles', [
             'headers' => [
@@ -211,12 +228,17 @@ class Client
             ]
         ]);
 
-        return $this->transform->supplierProfiles(
-            \json_decode($results->getBody())
+        $supplierProfilesNormalizer = new SupplierProfilesNormalizer();
+
+        return $supplierProfilesNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
         );
     }
 
-    public function marking(int $variantId, string $lang)
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function marking(int $variantId, string $lang): Collection
     {
         $results = $this->guzzle->request('GET', $this->apiUrl.'/markings/'.$lang.'/'.$variantId, [
             'headers' => [

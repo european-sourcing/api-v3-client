@@ -17,9 +17,9 @@ class StaticFixedPriceNormalizer
         $staticFixedPrice->setTotalPrice((bool) $data['total_price']);
 
         $supplierProfileNormalizer = new SupplierProfileNormalizer();
-        foreach ($data['supplier_profiles'] as $supplierProfile) {
-            $staticFixedPrice->addSupplierProfile($supplierProfileNormalizer->denormalize($supplierProfile));
-        }
+        $staticFixedPrice->setSupplierProfile(
+            $supplierProfileNormalizer->denormalize($data['supplier_profile'])
+        );
 
         $markingFeeNormalizer = new MarkingFeeNormalizer();
         foreach ($data['marking_fees'] as $markingFee) {

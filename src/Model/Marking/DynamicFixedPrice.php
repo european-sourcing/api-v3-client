@@ -27,13 +27,12 @@ class DynamicFixedPrice
     /** @var Collection */
     private $markingFees;
 
-    /** @var Collection */
-    private $supplierProfiles;
+    /** @var SupplierProfile */
+    private $supplierProfile;
 
     public function __construct()
     {
         $this->markingFees = new Collection();
-        $this->supplierProfiles = new Collection();
     }
 
     public function getId(): string
@@ -127,21 +126,14 @@ class DynamicFixedPrice
         return $this;
     }
 
-    public function getSupplierProfiles(): Collection
+    public function getSupplierProfile(): SupplierProfile
     {
-        return $this->supplierProfiles;
+        return $this->supplierProfile;
     }
 
-    public function setSupplierProfiles(Collection $supplierProfiles): self
+    public function setSupplierProfile(SupplierProfile $supplierProfile): self
     {
-        $this->supplierProfiles = $supplierProfiles;
-
-        return $this;
-    }
-
-    public function addSupplierProfile(SupplierProfile $supplierProfile): self
-    {
-        $this->supplierProfiles->add($supplierProfile->getId(), $supplierProfile);
+        $this->supplierProfile = $supplierProfile;
 
         return $this;
     }

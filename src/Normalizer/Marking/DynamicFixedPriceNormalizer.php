@@ -17,9 +17,9 @@ class DynamicFixedPriceNormalizer
         $dynamicFixedPrice->setTotalPrice((bool) $data['total_price']);
 
         $supplierProfileNormalizer = new SupplierProfileNormalizer();
-        foreach ($data['supplier_profiles'] as $supplierProfile) {
-            $dynamicFixedPrice->addSupplierProfile($supplierProfileNormalizer->denormalize($supplierProfile));
-        }
+        $dynamicFixedPrice->setSupplierProfile(
+            $supplierProfileNormalizer->denormalize($data['supplier_profile'])
+        );
 
         $markingFeeNormalizer = new MarkingFeeNormalizer();
         foreach ($data['marking_fees'] as $markingFee) {

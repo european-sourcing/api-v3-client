@@ -4,7 +4,7 @@ namespace Medialeads\Apiv3Client\Model\Marking;
 
 use Medialeads\Apiv3Client\Common\Collection;
 
-class DynamicVariablePriceHolder
+class StaticVariablePriceHolder
 {
     /** @var string */
     private $id;
@@ -24,12 +24,6 @@ class DynamicVariablePriceHolder
     /** @var Collection */
     private $prices;
 
-    public function __construct()
-    {
-        $this->markingFees = new Collection();
-        $this->prices = new Collection();
-    }
-
     public function getId(): string
     {
         return $this->id;
@@ -42,12 +36,12 @@ class DynamicVariablePriceHolder
         return $this;
     }
 
-    public function getCondition(): ?string
+    public function getCondition(): string
     {
         return $this->condition;
     }
 
-    public function setCondition(?string $condition): self
+    public function setCondition(string $condition): self
     {
         $this->condition = $condition;
 
