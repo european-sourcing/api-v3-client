@@ -2,7 +2,6 @@
 
 namespace Medialeads\Apiv3Client\Tests;
 
-use Medialeads\Apiv3Client\Model\Supplier;
 use Medialeads\Apiv3Client\Model\SupplierProfile;
 use Medialeads\Apiv3Client\Normalizer\SupplierProfileNormalizer;
 use PHPUnit\Framework\TestCase;

@@ -3,6 +3,7 @@
 namespace Medialeads\Apiv3Client;
 
 use Medialeads\Apiv3Client\Common\Collection;
+use Medialeads\Apiv3Client\Model\Marking\Marking;
 use Medialeads\Apiv3Client\Model\Variant;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
@@ -16,6 +17,9 @@ use Medialeads\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
 use Medialeads\Apiv3Client\Response\SearchResponse;
+use Symfony\Component\HttpClient\Exception\ClientException;
+use Symfony\Component\HttpClient\Exception\ServerException;
+use Symfony\Component\HttpClient\HttpClient;
 
 class Client
 {
@@ -253,9 +257,44 @@ class Client
         );
     }
 
-    public function calculateMarking()
-    {
+    /**
+     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     */
+    public function calculateMarking(
+        Variant $variant,
+        Marking $marking,
+        int $quantity,
+        int $nbColor,
+        int $nbLogo,
+        int $nbPosition,
+        int $markingMargin,
+        int $productMargin
+    ) {
+        $client = HttpClient::create();
+        $body = [
+            'variant_id' => $variant->getId(),
+            'marking_id' => $marking->getId(),
+            'quantityM' => $quantity,
+            'nbColor' => $nbColor,
+            'nbLogo' => $nbLogo,
+            'nbPosition' => $nbPosition,
+            'default_marking_margin' => $markingMargin,
+            'default_margin' => $productMargin
+        ];
 
+        $response = $client->request('POST', 'https://product-api.europeansourcing.com/api/v1.1/marking/fr/calculatePrice', [
+            'headers' => [
+                'accept' => 'application/json',
+                'content-Type' => 'application/json',
+                'x-auth-token' => $this->getToken()
+            ],
+            'body' => json_encode($body)
+        ]);
+
+        return json_decode($response->getContent(), true);
     }
 
     /**
