@@ -36,12 +36,12 @@ class StaticVariablePriceHolder
         return $this;
     }
 
-    public function getCondition(): string
+    public function getCondition(): ?string
     {
         return $this->condition;
     }
 
-    public function setCondition(string $condition): self
+    public function setCondition(?string $condition): self
     {
         $this->condition = $condition;
 
