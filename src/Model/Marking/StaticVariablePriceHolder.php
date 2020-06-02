@@ -23,6 +23,12 @@ class StaticVariablePriceHolder
 
     /** @var Collection */
     private $prices;
+    
+    public function __construct()
+    {
+        $this->markingFees = new Collection();
+        $this->prices = new Collection();
+    }
 
     public function getId(): string
     {
@@ -36,12 +42,12 @@ class StaticVariablePriceHolder
         return $this;
     }
 
-    public function getCondition(): string
+    public function getCondition(): ?string
     {
         return $this->condition;
     }
 
-    public function setCondition(string $condition): self
+    public function setCondition(?string $condition): self
     {
         $this->condition = $condition;
 
