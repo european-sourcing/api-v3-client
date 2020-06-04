@@ -264,19 +264,19 @@ class Client
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
     public function calculateMarking(
-        Variant $variant,
-        Marking $marking,
+        int $variantId,
+        int $markingId,
         int $quantity,
-        int $nbColor,
-        int $nbLogo,
-        int $nbPosition,
+        ?int $nbColor,
+        ?int $nbLogo,
+        ?int $nbPosition,
         int $markingMargin,
         int $productMargin
     ) {
         $client = HttpClient::create();
         $body = [
-            'variant_id' => $variant->getId(),
-            'marking_id' => $marking->getId(),
+            'variant_id' => $variantId,
+            'marking_id' => $markingId,
             'quantityM' => $quantity,
             'nbColor' => $nbColor,
             'nbLogo' => $nbLogo,
