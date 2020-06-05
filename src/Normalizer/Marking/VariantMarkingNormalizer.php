@@ -68,8 +68,10 @@ class VariantMarkingNormalizer
         $variantMarking->setMarking($markingNormalizer->denormalize($data['marking']));
 
         // marking position
-        $markingPositionNormalizer = new MarkingPositionNormalizer();
-        $variantMarking->setMarkingPosition($markingPositionNormalizer->denormalizer($data['marking_position']));
+        if ((isset($data['marking_position'])) && (is_array($data['marking_position']))) {
+            $markingPositionNormalizer = new MarkingPositionNormalizer();
+            $variantMarking->setMarkingPosition($markingPositionNormalizer->denormalizer($data['marking_position']));
+        }
 
         // supplier options
         $supplierOptionNormalizer = new SupplierOptionNormalizer();
