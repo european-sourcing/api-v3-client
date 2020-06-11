@@ -68,7 +68,7 @@ class VariantMarkingNormalizer
         $variantMarking->setMarking($markingNormalizer->denormalize($data['marking']));
 
         // marking position
-        if ((isset($data['marking_position'])) && (is_array($data['marking_position']))) {
+        if ((!empty($data['marking_position'])) && (is_array($data['marking_position']))) {
             $markingPositionNormalizer = new MarkingPositionNormalizer();
             $variantMarking->setMarkingPosition($markingPositionNormalizer->denormalizer($data['marking_position']));
         }
@@ -86,7 +86,7 @@ class VariantMarkingNormalizer
         }
 
         // static fixed prices
-        if ((isset($data['static_fixed_prices'])) && (is_array($data['static_fixed_prices']))) {
+        if ((!empty($data['static_fixed_prices'])) && (is_array($data['static_fixed_prices']))) {
             $staticFixedPriceNormalizer = new StaticFixedPriceNormalizer();
             foreach ($data['static_fixed_prices'] as $staticFixedPrice) {
                 $variantMarking->addStaticFixedPrice($staticFixedPriceNormalizer->denormalize($staticFixedPrice));
@@ -94,7 +94,7 @@ class VariantMarkingNormalizer
         }
 
         // dynamic fixed prices
-        if ((isset($data['dynamic_fixed_prices'])) && (is_array($data['dynamic_fixed_prices']))) {
+        if ((!empty($data['dynamic_fixed_prices'])) && (is_array($data['dynamic_fixed_prices']))) {
             $dynamicFixedPriceNormalizer = new DynamicFixedPriceNormalizer();
             foreach ($data['dynamic_fixed_prices'] as $dynamicFixedPrice) {
                 $variantMarking->addDynamicFixedPrice($dynamicFixedPriceNormalizer->denormalize($dynamicFixedPrice));
@@ -102,7 +102,7 @@ class VariantMarkingNormalizer
         }
 
         // static variable price holder
-        if ((isset($data['static_variable_price_holders'])) && (is_array($data['static_variable_price_holders']))) {
+        if ((!empty($data['static_variable_price_holders'])) && (is_array($data['static_variable_price_holders']))) {
             $staticVariablePriceHolderNormalizer = new StaticVariablePriceHolderNormalizer();
             foreach ($data['static_variable_price_holders'] as $staticVariablePriceHolder) {
                 $variantMarking->addStaticVariablePriceHolder($staticVariablePriceHolderNormalizer->denormalize($staticVariablePriceHolder));
@@ -110,7 +110,7 @@ class VariantMarkingNormalizer
         }
 
         // dynamic variable price holder
-        if ((isset($data['dynamic_variable_price_holders'])) && (is_array($data['dynamic_variable_price_holders']))) {
+        if ((!empty($data['dynamic_variable_price_holders'])) && (is_array($data['dynamic_variable_price_holders']))) {
             $dynamicVariablePriceHolderNormalizer = new DynamicVariablePriceHolderNormalizer();
             foreach ($data['dynamic_variable_price_holders'] as $dynamicVariablePriceHolder) {
                 $variantMarking->addDynamicVariablePriceHolder($dynamicVariablePriceHolderNormalizer->denormalize($dynamicVariablePriceHolder));
