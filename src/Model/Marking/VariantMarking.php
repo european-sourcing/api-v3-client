@@ -547,7 +547,7 @@ class VariantMarking
         return $this;
     }
 
-    public function getMarkingPosition(): MarkingPosition
+    public function getMarkingPosition(): ?MarkingPosition
     {
         return $this->markingPosition;
     }
