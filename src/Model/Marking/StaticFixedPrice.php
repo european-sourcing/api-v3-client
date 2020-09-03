@@ -9,7 +9,7 @@ class StaticFixedPrice
     /** @var string */
     private $id;
 
-    /** @var string */
+    /** @var string|null */
     private $value;
 
     /** @var string */
@@ -47,12 +47,12 @@ class StaticFixedPrice
         return $this;
     }
 
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
 
-    public function setValue(string $value): self
+    public function setValue(?string $value): self
     {
         $this->value = $value;
 
