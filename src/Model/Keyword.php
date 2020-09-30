@@ -17,7 +17,7 @@ class Keyword implements \JsonSerializable
     /**
      * @var string
      */
-    private $name;
+    private $value;
 
     /**
      * @return int
@@ -62,19 +62,19 @@ class Keyword implements \JsonSerializable
     /**
      * @return string
      */
-    public function getName()
+    public function getValue()
     {
-        return $this->name;
+        return $this->value;
     }
 
     /**
-     * @param string $name
+     * @param string $value
      *
      * @return Keyword
      */
-    public function setName($name)
+    public function setValue($value)
     {
-        $this->name = $name;
+        $this->value = $value;
 
         return $this;
     }
@@ -90,7 +90,7 @@ class Keyword implements \JsonSerializable
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'value' => $this->value,
             'slug' => $this->slug
         ];
     }
