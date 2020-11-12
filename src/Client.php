@@ -208,13 +208,13 @@ class Client
      */
     public function suppliers(): Collection
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/brands', [
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/suppliers', [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
         ]);
 
-        $suppliersNormalizer = new BrandsNormalizer();
+        $suppliersNormalizer = new SupplierProfilesNormalizer();
 
         return $suppliersNormalizer->denormalize(
             \json_decode($results->getBody(), true)

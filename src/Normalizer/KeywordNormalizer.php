@@ -15,7 +15,7 @@ class KeywordNormalizer
     {
         $keyword = new Keyword();
         $keyword->setId($data['id']);
-        $keyword->setName($data['name']);
+        $keyword->setValue($data['value']);
         $keyword->setSlug($data['slug']);
 
         return $keyword;
