@@ -7,6 +7,7 @@ use Medialeads\Apiv3Client\Request\AllReference;
 use Medialeads\Apiv3Client\Request\Attribute;
 use Medialeads\Apiv3Client\Request\Brand;
 use Medialeads\Apiv3Client\Request\Category;
+use Medialeads\Apiv3Client\Request\CountryCode;
 use Medialeads\Apiv3Client\Request\CountryOfOrigin;
 use Medialeads\Apiv3Client\Request\HasMarking;
 use Medialeads\Apiv3Client\Request\Id;
@@ -54,6 +55,10 @@ class QueryBuilder
     public function hasMarking(bool $hasMarking): HasMarking
     {
         return new HasMarking($hasMarking);
+    }
+    public function countryCode(string $countryCode): CountryCode
+    {
+        return new CountryCode($countryCode);
     }
 
     public function id(array $ids): Id
