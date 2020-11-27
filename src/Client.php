@@ -75,7 +75,7 @@ class Client
         ]);
 
         $results = \json_decode($response->getBody(), true);
-
+//dump($results); die();
         $productsNormalizer = new ProductsNormalizer();
         $products = $productsNormalizer->denormalize($results['products']);
 

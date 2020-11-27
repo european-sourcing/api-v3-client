@@ -59,6 +59,11 @@ class Product
     private $mainVariant;
 
     /**
+     * @var Variant
+     */
+    private $bestVariant;
+
+    /**
      * @var array
      */
     private $variants;
@@ -345,6 +350,26 @@ class Product
     public function setMainVariant($mainVariant)
     {
         $this->mainVariant = $mainVariant;
+
+        return $this;
+    }
+
+    /**
+     * @return Variant
+     */
+    public function getBestVariant()
+    {
+        return $this->bestVariant;
+    }
+
+    /**
+     * @param Variant $bestVariant
+     *
+     * @return Product
+     */
+    public function setBestVariant($bestVariant)
+    {
+        $this->bestVariant = $bestVariant;
 
         return $this;
     }
