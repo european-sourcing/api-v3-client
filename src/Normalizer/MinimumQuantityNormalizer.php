@@ -14,15 +14,10 @@ class MinimumQuantityNormalizer
     public function denormalize(array $data)
     {
         $minimumQuantity = new MinimumQuantity();
-        $minimumQuantity->setId($data['id']);
         $minimumQuantity->setValue($data['value']);
 
-        if (!empty($data['supplier_profiles'])) {
-            $supplierProfileNormalizer = new SupplierProfileNormalizer();
-            foreach ($data['supplier_profiles'] as $row) {
-                $minimumQuantity->addSupplierProfile($supplierProfileNormalizer->denormalize($row));
-            }
-        }
+        $supplierProfileNormalizer = new SupplierProfileNormalizer();
+        $minimumQuantity->setSupplierProfile($supplierProfileNormalizer->denormalize($data['supplier_profile']));
 
         return $minimumQuantity;
     }

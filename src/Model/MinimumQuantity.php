@@ -5,39 +5,14 @@ namespace Medialeads\Apiv3Client\Model;
 class MinimumQuantity implements \JsonSerializable
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
      * @var string
      */
     private $value;
 
     /**
-     * @var array
+     * @var SupplierProfile
      */
-    private $supplierProfiles;
-
-    /**
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return MinimumQuantity
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+    private $supplierProfile;
 
     /**
      * @return string
@@ -60,33 +35,20 @@ class MinimumQuantity implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return SupplierProfile
      */
-    public function getSupplierProfiles()
+    public function getSupplierProfile(): SupplierProfile
     {
-        return $this->supplierProfiles;
-    }
-
-    /**
-     * @param array $supplierProfiles
-     *
-     * @return MinimumQuantity
-     */
-    public function setSupplierProfiles($supplierProfiles)
-    {
-        $this->supplierProfiles = $supplierProfiles;
-
-        return $this;
+        return $this->supplierProfile;
     }
 
     /**
      * @param SupplierProfile $supplierProfile
-     *
      * @return MinimumQuantity
      */
-    public function addSupplierProfile(SupplierProfile $supplierProfile)
+    public function setSupplierProfile(SupplierProfile $supplierProfile): self
     {
-        $this->supplierProfiles[] = $supplierProfile;
+        $this->supplierProfile = $supplierProfile;
 
         return $this;
     }
@@ -97,9 +59,8 @@ class MinimumQuantity implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'id' => $this->id,
             'value' => $this->value,
-            'supplier_profiles' => $this->supplierProfiles
+            'supplier_profile' => $this->supplierProfile
         ];
     }
 }
