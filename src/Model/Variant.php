@@ -149,21 +149,25 @@ class Variant implements \JsonSerializable
 
     public function processAttributes()
     {
-        /** @var Attribute $attribute */
-        foreach ($this->getAttributes() as $attribute) {
-            if (empty($groups[$attribute->getGroup()->getId()])) {
-                $groups[$attribute->getGroup()->getId()] = [
-                    'id' => $attribute->getGroup()->getId(),
-                    'name' => $attribute->getGroup()->getName(),
-                    'slug' => $attribute->getGroup()->getSlug(),
-                    'attributes' => []
+        $groups = [];
+
+        if(!empty($this->getAttributes())){
+            /** @var Attribute $attribute */
+            foreach ($this->getAttributes() as $attribute) {
+                if (empty($groups[$attribute->getGroup()->getId()])) {
+                    $groups[$attribute->getGroup()->getId()] = [
+                        'id' => $attribute->getGroup()->getId(),
+                        'name' => $attribute->getGroup()->getName(),
+                        'slug' => $attribute->getGroup()->getSlug(),
+                        'attributes' => []
+                    ];
+                }
+
+                $groups[$attribute->getGroup()->getId()]['attributes'][] = [
+                    'id' => $attribute->getId(),
+                    'value' => $attribute->getValue()
                 ];
             }
-
-            $groups[$attribute->getGroup()->getId()]['attributes'][] = [
-                'id' => $attribute->getId(),
-                'value' => $attribute->getValue()
-            ];
         }
 
         return $groups;
