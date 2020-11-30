@@ -75,6 +75,9 @@ class VariantNormalizer
         if (!empty($data['variant_minimum_quantities'])) {
             $minimumQuantityNormalizer = new MinimumQuantityNormalizer();
             foreach ($data['variant_minimum_quantities'] as $row) {
+                if (empty($row['value'])) {
+                    continue;
+                }
                 $variant->addMinimumQuantity($minimumQuantityNormalizer->denormalize($row));
             }
         }
