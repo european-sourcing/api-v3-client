@@ -34,6 +34,10 @@ class ProductNormalizer
                 $variant->setProduct($product);
                 $product->addVariant($variant);
 
+                if ($row['id'] == $data['best_variant_id']) {
+                    $product->setBestVariant($variant);
+                }
+
                 if ($row['id'] == $data['main_variant_id']) {
                     $product->setMainVariant($variant);
                 }
