@@ -82,6 +82,14 @@ class SearchResponse implements \ArrayAccess,\Iterator, \Countable
 
         return $this;
     }
+    public function getAggregation($name): Aggregation
+    {
+        if (!isset($this->aggregations[$name])) {
+            throw new \Exception(sprintf('Aggregation %s not exists', $name));
+        }
+
+        return $this->aggregations[$name];
+    }
 
     /**
      * @return array
