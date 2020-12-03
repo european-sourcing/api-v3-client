@@ -30,9 +30,9 @@ class Price implements \JsonSerializable
     private $calculationValue;
 
     /**
-     * @var array
+     * @var SupplierProfile
      */
-    private $supplierProfiles;
+    private $supplierProfile;
 
     /**
      * @return int
@@ -137,31 +137,19 @@ class Price implements \JsonSerializable
     /**
      * @return array
      */
-    public function getSupplierProfiles()
+    public function getSupplierProfile(): SupplierProfile
     {
-        return $this->supplierProfiles;
+        return $this->supplierProfile;
     }
 
     /**
-     * @param array $supplierProfiles
+     * @param SupplierProfile $supplierProfile
      *
      * @return Price
      */
-    public function setSupplierProfiles($supplierProfiles)
+    public function setSupplierProfile(SupplierProfile $supplierProfile)
     {
-        $this->supplierProfiles = $supplierProfiles;
-
-        return $this;
-    }
-
-    /**
-     * @param SupplierProfile $supplierProfil
-     *
-     * @return Price
-     */
-    public function addSupplierProfile(SupplierProfile $supplierProfil)
-    {
-        $this->supplierProfiles[] = $supplierProfil;
+        $this->supplierProfile = $supplierProfile;
 
         return $this;
     }
@@ -177,7 +165,7 @@ class Price implements \JsonSerializable
             'value' => $this->value,
             'reduced_value' => $this->reducedValue,
             'calculation_value' => $this->calculationValue,
-            'supplier_profiles' => $this->supplierProfiles
+            'supplier_profile' => $this->supplierProfile
         ];
     }
 }

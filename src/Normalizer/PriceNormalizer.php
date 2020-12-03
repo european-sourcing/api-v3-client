@@ -25,11 +25,9 @@ class PriceNormalizer
 
         $price->setCalculationValue($data['calculation_value']);
 
-        if (!empty($data['supplier_profiles'])) {
+        if (!empty($data['supplier_profile'])) {
             $supplierProfileNormalizer = new SupplierProfileNormalizer();
-            foreach ($data['supplier_profiles'] as $row) {
-                $price->addSupplierProfile($supplierProfileNormalizer->denormalize($row));
-            }
+            $price->setSupplierProfile($supplierProfileNormalizer->denormalize($data['supplier_profile']));
         }
 
         return $price;
