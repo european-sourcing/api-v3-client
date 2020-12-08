@@ -192,6 +192,18 @@ class Packaging implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getFormatedSizes()
+    {
+        $values = array_map(function(Size $size) {
+            return round($size->getValue(), 2);
+        }, $this->sizes);
+
+        return implode(' x ', $values);
+    }
+
+    /**
      * Specify data which should be serialized to JSON
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
      * @return mixed data which can be serialized by <b>json_encode</b>,

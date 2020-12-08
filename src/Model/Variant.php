@@ -435,15 +435,14 @@ class Variant implements \JsonSerializable
     public function getFormatedSizes()
     {
         $values = array_map(function(Size $size) {
-            /*if (null !== $size->getType()) {
-
-                return sprintf('(%s: %s)', $size->getType(), round($size->getValue(), 2));
-            }*/
-
-            return round($size->getValue(), 2);
+            if ('diameter' == $size->getType()) {
+                return sprintf('%s %s', 'Ø', round($size->getValue(), 2));
+            } else {
+                return round($size->getValue(), 2);
+            }
         }, $this->sizes);
 
-        return implode('x', $values);
+        return implode(' x ', $values);
     }
 
     /**
