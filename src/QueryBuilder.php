@@ -91,7 +91,7 @@ class QueryBuilder
         return new Not($element);
     }
 
-    public function price(float $minPrice, float $maxPrice): Price
+    public function price(?float $minPrice, ?float $maxPrice): Price
     {
         return new Price($minPrice, $maxPrice);
     }
