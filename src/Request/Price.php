@@ -20,7 +20,7 @@ class Price implements RequestElementInterface
     /**
      * @param string $query
      */
-    public function __construct(float $minPrice, float $maxPrice)
+    public function __construct(?float $minPrice, ?float $maxPrice)
     {
         $this->minPrice = $minPrice;
         $this->maxPrice = $maxPrice;
