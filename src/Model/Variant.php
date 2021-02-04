@@ -695,7 +695,7 @@ class Variant implements \JsonSerializable
 
         /** @var Price $price */
         foreach ($this->prices as $price) {
-            dump($price);
+
             if ($price->getFromQuantity() <= $quantity) {
                 $bestPrice = $price;
             }
