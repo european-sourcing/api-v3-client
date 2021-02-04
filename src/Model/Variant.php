@@ -695,8 +695,28 @@ class Variant implements \JsonSerializable
 
         /** @var Price $price */
         foreach ($this->prices as $price) {
-
+            dump($price);
             if ($price->getFromQuantity() <= $quantity) {
+                $bestPrice = $price;
+            }
+        }
+
+        return $bestPrice;
+    }
+
+    /**
+     * @param int $quantity
+     *
+     * @return Price
+     */
+    public function getPriceForQuantityWithSupplierProfile($quantity, \App\Entity\SupplierProfile $supplierProfile)
+    {
+        $bestPrice = null;
+
+        /** @var Price $price */
+        foreach ($this->prices as $price) {
+
+            if ($price->getSupplierProfile()->getId() == $supplierProfile->getId() && $price->getFromQuantity() <= $quantity) {
                 $bestPrice = $price;
             }
         }
