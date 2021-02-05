@@ -2,6 +2,8 @@
 
 namespace Medialeads\Apiv3Client\Model;
 
+use Medialeads\Apiv3Client\Common\SupplierProfileInterface;
+
 class Variant implements \JsonSerializable
 {
     /**
@@ -709,7 +711,7 @@ class Variant implements \JsonSerializable
      *
      * @return Price
      */
-    public function getPriceForQuantityWithSupplierProfile($quantity, \App\Entity\SupplierProfile $supplierProfile)
+    public function getPriceForQuantityWithSupplierProfile($quantity, $supplierProfile)
     {
         $bestPrice = null;
 
