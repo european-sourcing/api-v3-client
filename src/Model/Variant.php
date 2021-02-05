@@ -711,7 +711,7 @@ class Variant implements \JsonSerializable
      *
      * @return Price
      */
-    public function getPriceForQuantityWithSupplierProfile($quantity, $supplierProfile)
+    public function getPriceForQuantityWithSupplierProfile($quantity, SupplierProfileInterface $supplierProfile)
     {
         $bestPrice = null;
 
