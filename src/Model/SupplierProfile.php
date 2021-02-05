@@ -2,9 +2,9 @@
 
 namespace Medialeads\Apiv3Client\Model;
 
-use Medialeads\Apiv3Client\Common\AggregableInterface;
+use Medialeads\Apiv3Client\Common\SupplierProfileInterface;
 
-class SupplierProfile implements \JsonSerializable
+class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 {
     /**
      * @var int
