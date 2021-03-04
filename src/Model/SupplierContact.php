@@ -9,7 +9,7 @@ class SupplierContact implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $main_email;
+    private $mainEmail;
     /**
      * @var array|null
      */
@@ -18,42 +18,42 @@ class SupplierContact implements \JsonSerializable
     /**
      * @var string|null
      */
-    private $personal_title;
+    private $personalTitle;
 
     /**
      * @var string|null
      */
-    private $last_name;
+    private $lastname;
 
     /**
      * @var string|null
      */
-    private $first_name;
+    private $firstname;
 
     /**
      * @var string|null
      */
-    private $main_language;
+    private $mainLanguage;
 
     /**
      * @var string|null
      */
-    private $country_code;
+    private $countryCode;
 
     /**
      * @return string|null
      */
     public function getMainEmail(): ?string
     {
-        return $this->main_email;
+        return $this->mainEmail;
     }
 
     /**
-     * @param string|null $main_email
+     * @param string|null $mainEmail
      */
-    public function setMainEmail(?string $main_email): void
+    public function setMainEmail(?string $mainEmail): void
     {
-        $this->main_email = $main_email;
+        $this->mainEmail = $mainEmail;
     }
 
     /**
@@ -77,47 +77,47 @@ class SupplierContact implements \JsonSerializable
      */
     public function getPersonalTitle(): ?string
     {
-        return $this->personal_title;
+        return $this->personalTitle;
     }
 
     /**
-     * @param string|null $personal_title
+     * @param string|null $personalTitle
      */
-    public function setPersonalTitle(?string $personal_title): void
+    public function setPersonalTitle(?string $personalTitle): void
     {
-        $this->personal_title = $personal_title;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getLastName(): ?string
-    {
-        return $this->last_name;
-    }
-
-    /**
-     * @param string|null $last_name
-     */
-    public function setLastName(?string $last_name): void
-    {
-        $this->last_name = $last_name;
+        $this->personalTitle = $personalTitle;
     }
 
     /**
      * @return string|null
      */
-    public function getFirstName(): ?string
+    public function getLastname(): ?string
     {
-        return $this->first_name;
+        return $this->lastname;
     }
 
     /**
-     * @param string|null $first_name
+     * @param string|null $lastname
      */
-    public function setFirstName(?string $first_name): void
+    public function setLastname(?string $lastname): void
     {
-        $this->first_name = $first_name;
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param string|null $firstname
+     */
+    public function setFirstname(?string $firstname): void
+    {
+        $this->firstname = $firstname;
     }
 
     /**
@@ -125,15 +125,15 @@ class SupplierContact implements \JsonSerializable
      */
     public function getMainLanguage(): ?string
     {
-        return $this->main_language;
+        return $this->mainLanguage;
     }
 
     /**
-     * @param string|null $main_language
+     * @param string|null $mainLanguage
      */
-    public function setMainLanguage(?string $main_language): void
+    public function setMainLanguage(?string $mainLanguage): void
     {
-        $this->main_language = $main_language;
+        $this->mainLanguage = $mainLanguage;
     }
 
     /**
@@ -141,15 +141,15 @@ class SupplierContact implements \JsonSerializable
      */
     public function getCountryCode(): ?string
     {
-        return $this->country_code;
+        return $this->countryCode;
     }
 
     /**
-     * @param string|null $country_code
+     * @param string|null $countryCode
      */
-    public function setCountryCode(?string $country_code): void
+    public function setCountryCode(?string $countryCode): void
     {
-        $this->country_code = $country_code;
+        $this->countryCode = $countryCode;
     }
 
     /**
@@ -158,13 +158,13 @@ class SupplierContact implements \JsonSerializable
     public function jsonSerialize()
     {
         return [
-            'main_email' => $this->main_email,
+            'main_email' => $this->mainEmail,
             'emails' => $this->emails,
-            'personal_title' => $this->personal_title,
-            'last_name' => $this->last_name,
-            'first_name' => $this->first_name,
-            'country_code' => $this->country_code,
-            'main_language' => $this->main_language
+            'personal_title' => $this->personalTitle,
+            'last_name' => $this->lastname,
+            'first_name' => $this->firstname,
+            'country_code' => $this->countryCode,
+            'main_language' => $this->mainLanguage
         ];
     }
 }
