@@ -10,6 +10,7 @@ class SupplierContact implements \JsonSerializable
      * @var string|null
      */
     private $mainEmail;
+    
     /**
      * @var array|null
      */
