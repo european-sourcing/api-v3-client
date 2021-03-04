@@ -34,6 +34,13 @@ class SupplierNormalizer
             }
         }
 
+        if (!empty($data['contacts'])) {
+            $supplierContactNormalizer = new SupplierContactNormalizer();
+            foreach ($data['contacts'] as $row) {
+                $supplier->addSupplierContact($supplierContactNormalizer->denormalize($row));
+            }
+        }
+
         return $supplier;
     }
 }

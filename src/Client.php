@@ -16,6 +16,7 @@ use Medialeads\Apiv3Client\Normalizer\BrandsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
+use Medialeads\Apiv3Client\Normalizer\SupplierNormalizer;
 use Medialeads\Apiv3Client\Response\SearchResponse;
 use Symfony\Component\HttpClient\Exception\ClientException;
 use Symfony\Component\HttpClient\Exception\ServerException;
@@ -235,6 +236,42 @@ class Client
         $supplierProfilesNormalizer = new SupplierProfilesNormalizer();
 
         return $supplierProfilesNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
+        );
+    }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function supplierProfilesForSupplier($id): Collection
+    {
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/supplier_profiles/supplier/'.$id, [
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ]);
+
+        $supplierProfilesNormalizer = new SupplierProfilesNormalizer();
+
+        return $supplierProfilesNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
+        );
+    }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function suppliersForSupplierProfile($id)
+    {
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/suppliers/supplier_profile/'.$id, [
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ]);
+
+        $supplierNormalizer = new SupplierNormalizer();
+
+        return $supplierNormalizer->denormalize(
             \json_decode($results->getBody(), true)
         );
     }

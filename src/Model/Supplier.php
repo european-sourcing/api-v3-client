@@ -40,6 +40,11 @@ class Supplier implements \JsonSerializable
     private $supplierProfiles;
 
     /**
+     * @var array
+     */
+    private $supplierContacts;
+
+    /**
      * @return int
      */
     public function getId()
@@ -187,6 +192,38 @@ class Supplier implements \JsonSerializable
     public function addSupplierProfile(SupplierProfile $supplierProfile)
     {
         $this->supplierProfiles[] = $supplierProfile;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSupplierContacts()
+    {
+        return $this->supplierContacts;
+    }
+
+    /**
+     * @param array $supplierContacts
+     *
+     * @return Supplier
+     */
+    public function setSupplierContacts($supplierContacts)
+    {
+        $this->supplierContacts = $supplierContacts;
+
+        return $this;
+    }
+
+    /**
+     * @param SupplierContact $supplierContact
+     *
+     * @return Supplier
+     */
+    public function addSupplierContact(SupplierContact $supplierContact)
+    {
+        $this->supplierContacts[] = $supplierContact;
 
         return $this;
     }
