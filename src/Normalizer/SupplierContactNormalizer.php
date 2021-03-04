@@ -36,11 +36,11 @@ class SupplierContactNormalizer
         }
 
         if (!empty($data['last_name'])) {
-            $supplierContact->setLastName($data['last_name']);
+            $supplierContact->setLastname($data['last_name']);
         }
 
         if (!empty($data['first_name'])) {
-            $supplierContact->setLastName($data['first_name']);
+            $supplierContact->setFirstname($data['first_name']);
         }
 
         if (!empty($data['main_language'])) {
