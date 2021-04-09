@@ -25,7 +25,7 @@ class StockGreaterThan implements RequestElementInterface
     public function export()
     {
         return [
-            'stock_greater_then' => $this->stockGreaterThan
+            'stock_greater_than' => $this->stockGreaterThan
         ];
     }
 }
