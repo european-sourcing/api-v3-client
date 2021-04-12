@@ -18,12 +18,24 @@ class Price implements RequestElementInterface
     private $maxPrice;
 
     /**
+     * @var integer
+     */
+    private $quantity;
+
+    /**
+     * @var bool
+     */
+    private $onlyOnEstimation;
+
+    /**
      * @param string $query
      */
-    public function __construct(?float $minPrice, ?float $maxPrice)
+    public function __construct(?float $minPrice, ?float $maxPrice, ?int $quantity, ?bool $onlyOnEstimation)
     {
         $this->minPrice = $minPrice;
         $this->maxPrice = $maxPrice;
+        $this->quantity = $quantity;
+        $this->onlyOnEstimation = $onlyOnEstimation;
     }
 
     /**
@@ -33,7 +45,7 @@ class Price implements RequestElementInterface
      */
     public function export()
     {
-        if ((null === $this->minPrice) && (null === $this->maxPrice)) {
+        if ((null === $this->quantity) && (null === $this->onlyOnEstimation) && (null === $this->minPrice) && (null === $this->maxPrice)) {
             throw new InvalidArgumentException(sprintf('You must set a min price or a max price, none given.'));
         }
 
@@ -44,6 +56,14 @@ class Price implements RequestElementInterface
         }
         if (null !== $this->maxPrice) {
             $price['max'] = $this->maxPrice;
+        }
+
+        if (null !== $this->quantity) {
+            $price['quantity'] = $this->quantity;
+        }
+
+        if (null !== $this->onlyOnEstimation) {
+            $price['onlyOnEstimation'] = $this->onlyOnEstimation;
         }
 
         return [

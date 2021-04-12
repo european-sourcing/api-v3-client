@@ -91,9 +91,9 @@ class QueryBuilder
         return new Not($element);
     }
 
-    public function price(?float $minPrice, ?float $maxPrice): Price
+    public function price(?float $minPrice, ?float $maxPrice, ?int $quantity, ?bool $onlyOnEstimation): Price
     {
-        return new Price($minPrice, $maxPrice);
+        return new Price($minPrice, $maxPrice, $quantity, $onlyOnEstimation);
     }
 
     public function query(string $query): Query
