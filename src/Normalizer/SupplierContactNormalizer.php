@@ -31,6 +31,54 @@ class SupplierContactNormalizer
             }
         }
 
+        if (!empty($data['phone_numbers'])) {
+            $phoneNumbers = [];
+            foreach ($data['phone_numbers'] as $index => $phone) {
+                if ( !empty($phone) ) {
+                    if ( !empty($phone['number']) ) {
+                        $phoneNumber = $phone['number'];
+                        if ( !empty($phone['prefix']) ) {
+                            $phoneNumber = sprintf('+%s %s', $phone['prefix'], $phoneNumber);
+                        }
+                    }
+                    $phoneNumbers[] = $phoneNumber;
+                }
+            }
+            if ( !empty($phoneNumbers) ) {
+                $supplierContact->setPhoneNumbers($phoneNumbers);
+            }
+        }
+
+        if (!empty($data['fax_numbers'])) {
+            $faxNumbers = [];
+            foreach ($data['fax_numbers'] as $index => $fax) {
+                if ( !empty($fax) ) {
+                    if ( !empty($fax['number']) ) {
+                        $faxNumber = $fax['number'];
+                        if ( !empty($fax['prefix']) ) {
+                            $faxNumber = sprintf('+%s %s', $fax['prefix'], $faxNumber);
+                        }
+                    }
+                    $faxNumbers[] = $faxNumber;
+                }
+            }
+            if ( !empty($faxNumbers) ) {
+                $supplierContact->setFaxNumbers($faxNumbers);
+            }
+        }
+
+        if (!empty($data['languages'])) {
+            $languages = [];
+            foreach ($data['languages'] as $index => $language) {
+                if ( !empty($language) && strlen($language) == 2 ) {
+                    $languages[] = $language;
+                }
+            }
+            if ( !empty($languages) ) {
+                $supplierContact->setLanguages($languages);
+            }
+        }
+
         if (!empty($data['personal_title'])) {
             $supplierContact->setPersonalTitle($data['personal_title']);
         }
@@ -49,6 +97,10 @@ class SupplierContactNormalizer
 
         if (!empty($data['country_code'])) {
             $supplierContact->setCountryCode($data['country_code']);
+        }
+
+        if (!empty($data['address'])) {
+            $supplierContact->setAddress($data['address']);
         }
 
         return $supplierContact;
