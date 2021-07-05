@@ -15,6 +15,16 @@ class SupplierContact implements \JsonSerializable
      * @var array|null
      */
     private $emails;
+    
+    /**
+     * @var array|null
+     */
+    private $phoneNumbers;
+
+    /**
+     * @var array|null
+     */
+    private $faxNumbers;
 
     /**
      * @var string|null
@@ -37,9 +47,19 @@ class SupplierContact implements \JsonSerializable
     private $mainLanguage;
 
     /**
+     * @var array|null
+     */
+    private $languages;
+
+    /**
      * @var string|null
      */
     private $countryCode;
+
+    /**
+     * @var array|null
+     */
+    private $address;
 
     /**
      * @return string|null
@@ -154,6 +174,71 @@ class SupplierContact implements \JsonSerializable
     }
 
     /**
+     * @return array|null
+     */
+    public function getPhoneNumbers(): ?array
+    {
+        return $this->phoneNumbers;
+    }
+
+    /**
+     * @param array|null $phoneNumbers
+     */
+    public function setPhoneNumbers(?array $phoneNumbers): void
+    {
+        $this->phoneNumbers = $phoneNumbers;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getFaxNumbers(): ?array
+    {
+        return $this->faxNumbers;
+    }
+
+    /**
+     * @param array|null $faxNumbers
+     */
+    public function setFaxNumbers(?array $faxNumbers): void
+    {
+        $this->faxNumbers = $faxNumbers;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getLanguages(): ?array
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param array|null $languages
+     */
+    public function setLanguages(?array $languages): void
+    {
+        $this->languages = $languages;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getAddress(): ?array
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param array|null $address
+     */
+    public function setAddress(?array $address): void
+    {
+        $this->address = $address;
+    }
+
+
+    /**
      * @inheritDoc
      */
     public function jsonSerialize()
@@ -165,7 +250,11 @@ class SupplierContact implements \JsonSerializable
             'last_name' => $this->lastname,
             'first_name' => $this->firstname,
             'country_code' => $this->countryCode,
-            'main_language' => $this->mainLanguage
+            'main_language' => $this->mainLanguage,
+            'languages' => $this->languages,
+            'phone_numbers' => $this->phoneNumbers,
+            'fax_numbers' => $this->faxNumbers,
+            'address' => $this->address,
         ];
     }
 }
