@@ -18,9 +18,6 @@ use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
 use Medialeads\Apiv3Client\Normalizer\SupplierNormalizer;
 use Medialeads\Apiv3Client\Response\SearchResponse;
-use Symfony\Component\HttpClient\Exception\ClientException;
-use Symfony\Component\HttpClient\Exception\ServerException;
-use Symfony\Component\HttpClient\HttpClient;
 
 class Client
 {
@@ -295,10 +292,17 @@ class Client
     }
 
     /**
-     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
-     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @param Variant $variant
+     * @param Marking $marking
+     * @param int     $quantity
+     * @param int     $nbColor
+     * @param int     $nbLogo
+     * @param int     $nbPosition
+     * @param int     $markingMargin
+     * @param int     $productMargin
+     *
+     * @return array
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function calculateMarking(
         Variant $variant,
@@ -310,7 +314,6 @@ class Client
         int $markingMargin,
         int $productMargin
     ) {
-        $client = HttpClient::create();
         $body = [
             'variant_id' => $variant->getId(),
             'marking_id' => $marking->getId(),
@@ -322,16 +325,14 @@ class Client
             'default_margin' => $productMargin
         ];
 
-        $response = $client->request('POST', 'https://product-api.europeansourcing.com/api/v1.1/marking/fr/calculatePrice', [
+        $results = $this->guzzle->request('POST', sprintf('%s/marking/fr/calculatePrice', $this->apiUrl), [
             'headers' => [
-                'accept' => 'application/json',
-                'content-Type' => 'application/json',
-                'x-auth-token' => $this->getToken()
+                'X-AUTH-TOKEN' => $this->getToken()
             ],
             'body' => json_encode($body)
         ]);
 
-        return json_decode($response->getContent(), true);
+        return json_decode($results->getBody(), true);
     }
 
     /**
