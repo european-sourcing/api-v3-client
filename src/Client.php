@@ -10,6 +10,7 @@ use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\BrandNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoriesNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\CountryNormalizer;
+use Medialeads\Apiv3Client\Normalizer\Aggregation\CountryOfOriginNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
 use Medialeads\Apiv3Client\Normalizer\BrandsNormalizer;
@@ -103,6 +104,10 @@ class Client
 
                     case 'country':
                         $objectNormalizerName = CountryNormalizer::class;
+                        break;
+
+                    case 'country_of_origin':
+                        $objectNormalizerName = CountryOfOriginNormalizer::class;
                         break;
 
                     case 'supplier_profiles':
