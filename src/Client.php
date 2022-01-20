@@ -109,7 +109,7 @@ class Client
                     case 'country_of_origin':
                         $objectNormalizerName = CountryOfOriginNormalizer::class;
                         break;
-                        
+
                     case 'supplier_profiles':
                         $objectNormalizerName = SupplierProfileNormalizer::class;
                         break;
