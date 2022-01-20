@@ -122,8 +122,10 @@ class Product
 
         /** @var Variant $variant */
         foreach ($this->variants as $variant) {
+            dump($variant);
             /** @var Attribute $attribute */
             foreach ($variant->processAttributes() as $groupId => $group) {
+                dump($variant->processAttributes());
                 if (empty($groups[$groupId])) {
                     $groups[$groupId] = [
                         'id' => $group['id'],
