@@ -4,6 +4,7 @@ namespace Medialeads\Apiv3Client;
 
 use Medialeads\Apiv3Client\Common\Collection;
 use Medialeads\Apiv3Client\Model\Marking\Marking;
+use Medialeads\Apiv3Client\Model\SupplierProfile;
 use Medialeads\Apiv3Client\Model\Variant;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
@@ -236,6 +237,78 @@ class Client
         ]);
 
         $supplierProfilesNormalizer = new SupplierProfilesNormalizer();
+
+        return $supplierProfilesNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
+        );
+    }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function searchSupplierProfiles(QueryHandler $queryHandler): Collection
+    {
+        // TODO: URL à revoir en fonction du dèv de Jérôme Brun (/api/v1.1/supplier_profiles/???)
+        //       Envoie un body au format:
+        //       {
+        //           "search_handlers": [
+        //               {
+        //                   "country_code":"FR",
+        //                   "query":"recherche libre"
+        //               }
+        //           ],
+        //           "lang":"fr",
+        //           "limit":10,
+        //           "sort_field":"relevance",
+        //           "sort_direction":"desc",
+        //           "one_variant":false,
+        //           "enable_aggregations":false,
+        //           "page":1
+        //       }
+        //       - Va envoyer des "one_variant" et des "enable_aggregations": spécifique aux récupération de produits ?!
+        //       - "sort_field" et "sort_direction" à adapter ?
+        //       - Est-ce que "lang" est vraiment nécessaire pour des noms de supplier profile ?!
+        //         C'est pas juste pour les noms de produits à la base ?
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/supplier_profiles', [
+            'body' => \json_encode($queryHandler->export()),
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ]);
+
+        $supplierProfilesNormalizer = new SupplierProfilesNormalizer();
+
+        return $supplierProfilesNormalizer->denormalize(
+            \json_decode($results->getBody(), true)
+        );
+    }
+
+    /**
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function getSupplierProfile(int $id, QueryHandler $queryHandler): SupplierProfile
+    {
+        // TODO: Envoie une requête avec ça:
+        //           "GET"
+        //           "https://product-api.europeansourcing.com/api/v1.1/supplier_profiles/779"
+        //           [
+        //               "body" => "{"search_handlers":[{"country_code":"FR"}],"lang":"fr","limit":10,"sort_field":"relevance","sort_direction":"desc","one_variant":false,"enable_aggregations":false,"page":1}"
+        //               "headers" => array:1 [
+        //                   "X-AUTH-TOKEN" => "N6HNKBJQTX76FPVyIMw462JshioGUDtf"
+        //               ]
+        //           ]
+        //       - Tous ça n'est pas très cohérent ! On envoie des "limit","sort_field","sort_direction","one_variant",
+        //         "enable_aggregations" et "page" sur un truc qui est sensé retourner un seul résultat...
+        //       - Est-ce que "lang" est vraiment nécessaire pour des noms de supplier profile ?!
+        //         C'est pas juste pour les noms de produits à la base ?
+        $results = $this->guzzle->request('GET', $this->apiUrl.'/supplier_profiles/'.$id, [
+            'body' => \json_encode($queryHandler->export()),
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ]);
+
+        $supplierProfilesNormalizer = new Normalizer\SupplierProfileNormalizer();
 
         return $supplierProfilesNormalizer->denormalize(
             \json_decode($results->getBody(), true)
