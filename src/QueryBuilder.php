@@ -22,6 +22,7 @@ use Medialeads\Apiv3Client\Request\StockGreaterThan;
 use Medialeads\Apiv3Client\Request\Supplier;
 use Medialeads\Apiv3Client\Request\SupplierBaseReference;
 use Medialeads\Apiv3Client\Request\SupplierProfile;
+use Medialeads\Apiv3Client\Request\SupplierProfileCountryCode;
 use Medialeads\Apiv3Client\Request\SupplierReference;
 use Medialeads\Apiv3Client\Request\Variant;
 
@@ -129,5 +130,10 @@ class QueryBuilder
     public function variant(array $variantIds): Variant
     {
         return new Variant($variantIds);
+    }
+
+    public function supplierProfileCountry(string $countryCode): SupplierProfileCountryCode
+    {
+        return new SupplierProfileCountryCode($countryCode);
     }
 }
