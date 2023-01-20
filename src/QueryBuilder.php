@@ -15,6 +15,7 @@ use Medialeads\Apiv3Client\Request\InternalReference;
 use Medialeads\Apiv3Client\Request\Label;
 use Medialeads\Apiv3Client\Request\LastIndexed;
 use Medialeads\Apiv3Client\Request\Marking;
+use Medialeads\Apiv3Client\Request\VariantMinimumQuantity;
 use Medialeads\Apiv3Client\Request\Not;
 use Medialeads\Apiv3Client\Request\Price;
 use Medialeads\Apiv3Client\Request\Query;
@@ -135,5 +136,10 @@ class QueryBuilder
     public function supplierProfileCountry(string $countryCode): SupplierProfileCountryCode
     {
         return new SupplierProfileCountryCode($countryCode);
+    }
+
+    public function variantMinimumQuantity(int $quantity): VariantMinimumQuantity
+    {
+        return new VariantMinimumQuantity($quantity);
     }
 }
