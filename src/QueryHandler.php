@@ -4,6 +4,15 @@ namespace Medialeads\Apiv3Client;
 
 class QueryHandler
 {
+    const BRANDS_AGGREGATION = 'brands';
+    const ATTRIBUTES = 'attributes';
+    const CATEGORIES = 'categories';
+    const SUPPLIERS = 'suppliers';
+    const SUPPLIER_PROFILES = 'supplier_profiles';
+    const MARKING = 'marking';
+    const COUNTRY = 'country';
+    const COUNTRY_OF_ORIGIN = 'country_of_origin';
+
     /**
      * @var string
      */
@@ -45,6 +54,11 @@ class QueryHandler
     private $enableAggregations;
 
     /**
+     * @var array<string>
+     */
+    private array $includeAggregations = [];
+
+    /**
      * @var array
      */
     private $searchHandlers;
@@ -81,6 +95,10 @@ class QueryHandler
             'one_variant' => $this->oneVariant,
             'enable_aggregations' => $this->enableAggregations
         ];
+
+        if (true === $this->enableAggregations && 0 < count($this->includeAggregations)) {
+            $export['include_aggregations'] = $this->includeAggregations;
+        }
 
         if (null !== $this->offset) {
             $export['offset'] = $this->offset;
@@ -267,6 +285,29 @@ class QueryHandler
     public function setEnableAggregations($enableAggregations)
     {
         $this->enableAggregations = $enableAggregations;
+
+        return $this;
+    }
+
+    /**
+     * @return array<string>
+     */
+    public function getIncludeAggregations(): array
+    {
+        return $this->includeAggregations;
+    }
+
+    /**
+     * @param array<string> $includeAggregations
+     * @return QueryHandler
+     */
+    public function setIncludeAggregations(array $includeAggregations): QueryHandler
+    {
+        $this->includeAggregations = $includeAggregations;
+
+        if (0 < count($includeAggregations)) {
+            $this->setEnableAggregations(true);
+        }
 
         return $this;
     }
