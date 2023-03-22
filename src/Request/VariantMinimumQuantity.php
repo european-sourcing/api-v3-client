@@ -6,7 +6,8 @@ use Medialeads\Apiv3Client\Common\RequestElementInterface;
 
 class VariantMinimumQuantity implements RequestElementInterface
 {
-    private int $quantity;
+    /** @var int */
+    private $quantity;
 
     public function __construct(int $quantity)
     {
