@@ -56,7 +56,7 @@ class QueryHandler
     /**
      * @var array<string>
      */
-    private array $includeAggregations = [];
+    private $includeAggregations = [];
 
     /**
      * @var array
