@@ -2,9 +2,9 @@
 
 namespace Medialeads\Apiv3Client\Response;
 
-use Medialeads\Apiv3Client\Model\Product;
+use Medialeads\Apiv3Client\Model\SearchLight\Product;
 
-class SearchResponse extends AbstractSearchResponse
+class SearchLightResponse extends AbstractSearchResponse
 {
     /**
      * @return array<Product>
@@ -17,7 +17,7 @@ class SearchResponse extends AbstractSearchResponse
     /**
      * @param array<Product> $products
      */
-    public function setProducts(array $products): SearchResponse
+    public function setProducts(array $products): SearchLightResponse
     {
         $this->products = $products;
 

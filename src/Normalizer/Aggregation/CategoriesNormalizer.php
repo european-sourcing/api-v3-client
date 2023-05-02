@@ -10,7 +10,7 @@ class CategoriesNormalizer
     /**
      * @param array $data
      *
-     * @return array
+     * @return Aggregation
      */
     public function denormalize(array $data)
     {

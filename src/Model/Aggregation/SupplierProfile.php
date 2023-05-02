@@ -21,6 +21,8 @@ class SupplierProfile implements \JsonSerializable, CountableAggregableInterface
      */
     private $count;
 
+    private ?string $countryCode = null;
+
     public function __construct()
     {
         $this->count = 0;
@@ -86,6 +88,18 @@ class SupplierProfile implements \JsonSerializable, CountableAggregableInterface
         return $this;
     }
 
+    public function getCountryCode(): ?string
+    {
+        return $this->countryCode;
+    }
+
+    public function setCountryCode(?string $countryCode): SupplierProfile
+    {
+        $this->countryCode = $countryCode;
+
+        return $this;
+    }
+
     /**
      * Specify data which should be serialized to JSON
      * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
@@ -99,6 +113,7 @@ class SupplierProfile implements \JsonSerializable, CountableAggregableInterface
             'id' => $this->id,
             'name' => $this->name,
             'count' => $this->count,
+            'country_code' => $this->countryCode,
         ];
     }
 }
