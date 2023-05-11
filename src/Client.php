@@ -135,37 +135,6 @@ class Client
     }
 
     /**
-     * @param $id
-     * @param $language
-     * @return bool|Model\Product
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     */
-    public function id($id, $language)
-    {
-        $body = \json_encode([
-            'search_handlers' => [
-                [
-                    'id' => [
-                        'include' => [$id]
-                    ]
-                ]
-            ],
-            'lang' => $language
-        ]);
-
-        $results = $this->guzzle->request('POST', $this->apiUrl.'/search', [
-            'body' => $body,
-            'headers' => [
-                'X-AUTH-TOKEN' => $this->getToken()
-            ]
-        ]);
-
-        return $this->transform->id(
-            \json_decode($results->getBody())
-        );
-    }
-
-    /**
      * @param QueryHandler $queryHandler
      * @param string $schema
      *
