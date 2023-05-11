@@ -3,6 +3,7 @@
 namespace Medialeads\Apiv3Client;
 
 use Medialeads\Apiv3Client\Common\Collection;
+use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
 use Medialeads\Apiv3Client\Model\Marking\Marking;
 use Medialeads\Apiv3Client\Model\Variant;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
@@ -135,10 +136,9 @@ class Client
     }
 
     /**
-     * @param QueryHandler $queryHandler
-     * @param string $schema
+     * @param string $language
      *
-     * @return array
+     * @return Aggregation
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
