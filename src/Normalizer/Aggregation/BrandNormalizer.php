@@ -6,18 +6,18 @@ use Medialeads\Apiv3Client\Model\Aggregation\Brand;
 
 class BrandNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Brand
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Brand
     {
         $brand = new Brand();
         $brand->setId($data['id']);
         $brand->setName($data['name']);
-        $brand->setSlug($data['slug']);
         $brand->setCount($data['count']);
+        if (false === empty($data['slug'])) {
+            $brand->setSlug($data['slug']);
+        }
+        if (false === empty($data['logo'])) {
+            $brand->setLogo($data['logo']);
+        }
 
         return $brand;
     }

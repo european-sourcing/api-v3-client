@@ -2,7 +2,10 @@
 
 namespace Medialeads\Apiv3Client;
 
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Medialeads\Apiv3Client\Common\Collection;
+use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
 use Medialeads\Apiv3Client\Model\Marking\Marking;
 use Medialeads\Apiv3Client\Model\Variant;
 use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
@@ -16,9 +19,16 @@ use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
 use Medialeads\Apiv3Client\Normalizer\BrandsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
 use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
-use Medialeads\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
+use Medialeads\Apiv3Client\Normalizer\SearchLight\ProductsNormalizer as ProductsLightNormalizer;
 use Medialeads\Apiv3Client\Normalizer\SupplierNormalizer;
+use Medialeads\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
+use Medialeads\Apiv3Client\Response\SearchLightResponse;
 use Medialeads\Apiv3Client\Response\SearchResponse;
+use Medialeads\Apiv3Client\Response\SearchResponseInterface;
+use Medialeads\Apiv3Client\Service\NormalizerService;
+
+use function json_decode;
+use function json_encode;
 
 class Client
 {
@@ -57,125 +67,73 @@ class Client
      *
      * @return SearchResponse
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Exception
+     * @throws GuzzleException
+     * @throws Exception
      */
     public function search(QueryHandler $queryHandler)
     {
-        $body = \json_encode(
+        $body = json_encode(
             $queryHandler->export()
         );
 
-        $response = $this->guzzle->request('POST', $this->apiUrl.'/search', [
+        $response = $this->guzzle->request('POST', $this->apiUrl . '/search', [
             'body' => $body,
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
         ]);
 
-        $results = \json_decode($response->getBody(), true);
+        $results = json_decode($response->getBody(), true);
 
         $productsNormalizer = new ProductsNormalizer();
         $products = $productsNormalizer->denormalize($results['products']);
 
         $searchResponse = new SearchResponse();
-        $searchResponse->setProducts($products);
-        $searchResponse->setTotalProducts($results['pagination']['total_items']);
-
-        if (!empty($results['aggregations'])) {
-            foreach ($results['aggregations'] as $aggregation) {
-                $objectNormalizerName = null;
-
-                if ($aggregation['name'] === 'categories') {
-                    $normalizer = new CategoriesNormalizer();
-                    $searchResponse->addAggregation(
-                        $normalizer->denormalize($aggregation['rows'])
-                    );
-                }
-
-                switch($aggregation['name']) {
-                    case 'marking':
-                        $objectNormalizerName = MarkingNormalizer::class;
-                        break;
-
-                    case 'brands':
-                        $objectNormalizerName = BrandNormalizer::class;
-                        break;
-
-                    case 'country':
-                        $objectNormalizerName = CountryNormalizer::class;
-                        break;
-
-                    case 'country_of_origin':
-                        $objectNormalizerName = CountryOfOriginNormalizer::class;
-                        break;
-
-                    case 'supplier_profiles':
-                        $objectNormalizerName = SupplierProfileNormalizer::class;
-                        break;
-
-                    case 'attributes':
-                        $objectNormalizerName = AttributeNormalizer::class;
-                        break;
-                }
-
-                if (null !== $objectNormalizerName) {
-                    $normalizer = new AggregationNormalizer();
-                    $searchResponse->addAggregation(
-                        $normalizer->denormalize(
-                            $aggregation,
-                            $objectNormalizerName
-                        )
-                    );
-                }
-            }
-        }
+        $this->initSearchResponse($searchResponse, $products, $results);
 
         return $searchResponse;
     }
 
     /**
-     * @param $id
-     * @param $language
-     * @return bool|Model\Product
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
+     * @throws Exception
      */
-    public function id($id, $language)
+    public function searchLight(QueryHandler $queryHandler): SearchLightResponse
     {
-        $body = \json_encode([
-            'search_handlers' => [
-                [
-                    'id' => [
-                        'include' => [$id]
-                    ]
-                ]
-            ],
-            'lang' => $language
-        ]);
+        $body = json_encode(
+            $queryHandler->export()
+        );
 
-        $results = $this->guzzle->request('POST', $this->apiUrl.'/search', [
+        $response = $this->guzzle->request('POST', $this->apiUrl . '/search/light', [
             'body' => $body,
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
         ]);
 
-        return $this->transform->id(
-            \json_decode($results->getBody())
-        );
+        $results = json_decode($response->getBody(), true);
+
+        $normalizerService = new NormalizerService();
+        /** @var ProductsLightNormalizer $productsNormalizer */
+        $productsNormalizer = $normalizerService->getNormalizer(ProductsLightNormalizer::class);
+        $products = $productsNormalizer->denormalize($results['products']);
+
+        $searchResponse = new SearchLightResponse();
+        $this->initSearchResponse($searchResponse, $products, $results);
+
+        return $searchResponse;
     }
 
     /**
-     * @param QueryHandler $queryHandler
-     * @param string $schema
+     * @param string $language
      *
-     * @return array
+     * @return Aggregation
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function categories(string $language)
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/categories/'.$language, [
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/categories/' . $language, [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -184,16 +142,16 @@ class Client
         $categoriesNormalizer = new CategoriesNormalizer();
 
         return $categoriesNormalizer->denormalize(
-            \json_decode($results->getBody(), true)
+            json_decode($results->getBody(), true)
         );
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function brands(): Collection
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/brands', [
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/brands', [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -202,16 +160,16 @@ class Client
         $brandsNormalizer = new BrandsNormalizer();
 
         return $brandsNormalizer->denormalize(
-            \json_decode($results->getBody(), true)
+            json_decode($results->getBody(), true)
         );
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function suppliers(): Collection
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/suppliers', [
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/suppliers', [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -220,16 +178,16 @@ class Client
         $suppliersNormalizer = new SupplierProfilesNormalizer();
 
         return $suppliersNormalizer->denormalize(
-            \json_decode($results->getBody(), true)
+            json_decode($results->getBody(), true)
         );
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function supplierProfiles(): Collection
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/supplier_profiles', [
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/supplier_profiles', [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -238,16 +196,16 @@ class Client
         $supplierProfilesNormalizer = new SupplierProfilesNormalizer();
 
         return $supplierProfilesNormalizer->denormalize(
-            \json_decode($results->getBody(), true)
+            json_decode($results->getBody(), true)
         );
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function supplierProfilesForSupplier($id): Collection
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/supplier_profiles/supplier/'.$id, [
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/supplier_profiles/supplier/' . $id, [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -256,16 +214,16 @@ class Client
         $supplierProfilesNormalizer = new SupplierProfilesNormalizer();
 
         return $supplierProfilesNormalizer->denormalize(
-            \json_decode($results->getBody(), true)
+            json_decode($results->getBody(), true)
         );
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function suppliersForSupplierProfile($id)
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/suppliers/supplier_profile/'.$id, [
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/suppliers/supplier_profile/' . $id, [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -274,16 +232,16 @@ class Client
         $supplierNormalizer = new SupplierNormalizer();
 
         return $supplierNormalizer->denormalize(
-            \json_decode($results->getBody(), true)
+            json_decode($results->getBody(), true)
         );
     }
 
     /**
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function marking(int $variantId, string $lang): Collection
     {
-        $results = $this->guzzle->request('GET', $this->apiUrl.'/markings/'.$lang.'/'.$variantId, [
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/markings/' . $lang . '/' . $variantId, [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -292,22 +250,22 @@ class Client
         $variantMarkingsNormalizer = new VariantMarkingsNormalizer();
 
         return $variantMarkingsNormalizer->denormalize(
-            \json_decode($results->getBody(), true)
+            json_decode($results->getBody(), true)
         );
     }
 
     /**
      * @param Variant $variant
      * @param Marking $marking
-     * @param int     $quantity
-     * @param int     $nbColor
-     * @param int     $nbLogo
-     * @param int     $nbPosition
-     * @param int     $markingMargin
-     * @param int     $productMargin
+     * @param int $quantity
+     * @param int $nbColor
+     * @param int $nbLogo
+     * @param int $nbPosition
+     * @param int $markingMargin
+     * @param int $productMargin
      *
      * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function calculateMarking(
         Variant $variant,
@@ -346,5 +304,60 @@ class Client
     public function getToken()
     {
         return $this->token;
+    }
+
+    public function initSearchResponse(SearchResponseInterface $searchResponse, array $products, array $results): void
+    {
+        $searchResponse->setProducts($products);
+        $searchResponse->setTotalProducts($results['pagination']['total_items']);
+
+        if (!empty($results['aggregations'])) {
+            foreach ($results['aggregations'] as $aggregation) {
+                $objectNormalizerName = null;
+
+                if ($aggregation['name'] === 'categories') {
+                    $normalizer = new CategoriesNormalizer();
+                    $searchResponse->addAggregation(
+                        $normalizer->denormalize($aggregation['rows'])
+                    );
+                }
+
+                switch ($aggregation['name']) {
+                    case 'marking':
+                        $objectNormalizerName = MarkingNormalizer::class;
+                        break;
+
+                    case 'brands':
+                        $objectNormalizerName = BrandNormalizer::class;
+                        break;
+
+                    case 'country':
+                        $objectNormalizerName = CountryNormalizer::class;
+                        break;
+
+                    case 'country_of_origin':
+                        $objectNormalizerName = CountryOfOriginNormalizer::class;
+                        break;
+
+                    case 'supplier_profiles':
+                        $objectNormalizerName = SupplierProfileNormalizer::class;
+                        break;
+
+                    case 'attributes':
+                        $objectNormalizerName = AttributeNormalizer::class;
+                        break;
+                }
+
+                if (null !== $objectNormalizerName) {
+                    $normalizer = new AggregationNormalizer();
+                    $searchResponse->addAggregation(
+                        $normalizer->denormalize(
+                            $aggregation,
+                            $objectNormalizerName
+                        )
+                    );
+                }
+            }
+        }
     }
 }

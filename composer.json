@@ -3,7 +3,7 @@
   "description": "Client for enropeansourcing client",
   "license": "proprietary",
   "require": {
-    "php": ">=7.1",
+    "php": ">=7.4",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^6.3"
   },
