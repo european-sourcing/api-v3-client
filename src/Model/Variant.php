@@ -141,6 +141,8 @@ class Variant implements \JsonSerializable
      */
     private $product;
 
+    private string $internalReference;
+
     public function __construct()
     {
         $this->minimumQuantities = [];
@@ -937,6 +939,18 @@ class Variant implements \JsonSerializable
     public function setProduct(Product $product): Variant
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getInternalReference(): string
+    {
+        return $this->internalReference;
+    }
+
+    public function setInternalReference(string $internalReference): Variant
+    {
+        $this->internalReference = $internalReference;
 
         return $this;
     }
