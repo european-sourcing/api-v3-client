@@ -141,6 +141,8 @@ class Variant implements \JsonSerializable
      */
     private $product;
 
+    private string $internalReference;
+
     public function __construct()
     {
         $this->minimumQuantities = [];
@@ -153,7 +155,7 @@ class Variant implements \JsonSerializable
     {
         $groups = [];
 
-        if(!empty($this->getAttributes())){
+        if (!empty($this->getAttributes())) {
             /** @var Attribute $attribute */
             foreach ($this->getAttributes() as $attribute) {
                 if (empty($groups[$attribute->getGroup()->getId()])) {
@@ -436,7 +438,7 @@ class Variant implements \JsonSerializable
      */
     public function getFormatedSizes()
     {
-        $values = array_map(function(Size $size) {
+        $values = array_map(function (Size $size) {
             if ('diameter' == $size->getType()) {
                 return sprintf('%s %s', 'Ø', round($size->getValue(), 2));
             } else {
@@ -641,7 +643,10 @@ class Variant implements \JsonSerializable
         $lowestMinimumQuantity = null;
         /** @var MinimumQuantity $minimumQuantity */
         foreach ($this->minimumQuantities as $minimumQuantity) {
-            if ((null === $lowestMinimumQuantity) || ($minimumQuantity->getValue() < $lowestMinimumQuantity->getValue())) {
+            if (
+                null === $lowestMinimumQuantity
+                || $minimumQuantity->getValue() < $lowestMinimumQuantity->getValue()
+            ) {
                 $lowestMinimumQuantity = $minimumQuantity;
             }
         }
@@ -693,11 +698,10 @@ class Variant implements \JsonSerializable
      */
     public function getPriceForQuantity($quantity)
     {
-       $bestPrice = null;
+        $bestPrice = null;
 
         /** @var Price $price */
         foreach ($this->prices as $price) {
-
             if ($price->getFromQuantity() <= $quantity) {
                 $bestPrice = $price;
             }
@@ -717,8 +721,10 @@ class Variant implements \JsonSerializable
 
         /** @var Price $price */
         foreach ($this->prices as $price) {
-
-            if ($price->getSupplierProfile()->getId() == $supplierProfile->getId() && $price->getFromQuantity() <= $quantity) {
+            if (
+                $price->getSupplierProfile()->getId() == $supplierProfile->getId()
+                && $price->getFromQuantity() <= $quantity
+            ) {
                 $bestPrice = $price;
             }
         }
@@ -933,6 +939,18 @@ class Variant implements \JsonSerializable
     public function setProduct(Product $product): Variant
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getInternalReference(): string
+    {
+        return $this->internalReference;
+    }
+
+    public function setInternalReference(string $internalReference): Variant
+    {
+        $this->internalReference = $internalReference;
 
         return $this;
     }

@@ -27,6 +27,7 @@ class VariantNormalizer
         $variant->setGrossWeight($data['gross_weight']);
         $variant->setEuropeanArticleNumbering($data['european_article_numbering']);
         $variant->setMandatoryMarking($data['mandatory_marking']);
+        $variant->setInternalReference($data['internal_reference']);
 
         // images
         if (!empty($data['variant_images'])) {
