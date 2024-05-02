@@ -1,9 +1,9 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\Aggregation;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\Aggregation;
 
-use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
-use Medialeads\Apiv3Client\Model\Aggregation\Category;
+use EuropeanSourcing\Apiv3Client\Model\Aggregation\Aggregation;
+use EuropeanSourcing\Apiv3Client\Model\Aggregation\Category;
 
 class CategoriesNormalizer
 {

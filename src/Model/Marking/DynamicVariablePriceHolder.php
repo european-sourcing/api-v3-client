@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model\Marking;
+namespace EuropeanSourcing\Apiv3Client\Model\Marking;
 
-use Medialeads\Apiv3Client\Common\Collection;
+use EuropeanSourcing\Apiv3Client\Common\Collection;
 
 class DynamicVariablePriceHolder
 {

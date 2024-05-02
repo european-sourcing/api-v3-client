@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\Marking;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\Marking;
 
-use Medialeads\Apiv3Client\Model\Marking\MarkingPrice;
+use EuropeanSourcing\Apiv3Client\Model\Marking\MarkingPrice;
 
 class MarkingPriceNormalizer
 {

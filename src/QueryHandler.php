@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client;
+namespace EuropeanSourcing\Apiv3Client;
 
 class QueryHandler
 {

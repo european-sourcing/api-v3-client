@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Response;
+namespace EuropeanSourcing\Apiv3Client\Response;
 
-use Medialeads\Apiv3Client\Model\Product;
+use EuropeanSourcing\Apiv3Client\Model\Product;
 
 class SearchResponse extends AbstractSearchResponse
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Model\SearchLight;
 
 class Image
 {

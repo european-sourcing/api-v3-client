@@ -1,6 +1,6 @@
 {
-  "name": "medialeads/apiv3-client",
-  "description": "Client for enropeansourcing client",
+  "name": "european-sourcing/apiv3-client",
+  "description": "Client for European Sourcing customers",
   "license": "proprietary",
   "require": {
     "php": ">=7.4",
@@ -9,12 +9,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Medialeads\\Apiv3Client\\": "src/"
+      "EuropeanSourcing\\Apiv3Client\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Medialeads\\Apiv3Client\\Tests\\": "test/"
+      "EuropeanSourcing\\Apiv3Client\\Tests\\": "test/"
     }
   },
   "require-dev": {

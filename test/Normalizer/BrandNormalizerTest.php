@@ -1,9 +1,9 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Tests;
+namespace EuropeanSourcing\Apiv3Client\Tests;
 
-use Medialeads\Apiv3Client\Model\Brand;
-use Medialeads\Apiv3Client\Normalizer\BrandNormalizer;
+use EuropeanSourcing\Apiv3Client\Model\Brand;
+use EuropeanSourcing\Apiv3Client\Normalizer\BrandNormalizer;
 use PHPUnit\Framework\TestCase;
 
 class BrandNormalizerTest extends TestCase
@@ -28,13 +28,13 @@ class BrandNormalizerTest extends TestCase
         );
 
         $this->assertInstanceOf(Brand::class, $result);
-        $this->assertSame(var_export($result, true), "Medialeads\Apiv3Client\Model\Brand::__set_state(array(
+        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\Brand::__set_state(array(
    'id' => '195',
    'name' => 'Kariban',
    'slug' => 'kariban',
    'suffix' => 'registered_trademark',
    'logo' => 
-  Medialeads\Apiv3Client\Model\Image::__set_state(array(
+  EuropeanSourcing\Apiv3Client\Model\Image::__set_state(array(
      'id' => '80',
      'url' => 'https://uploads.europeansourcing.com/brand/logo/195_Kariban.png',
      'originalFilename' => '195_Kariban.png',
@@ -44,13 +44,13 @@ class BrandNormalizerTest extends TestCase
 
     public function testAggregationBrand()
     {
-        $brandNormalizer = new \Medialeads\Apiv3Client\Normalizer\Aggregation\BrandNormalizer();
+        $brandNormalizer = new \EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\BrandNormalizer();
         $result = $brandNormalizer->denormalize(
             \json_decode('{"count":64,"name":"Nina Ricci","id":"276","slug":"nina-ricci"}', true)
         );
 
-        $this->assertInstanceOf(\Medialeads\Apiv3Client\Model\Aggregation\Brand::class, $result);
-        $this->assertSame(var_export($result, true), "Medialeads\Apiv3Client\Model\Aggregation\Brand::__set_state(array(
+        $this->assertInstanceOf(\EuropeanSourcing\Apiv3Client\Model\Aggregation\Brand::class, $result);
+        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\Aggregation\Brand::__set_state(array(
    'id' => '276',
    'name' => 'Nina Ricci',
    'slug' => 'nina-ricci',
@@ -66,7 +66,7 @@ class BrandNormalizerTest extends TestCase
         );
 
         $this->assertInstanceOf(Brand::class, $result);
-        $this->assertSame(var_export($result, true), "Medialeads\Apiv3Client\Model\Brand::__set_state(array(
+        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\Brand::__set_state(array(
    'id' => 1292,
    'name' => 'Valenta',
    'slug' => 'valenta',

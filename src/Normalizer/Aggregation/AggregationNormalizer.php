@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\Aggregation;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\Aggregation;
 
-use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
+use EuropeanSourcing\Apiv3Client\Model\Aggregation\Aggregation;
 
 class AggregationNormalizer
 {

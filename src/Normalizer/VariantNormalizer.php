@@ -1,9 +1,9 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer;
+namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
-use Medialeads\Apiv3Client\Model\Price;
-use Medialeads\Apiv3Client\Model\Variant;
+use EuropeanSourcing\Apiv3Client\Model\Price;
+use EuropeanSourcing\Apiv3Client\Model\Variant;
 
 class VariantNormalizer
 {

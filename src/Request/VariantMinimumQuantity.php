@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Request;
+namespace EuropeanSourcing\Apiv3Client\Request;
 
-use Medialeads\Apiv3Client\Common\RequestElementInterface;
+use EuropeanSourcing\Apiv3Client\Common\RequestElementInterface;
 
 class VariantMinimumQuantity implements RequestElementInterface
 {

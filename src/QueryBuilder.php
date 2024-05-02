@@ -1,31 +1,31 @@
 <?php
 
-namespace Medialeads\Apiv3Client;
+namespace EuropeanSourcing\Apiv3Client;
 
-use Medialeads\Apiv3Client\Common\RequestElementInterface;
-use Medialeads\Apiv3Client\Request\AllReference;
-use Medialeads\Apiv3Client\Request\Attribute;
-use Medialeads\Apiv3Client\Request\Brand;
-use Medialeads\Apiv3Client\Request\Category;
-use Medialeads\Apiv3Client\Request\CountryCode;
-use Medialeads\Apiv3Client\Request\CountryOfOrigin;
-use Medialeads\Apiv3Client\Request\HasMarking;
-use Medialeads\Apiv3Client\Request\Id;
-use Medialeads\Apiv3Client\Request\InternalReference;
-use Medialeads\Apiv3Client\Request\Label;
-use Medialeads\Apiv3Client\Request\LastIndexed;
-use Medialeads\Apiv3Client\Request\Marking;
-use Medialeads\Apiv3Client\Request\VariantMinimumQuantity;
-use Medialeads\Apiv3Client\Request\Not;
-use Medialeads\Apiv3Client\Request\Price;
-use Medialeads\Apiv3Client\Request\Query;
-use Medialeads\Apiv3Client\Request\StockGreaterThan;
-use Medialeads\Apiv3Client\Request\Supplier;
-use Medialeads\Apiv3Client\Request\SupplierBaseReference;
-use Medialeads\Apiv3Client\Request\SupplierProfile;
-use Medialeads\Apiv3Client\Request\SupplierProfileCountryCode;
-use Medialeads\Apiv3Client\Request\SupplierReference;
-use Medialeads\Apiv3Client\Request\Variant;
+use EuropeanSourcing\Apiv3Client\Common\RequestElementInterface;
+use EuropeanSourcing\Apiv3Client\Request\AllReference;
+use EuropeanSourcing\Apiv3Client\Request\Attribute;
+use EuropeanSourcing\Apiv3Client\Request\Brand;
+use EuropeanSourcing\Apiv3Client\Request\Category;
+use EuropeanSourcing\Apiv3Client\Request\CountryCode;
+use EuropeanSourcing\Apiv3Client\Request\CountryOfOrigin;
+use EuropeanSourcing\Apiv3Client\Request\HasMarking;
+use EuropeanSourcing\Apiv3Client\Request\Id;
+use EuropeanSourcing\Apiv3Client\Request\InternalReference;
+use EuropeanSourcing\Apiv3Client\Request\Label;
+use EuropeanSourcing\Apiv3Client\Request\LastIndexed;
+use EuropeanSourcing\Apiv3Client\Request\Marking;
+use EuropeanSourcing\Apiv3Client\Request\VariantMinimumQuantity;
+use EuropeanSourcing\Apiv3Client\Request\Not;
+use EuropeanSourcing\Apiv3Client\Request\Price;
+use EuropeanSourcing\Apiv3Client\Request\Query;
+use EuropeanSourcing\Apiv3Client\Request\StockGreaterThan;
+use EuropeanSourcing\Apiv3Client\Request\Supplier;
+use EuropeanSourcing\Apiv3Client\Request\SupplierBaseReference;
+use EuropeanSourcing\Apiv3Client\Request\SupplierProfile;
+use EuropeanSourcing\Apiv3Client\Request\SupplierProfileCountryCode;
+use EuropeanSourcing\Apiv3Client\Request\SupplierReference;
+use EuropeanSourcing\Apiv3Client\Request\Variant;
 
 class QueryBuilder
 {

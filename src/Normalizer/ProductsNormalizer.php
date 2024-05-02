@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer;
+namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
 class ProductsNormalizer
 {

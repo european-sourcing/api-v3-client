@@ -1,9 +1,9 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Tests;
+namespace EuropeanSourcing\Apiv3Client\Tests;
 
-use Medialeads\Apiv3Client\Model\SupplierProfile;
-use Medialeads\Apiv3Client\Normalizer\SupplierProfileNormalizer;
+use EuropeanSourcing\Apiv3Client\Model\SupplierProfile;
+use EuropeanSourcing\Apiv3Client\Normalizer\SupplierProfileNormalizer;
 use PHPUnit\Framework\TestCase;
 
 class SupplierProfileNormalizerTest extends TestCase
@@ -16,7 +16,7 @@ class SupplierProfileNormalizerTest extends TestCase
         );
 
         $this->assertInstanceOf(SupplierProfile::class, $result);
-        $this->assertSame(var_export($result, true), "Medialeads\Apiv3Client\Model\SupplierProfile::__set_state(array(
+        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\SupplierProfile::__set_state(array(
    'id' => 386,
    'name' => 'SENATOR France',
    'countryCode' => 'FR',

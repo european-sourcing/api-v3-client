@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model\Aggregation;
+namespace EuropeanSourcing\Apiv3Client\Model\Aggregation;
 
-use Medialeads\Apiv3Client\Common\AggregableInterface;
+use EuropeanSourcing\Apiv3Client\Common\AggregableInterface;
 
 class Aggregation implements \JsonSerializable
 {
