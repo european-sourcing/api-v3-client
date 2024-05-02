@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Exception;
+namespace EuropeanSourcing\Apiv3Client\Exception;
 
 class InvalidArgumentException extends \Exception
 {

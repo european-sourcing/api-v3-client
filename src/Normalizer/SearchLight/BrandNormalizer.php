@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
-use Medialeads\Apiv3Client\Model\SearchLight\Brand;
+use EuropeanSourcing\Apiv3Client\Model\SearchLight\Brand;
 
 class BrandNormalizer extends AbstractSearchLightCachableNormalizer
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model;
+namespace EuropeanSourcing\Apiv3Client\Model;
 
 class MinimumQuantity implements \JsonSerializable
 {

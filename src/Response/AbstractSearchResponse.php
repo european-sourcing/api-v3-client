@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Response;
+namespace EuropeanSourcing\Apiv3Client\Response;
 
-use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
+use EuropeanSourcing\Apiv3Client\Model\Aggregation\Aggregation;
 
 abstract class AbstractSearchResponse implements SearchResponseInterface
 {

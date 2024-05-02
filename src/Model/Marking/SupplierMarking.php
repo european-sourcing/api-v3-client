@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model\Marking;
+namespace EuropeanSourcing\Apiv3Client\Model\Marking;
 
 class SupplierMarking
 {

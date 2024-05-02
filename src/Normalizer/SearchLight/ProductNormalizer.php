@@ -1,9 +1,9 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 use Exception;
-use Medialeads\Apiv3Client\Model\SearchLight\Product;
+use EuropeanSourcing\Apiv3Client\Model\SearchLight\Product;
 
 class ProductNormalizer extends AbstractSearchLightCachableNormalizer
 {

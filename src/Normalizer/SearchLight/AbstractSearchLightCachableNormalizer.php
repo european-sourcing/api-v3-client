@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 abstract class AbstractSearchLightCachableNormalizer extends AbstractSearchLightNormalizer
 {

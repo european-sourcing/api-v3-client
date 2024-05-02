@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Model\SearchLight;
 
-use Medialeads\Apiv3Client\Model\ExtremumPrice;
+use EuropeanSourcing\Apiv3Client\Model\ExtremumPrice;
 
 class Product
 {

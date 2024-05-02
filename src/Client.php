@@ -1,31 +1,31 @@
 <?php
 
-namespace Medialeads\Apiv3Client;
+namespace EuropeanSourcing\Apiv3Client;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
-use Medialeads\Apiv3Client\Common\Collection;
-use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
-use Medialeads\Apiv3Client\Model\Marking\Marking;
-use Medialeads\Apiv3Client\Model\Variant;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\BrandNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\CategoriesNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\CountryNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\CountryOfOriginNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
-use Medialeads\Apiv3Client\Normalizer\BrandsNormalizer;
-use Medialeads\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
-use Medialeads\Apiv3Client\Normalizer\ProductsNormalizer;
-use Medialeads\Apiv3Client\Normalizer\SearchLight\ProductsNormalizer as ProductsLightNormalizer;
-use Medialeads\Apiv3Client\Normalizer\SupplierNormalizer;
-use Medialeads\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
-use Medialeads\Apiv3Client\Response\SearchLightResponse;
-use Medialeads\Apiv3Client\Response\SearchResponse;
-use Medialeads\Apiv3Client\Response\SearchResponseInterface;
-use Medialeads\Apiv3Client\Service\NormalizerService;
+use EuropeanSourcing\Apiv3Client\Common\Collection;
+use EuropeanSourcing\Apiv3Client\Model\Aggregation\Aggregation;
+use EuropeanSourcing\Apiv3Client\Model\Marking\Marking;
+use EuropeanSourcing\Apiv3Client\Model\Variant;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\BrandNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\CategoriesNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\CountryNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\CountryOfOriginNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\BrandsNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\ProductsNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\SearchLight\ProductsNormalizer as ProductsLightNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\SupplierNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\SupplierProfilesNormalizer;
+use EuropeanSourcing\Apiv3Client\Response\SearchLightResponse;
+use EuropeanSourcing\Apiv3Client\Response\SearchResponse;
+use EuropeanSourcing\Apiv3Client\Response\SearchResponseInterface;
+use EuropeanSourcing\Apiv3Client\Service\NormalizerService;
 
 use function json_decode;
 use function json_encode;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model\Aggregation;
+namespace EuropeanSourcing\Apiv3Client\Model\Aggregation;
 
-use Medialeads\Apiv3Client\Common\CountableAggregableInterface;
+use EuropeanSourcing\Apiv3Client\Common\CountableAggregableInterface;
 
 class Brand implements \JsonSerializable, CountableAggregableInterface
 {

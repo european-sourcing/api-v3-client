@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
-use Medialeads\Apiv3Client\Model\ExtremumPrice;
+use EuropeanSourcing\Apiv3Client\Model\ExtremumPrice;
 
 class ExtremumPriceNormalizer extends AbstractSearchLightNormalizer
 {

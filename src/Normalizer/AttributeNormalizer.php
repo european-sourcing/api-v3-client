@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer;
+namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
-use Medialeads\Apiv3Client\Model\Attribute;
+use EuropeanSourcing\Apiv3Client\Model\Attribute;
 
 class AttributeNormalizer
 {
