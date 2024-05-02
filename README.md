@@ -1,24 +1,25 @@
 # API v3 Client
 
-## Présentation
+## Overview
 
-Ce package permet de faciliter la mise en place d'appels à
-l'[API Produit d'European Sourcing](https://product-api.europeansourcing.com/public/index.html) dans un projet PHP.
+This package's goal is to make it easier to call:
+[EuropeanSourcing's Product API](https://product-api.europeansourcing.com/public/index.html) in a PHP project.
 
-## Installation
+## Setup
 
-Pour installer et mettre à jour ce package, nous vous recommandons d'utiliser [Composer](https://getcomposer.org/)
+To install and update this package we recommend to use [Composer](https://getcomposer.org/)
 
 ```shell
 composer require medialeads/apiv3-client
 ```
 
-## Pré-requis
+## Prerequisites 
 
-Comme ce package n'est pas directement disponible sur le dépôt officiel Packagist, mais uniquement sur ce dépôt Github,
-vous devez posséder un compte Github (gratuit) pour pouvoir récupérer ce package avec Composer.
+Since this package isn't directly available on the official Packagist repository, but only on this Github repository,
+you need to have a free Github account to be able to access this package with Composer.
 
-Ensuite, vous devrez ajouter ce dépôt à votre fichier `composer.json` via une entrée `repositories` comme ci-dessous:
+Then, you will have to add this repository to your file `composer.json` by adding a `repositories` property like
+shown below:
 
 ```
 {
@@ -37,9 +38,9 @@ Ensuite, vous devrez ajouter ce dépôt à votre fichier `composer.json` via une
 }
 ```
 
-## Exemples d'implémentations
+## Implementation examples
 
-Example d'un `index.php` à la racine du projet (au même niveau que le composer.json)
+Example of an `index.php` at the root of the project (same as the composer.json file)
 
 ```php
 <?php
@@ -69,12 +70,12 @@ $apiClient = new Client(
 
 
 /**
- * Récupération de tous les profils fournisseurs
+ * Get all supplier profiles
  */
 try {
     $suppliers = $apiClient->supplierProfiles();
 } catch (\Exception $e) {
-    // Gestion des erreurs
+    // error handling
     echo "Une erreur c'est produite lors de la récupération des fournisseurs: " . $e->getMessage();
     throw $e;
 }
@@ -88,12 +89,12 @@ echo "<hr/>";
 
 
 /**
- * Récupération de toutes les marques
+ * Get every brands
  */
 try {
     $brands = $apiClient->brands();
 } catch (\Exception $e) {
-    // Gestion des erreurs
+    // error handling
     echo "Une erreur c'est produite lors de la récupération des marques: " . $e->getMessage();
     throw $e;
 }
@@ -107,7 +108,7 @@ echo "<hr/>";
 
 
 /**
- * Recherche de produits
+ * Product research
  */
 $searchHandler = new SearchHandler();
 
@@ -130,7 +131,7 @@ $queryHandler->setSortDirection('asc');
 try {
     $response = $apiClient->search($queryHandler);
 } catch (\Exception $e) {
-    // Gestion des erreurs
+    // error handling
     echo "Une erreur c'est produite lors de la récupération des produits: " . $e->getMessage();
     throw $e;
 }
