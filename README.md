@@ -10,7 +10,7 @@ This package's goal is to make it easier to call:
 To install and update this package we recommend to use [Composer](https://getcomposer.org/)
 
 ```shell
-composer require medialeads/apiv3-client
+composer require european-sourcing/apiv3-client
 ```
 
 ## Prerequisites 
@@ -27,7 +27,7 @@ shown below:
     "version": "0.0.1",
     "type": "project",
     "require": {
-        "medialeads/apiv3-client": "^2.1.0"
+        "european-sourcing/apiv3-client": "^2.1.0"
     },
     "repositories": [
         {
@@ -49,10 +49,10 @@ Example of an `index.php` at the root of the project (same as the composer.json 
 require_once __DIR__ . '/vendor/autoload.php';
 
 use GuzzleHttp\Client as GuzzleClient;
-use Medialeads\Apiv3Client\Client;
-use Medialeads\Apiv3Client\QueryBuilder;
-use Medialeads\Apiv3Client\QueryHandler;
-use Medialeads\Apiv3Client\SearchHandler;
+use EuropeanSourcing\Apiv3Client\Client;
+use EuropeanSourcing\Apiv3Client\QueryBuilder;
+use EuropeanSourcing\Apiv3Client\QueryHandler;
+use EuropeanSourcing\Apiv3Client\SearchHandler;
 
 $YOUR_API_TOKEN = 'YOUR_API_TOKEN';
 

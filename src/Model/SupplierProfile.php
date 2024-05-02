@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Model;
+namespace EuropeanSourcing\Apiv3Client\Model;
 
-use Medialeads\Apiv3Client\Common\SupplierProfileInterface;
+use EuropeanSourcing\Apiv3Client\Common\SupplierProfileInterface;
 
 class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 {

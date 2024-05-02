@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\Marking;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\Marking;
 
-use Medialeads\Apiv3Client\Model\Marking\SupplierProfile;
+use EuropeanSourcing\Apiv3Client\Model\Marking\SupplierProfile;
 
 class SupplierProfileNormalizer
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client;
+namespace EuropeanSourcing\Apiv3Client;
 
-use Medialeads\Apiv3Client\Common\RequestElementInterface;
+use EuropeanSourcing\Apiv3Client\Common\RequestElementInterface;
 
 class SearchHandler
 {

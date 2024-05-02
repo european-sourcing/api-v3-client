@@ -1,11 +1,11 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Response;
+namespace EuropeanSourcing\Apiv3Client\Response;
 
 use ArrayAccess;
 use Countable;
 use Iterator;
-use Medialeads\Apiv3Client\Model\Aggregation\Aggregation;
+use EuropeanSourcing\Apiv3Client\Model\Aggregation\Aggregation;
 
 interface SearchResponseInterface extends ArrayAccess, Iterator, Countable
 {

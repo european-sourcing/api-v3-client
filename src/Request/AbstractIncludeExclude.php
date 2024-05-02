@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Request;
+namespace EuropeanSourcing\Apiv3Client\Request;
 
 abstract class AbstractIncludeExclude
 {

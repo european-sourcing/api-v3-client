@@ -1,9 +1,9 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Tests;
+namespace EuropeanSourcing\Apiv3Client\Tests;
 
-use Medialeads\Apiv3Client\Model\Supplier;
-use Medialeads\Apiv3Client\Normalizer\SupplierNormalizer;
+use EuropeanSourcing\Apiv3Client\Model\Supplier;
+use EuropeanSourcing\Apiv3Client\Normalizer\SupplierNormalizer;
 use PHPUnit\Framework\TestCase;
 
 class SupplierNormalizerTest extends TestCase
@@ -36,7 +36,7 @@ class SupplierNormalizerTest extends TestCase
         );
 
         $this->assertInstanceOf(Supplier::class, $result);
-        $this->assertSame(var_export($result, true), "Medialeads\Apiv3Client\Model\Supplier::__set_state(array(
+        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\Supplier::__set_state(array(
    'id' => '614',
    'name' => 'XINDAO BV',
    'slug' => 'xindao-bv',
@@ -46,7 +46,7 @@ class SupplierNormalizerTest extends TestCase
    'supplierProfiles' => 
   array (
     0 => 
-    Medialeads\Apiv3Client\Model\SupplierProfile::__set_state(array(
+    EuropeanSourcing\Apiv3Client\Model\SupplierProfile::__set_state(array(
        'id' => '419',
        'name' => 'XINDAO BV (France)',
        'countryCode' => 'NL',
@@ -62,13 +62,13 @@ class SupplierNormalizerTest extends TestCase
 
     public function testAggregationBrand()
     {
-        $supplierNormalizer = new \Medialeads\Apiv3Client\Normalizer\Aggregation\SupplierNormalizer();
+        $supplierNormalizer = new \EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\SupplierNormalizer();
         $result = $supplierNormalizer->denormalize(
             \json_decode('{"count":287,"name":"BALADEO - CORIOLIS sarl","id":"340"}', true)
         );
 
-        $this->assertInstanceOf(\Medialeads\Apiv3Client\Model\Aggregation\Supplier::class, $result);
-        $this->assertSame(var_export($result, true), "Medialeads\Apiv3Client\Model\Aggregation\Supplier::__set_state(array(
+        $this->assertInstanceOf(\EuropeanSourcing\Apiv3Client\Model\Aggregation\Supplier::class, $result);
+        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\Aggregation\Supplier::__set_state(array(
    'id' => '340',
    'name' => 'BALADEO - CORIOLIS sarl',
    'count' => 287,
@@ -83,7 +83,7 @@ class SupplierNormalizerTest extends TestCase
         );
 
         $this->assertInstanceOf(Supplier::class, $result);
-        $this->assertSame(var_export($result, true), "Medialeads\Apiv3Client\Model\Supplier::__set_state(array(
+        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\Supplier::__set_state(array(
    'id' => 344,
    'name' => 'BOOMERANG SAS (BEWEAR)',
    'slug' => 'boomerang-sas-bewear',

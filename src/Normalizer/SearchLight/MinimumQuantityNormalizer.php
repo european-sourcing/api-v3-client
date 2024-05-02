@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
-use Medialeads\Apiv3Client\Model\SearchLight\MinimumQuantity;
+use EuropeanSourcing\Apiv3Client\Model\SearchLight\MinimumQuantity;
 
 class MinimumQuantityNormalizer extends AbstractSearchLightNormalizer
 {

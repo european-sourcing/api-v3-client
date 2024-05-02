@@ -1,6 +1,6 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Common;
+namespace EuropeanSourcing\Apiv3Client\Common;
 
 interface SupplierProfileInterface
 {

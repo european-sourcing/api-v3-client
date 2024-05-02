@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
-use Medialeads\Apiv3Client\Service\NormalizerService;
+use EuropeanSourcing\Apiv3Client\Service\NormalizerService;
 
 abstract class AbstractSearchLightNormalizer implements SearchLightNormalizerInterface
 {

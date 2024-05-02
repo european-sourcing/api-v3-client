@@ -1,8 +1,8 @@
 <?php
 
-namespace Medialeads\Apiv3Client\Service;
+namespace EuropeanSourcing\Apiv3Client\Service;
 
-use Medialeads\Apiv3Client\Normalizer\SearchLight\SearchLightNormalizerInterface;
+use EuropeanSourcing\Apiv3Client\Normalizer\SearchLight\SearchLightNormalizerInterface;
 
 class NormalizerService
 {
