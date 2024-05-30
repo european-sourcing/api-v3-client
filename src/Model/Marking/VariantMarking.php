@@ -30,9 +30,6 @@ class VariantMarking
     /** @var float */
     private $maximumWidth;
 
-    /** @var bool */
-    private $freeEntryWidth;
-
     /** @var float */
     private $length;
 
@@ -41,9 +38,6 @@ class VariantMarking
 
     /** @var float */
     private $maximumLength;
-
-    /** @var bool */
-    private $freeEntryLength;
 
     /** @var int */
     private $diameter;
@@ -54,9 +48,6 @@ class VariantMarking
     /** @var float */
     private $maximumDiameter;
 
-    /** @var bool */
-    private $freeEntryDiameter;
-
     /** @var float */
     private $squaredSize;
 
@@ -65,9 +56,6 @@ class VariantMarking
 
     /** @var float */
     private $maximumSquaredSize;
-
-    /** @var bool */
-    private $freeEntrySquaredSize;
 
     /** @var int */
     private $minimumQuantity;
@@ -84,8 +72,6 @@ class VariantMarking
     /** @var int */
     private $maximumNumberOfLogos;
 
-    /** @var bool */
-    private $freeEntryNumberOfLogos;
 
     /** @var bool */
     private $fullColor;
@@ -99,9 +85,6 @@ class VariantMarking
     /** @var int */
     private $maximumNumberOfColors;
 
-    /** @var bool */
-    private $freeEntryNumberOfColors;
-
     /** @var int */
     private $numberOfPositions;
 
@@ -110,9 +93,6 @@ class VariantMarking
 
     /** @var int */
     private $maximumNumberOfPositions;
-
-    /** @var bool */
-    private $freeEntryNumberOfPositions;
 
     /** @var Marking */
     private $marking;
@@ -235,18 +215,6 @@ class VariantMarking
         return $this;
     }
 
-    public function isFreeEntryWidth(): bool
-    {
-        return $this->freeEntryWidth;
-    }
-
-    public function setFreeEntryWidth(bool $freeEntryWidth): self
-    {
-        $this->freeEntryWidth = $freeEntryWidth;
-
-        return $this;
-    }
-
     public function getLength(): ?float
     {
         return $this->length;
@@ -283,18 +251,6 @@ class VariantMarking
         return $this;
     }
 
-    public function isFreeEntryLength(): bool
-    {
-        return $this->freeEntryLength;
-    }
-
-    public function setFreeEntryLength(bool $freeEntryLength): self
-    {
-        $this->freeEntryLength = $freeEntryLength;
-
-        return $this;
-    }
-
     public function getDiameter(): ?int
     {
         return $this->diameter;
@@ -327,18 +283,6 @@ class VariantMarking
     public function setMaximumDiameter(?float $maximumDiameter): self
     {
         $this->maximumDiameter = $maximumDiameter;
-
-        return $this;
-    }
-
-    public function isFreeEntryDiameter(): bool
-    {
-        return $this->freeEntryDiameter;
-    }
-
-    public function setFreeEntryDiameter(bool $freeEntryDiameter): self
-    {
-        $this->freeEntryDiameter = $freeEntryDiameter;
 
         return $this;
     }
@@ -681,54 +625,6 @@ class VariantMarking
     public function addDynamicVariablePriceHolder(DynamicVariablePriceHolder $dynamicVariablePriceHolder): self
     {
         $this->dynamicVariablePriceHolders->add($dynamicVariablePriceHolder->getId(), $dynamicVariablePriceHolder);
-
-        return $this;
-    }
-
-    public function isFreeEntrySquaredSize(): bool
-    {
-        return $this->freeEntrySquaredSize;
-    }
-
-    public function setFreeEntrySquaredSize(bool $freeEntrySquaredSize): VariantMarking
-    {
-        $this->freeEntrySquaredSize = $freeEntrySquaredSize;
-
-        return $this;
-    }
-
-    public function isFreeEntryNumberOfLogos(): bool
-    {
-        return $this->freeEntryNumberOfLogos;
-    }
-
-    public function setFreeEntryNumberOfLogos(bool $freeEntryNumberOfLogos): VariantMarking
-    {
-        $this->freeEntryNumberOfLogos = $freeEntryNumberOfLogos;
-
-        return $this;
-    }
-
-    public function isFreeEntryNumberOfColors(): bool
-    {
-        return $this->freeEntryNumberOfColors;
-    }
-
-    public function setFreeEntryNumberOfColors(bool $freeEntryNumberOfColors): VariantMarking
-    {
-        $this->freeEntryNumberOfColors = $freeEntryNumberOfColors;
-
-        return $this;
-    }
-
-    public function isFreeEntryNumberOfPositions(): bool
-    {
-        return $this->freeEntryNumberOfPositions;
-    }
-
-    public function setFreeEntryNumberOfPositions(bool $freeEntryNumberOfPositions): VariantMarking
-    {
-        $this->freeEntryNumberOfPositions = $freeEntryNumberOfPositions;
 
         return $this;
     }
