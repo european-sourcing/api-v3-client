@@ -11,7 +11,6 @@ class StaticFixedPriceNormalizer
         $staticFixedPrice = new StaticFixedPrice();
         $staticFixedPrice->setId($data['id']);
         $staticFixedPrice->setValue($data['value']);
-        $staticFixedPrice->setReducedValue($data['reduced_value']);
         $staticFixedPrice->setCalculationValue($data['calculation_value']);
         $staticFixedPrice->setCondition($data['condition']);
         $staticFixedPrice->setTotalPrice((bool) $data['total_price']);
