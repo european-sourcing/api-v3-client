@@ -11,7 +11,6 @@ class DynamicFixedPriceNormalizer
         $dynamicFixedPrice = new DynamicFixedPrice();
         $dynamicFixedPrice->setId($data['id']);
         $dynamicFixedPrice->setValue($data['value']);
-        $dynamicFixedPrice->setReducedValue($data['reduced_value']);
         $dynamicFixedPrice->setCalculationValue($data['calculation_value']);
         $dynamicFixedPrice->setCondition($data['condition']);
         $dynamicFixedPrice->setTotalPrice((bool) $data['total_price']);

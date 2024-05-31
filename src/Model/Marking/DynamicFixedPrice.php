@@ -13,9 +13,6 @@ class DynamicFixedPrice
     private $value;
 
     /** @var string */
-    private $reducedValue;
-
-    /** @var string */
     private $calculationValue;
 
     /** @var string */
@@ -55,18 +52,6 @@ class DynamicFixedPrice
     public function setValue(string $value): self
     {
         $this->value = $value;
-
-        return $this;
-    }
-
-    public function getReducedValue(): ?string
-    {
-        return $this->reducedValue;
-    }
-
-    public function setReducedValue(?string $reducedValue): self
-    {
-        $this->reducedValue = $reducedValue;
 
         return $this;
     }

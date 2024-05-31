@@ -11,9 +11,6 @@ class SupplierOptionPrice
     private $value;
 
     /** @var float */
-    private $reducedValue;
-
-    /** @var float */
     private $calculationValue;
 
     public function getFromQuantity(): int
@@ -36,18 +33,6 @@ class SupplierOptionPrice
     public function setValue(float $value): SupplierOptionPrice
     {
         $this->value = $value;
-
-        return $this;
-    }
-
-    public function getReducedValue(): ?float
-    {
-        return $this->reducedValue;
-    }
-
-    public function setReducedValue(?float $reducedValue): SupplierOptionPrice
-    {
-        $this->reducedValue = $reducedValue;
 
         return $this;
     }

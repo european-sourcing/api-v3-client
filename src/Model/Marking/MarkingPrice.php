@@ -14,9 +14,6 @@ class MarkingPrice
     private $value;
 
     /** @var string */
-    private $reducedValue;
-
-    /** @var string */
     private $calculationValue;
 
     public function getId(): string
@@ -63,18 +60,6 @@ class MarkingPrice
     public function setCalculationValue(string $calculationValue): self
     {
         $this->calculationValue = $calculationValue;
-
-        return $this;
-    }
-
-    public function getReducedValue(): ?string
-    {
-        return $this->reducedValue;
-    }
-
-    public function setReducedValue(?string $reducedValue): self
-    {
-        $this->reducedValue = $reducedValue;
 
         return $this;
     }
