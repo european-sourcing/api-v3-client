@@ -11,7 +11,6 @@ class SupplierOptionPriceNormalizer
         $supplierOptionPrice = new SupplierOptionPrice();
         $supplierOptionPrice->setFromQuantity($data['from_quantity']);
         $supplierOptionPrice->setValue($data['value']);
-        $supplierOptionPrice->setReducedValue($data['reduced_value']);
         $supplierOptionPrice->setCalculationValue($data['calculation_value']);
 
         return $supplierOptionPrice;

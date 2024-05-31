@@ -22,11 +22,6 @@ class Price implements \JsonSerializable
     /**
      * @var float
      */
-    private $reducedValue;
-
-    /**
-     * @var float
-     */
     private $calculationValue;
 
     /**
@@ -97,26 +92,6 @@ class Price implements \JsonSerializable
     /**
      * @return float
      */
-    public function getReducedValue()
-    {
-        return $this->reducedValue;
-    }
-
-    /**
-     * @param float $reducedValue
-     *
-     * @return Price
-     */
-    public function setReducedValue($reducedValue)
-    {
-        $this->reducedValue = $reducedValue;
-
-        return $this;
-    }
-
-    /**
-     * @return float
-     */
     public function getCalculationValue()
     {
         return $this->calculationValue;
@@ -163,7 +138,6 @@ class Price implements \JsonSerializable
             'id' => $this->id,
             'from_quantity' => $this->fromQuantity,
             'value' => $this->value,
-            'reduced_value' => $this->reducedValue,
             'calculation_value' => $this->calculationValue,
             'supplier_profile' => $this->supplierProfile
         ];

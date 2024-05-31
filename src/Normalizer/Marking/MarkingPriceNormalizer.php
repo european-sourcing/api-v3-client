@@ -12,7 +12,6 @@ class MarkingPriceNormalizer
         $markingPrice->setId($data['id']);
         $markingPrice->setFromQuantity($data['from_quantity']);
         $markingPrice->setValue($data['value']);
-        $markingPrice->setReducedValue($data['reduced_value'] ?? null);
         $markingPrice->setCalculationValue($data['calculation_value']);
 
         return $markingPrice;

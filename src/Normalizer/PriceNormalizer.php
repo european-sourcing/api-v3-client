@@ -16,7 +16,6 @@ class PriceNormalizer
         $price = new Price();
         $price->setId($data['id']);
         $price->setValue($data['value']);
-        $price->setReducedValue($data['reduced_value']);
 
         // for sample price
         if (isset($data['from_quantity'])) {
