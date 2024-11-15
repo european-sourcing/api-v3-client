@@ -26,6 +26,8 @@ class Variant
      */
     private array $minimumQuantities = [];
 
+    private bool $hasPlanetImpact;
+
     private Product $product;
 
     public function getId(): int
@@ -146,6 +148,18 @@ class Variant
     public function addMinimumQuantity(MinimumQuantity $minimumQuantity): Variant
     {
         $this->minimumQuantities[] = $minimumQuantity;
+
+        return $this;
+    }
+
+    public function hasPlanetImpact(): bool
+    {
+        return $this->hasPlanetImpact;
+    }
+
+    public function setHasPlanetImpact(bool $hasPlanetImpact): Variant
+    {
+        $this->hasPlanetImpact = $hasPlanetImpact;
 
         return $this;
     }

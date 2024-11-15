@@ -9,13 +9,15 @@ use EuropeanSourcing\Apiv3Client\Request\Brand;
 use EuropeanSourcing\Apiv3Client\Request\Category;
 use EuropeanSourcing\Apiv3Client\Request\CountryCode;
 use EuropeanSourcing\Apiv3Client\Request\CountryOfOrigin;
+use EuropeanSourcing\Apiv3Client\Request\HasCarbonFootprint;
+use EuropeanSourcing\Apiv3Client\Request\HasCarbonFootprintTextile;
+use EuropeanSourcing\Apiv3Client\Request\HasDpp;
 use EuropeanSourcing\Apiv3Client\Request\HasMarking;
 use EuropeanSourcing\Apiv3Client\Request\Id;
 use EuropeanSourcing\Apiv3Client\Request\InternalReference;
 use EuropeanSourcing\Apiv3Client\Request\Label;
 use EuropeanSourcing\Apiv3Client\Request\LastIndexed;
 use EuropeanSourcing\Apiv3Client\Request\Marking;
-use EuropeanSourcing\Apiv3Client\Request\VariantMinimumQuantity;
 use EuropeanSourcing\Apiv3Client\Request\Not;
 use EuropeanSourcing\Apiv3Client\Request\Price;
 use EuropeanSourcing\Apiv3Client\Request\Query;
@@ -26,6 +28,7 @@ use EuropeanSourcing\Apiv3Client\Request\SupplierProfile;
 use EuropeanSourcing\Apiv3Client\Request\SupplierProfileCountryCode;
 use EuropeanSourcing\Apiv3Client\Request\SupplierReference;
 use EuropeanSourcing\Apiv3Client\Request\Variant;
+use EuropeanSourcing\Apiv3Client\Request\VariantMinimumQuantity;
 
 class QueryBuilder
 {
@@ -58,6 +61,7 @@ class QueryBuilder
     {
         return new HasMarking($hasMarking);
     }
+
     public function countryCode(string $countryCode): CountryCode
     {
         return new CountryCode($countryCode);
@@ -141,5 +145,20 @@ class QueryBuilder
     public function variantMinimumQuantity(int $quantity): VariantMinimumQuantity
     {
         return new VariantMinimumQuantity($quantity);
+    }
+
+    public function hasCarbonFootprint(bool $hasCarbonFootprint): HasCarbonFootprint
+    {
+        return new HasCarbonFootprint($hasCarbonFootprint);
+    }
+
+    public function hasCarbonFootprintTextile(bool $hasCarbonFootprintTextile): HasCarbonFootprintTextile
+    {
+        return new HasCarbonFootprintTextile($hasCarbonFootprintTextile);
+    }
+
+    public function hasDpp(bool $hasDpp): HasDpp
+    {
+        return new HasDpp($hasDpp);
     }
 }

@@ -28,6 +28,24 @@ class VariantNormalizer
         $variant->setEuropeanArticleNumbering($data['european_article_numbering']);
         $variant->setMandatoryMarking($data['mandatory_marking']);
         $variant->setInternalReference($data['internal_reference']);
+        $variant->setHasPlanetImpact($data['has_planet_impact']);
+
+        $carbonFootprint = $data['carbon_footprint'] ?? null;
+        if (null !== $carbonFootprint) {
+            $carbonFootprintNormalizer = new CarbonFootprintNormalizer();
+            $variant->setCarbonFootprint($carbonFootprintNormalizer->denormalize($carbonFootprint));
+        }
+
+        $carbonFootprintTextile = $data['carbon_footprint_textile'] ?? null;
+        if (null !== $carbonFootprintTextile) {
+            $carbonFootprintTextileNormalizer = new CarbonFootprintTextileNormalizer();
+            $variant->setCarbonFootprintTextile(
+                $carbonFootprintTextileNormalizer->denormalize($carbonFootprintTextile)
+            );
+        }
+
+        $dpp = new DppNormalizer();
+        $variant->setDpp($dpp->denormalize($data));
 
         // images
         if (!empty($data['variant_images'])) {
