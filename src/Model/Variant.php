@@ -136,6 +136,14 @@ class Variant implements \JsonSerializable
      */
     private $deliveryTimes;
 
+    private bool $hasPlanetImpact;
+
+    private ?CarbonFootprint $carbonFootprint = null;
+
+    private ?CarbonFootprintTextile $carbonFootprintTextile = null;
+
+    private ?Dpp $dpp;
+
     /**
      * @var Product
      */
@@ -924,6 +932,54 @@ class Variant implements \JsonSerializable
         return $this;
     }
 
+    public function hasPlanetImpact(): bool
+    {
+        return $this->hasPlanetImpact;
+    }
+
+    public function setHasPlanetImpact(bool $hasPlanetImpact): Variant
+    {
+        $this->hasPlanetImpact = $hasPlanetImpact;
+
+        return $this;
+    }
+
+    public function getCarbonFootprint(): ?CarbonFootprint
+    {
+        return $this->carbonFootprint;
+    }
+
+    public function setCarbonFootprint(?CarbonFootprint $carbonFootprint): Variant
+    {
+        $this->carbonFootprint = $carbonFootprint;
+
+        return $this;
+    }
+
+    public function getCarbonFootprintTextile(): ?CarbonFootprintTextile
+    {
+        return $this->carbonFootprintTextile;
+    }
+
+    public function setCarbonFootprintTextile(?CarbonFootprintTextile $carbonFootprintTextile): Variant
+    {
+        $this->carbonFootprintTextile = $carbonFootprintTextile;
+
+        return $this;
+    }
+
+    public function getDpp(): ?Dpp
+    {
+        return $this->dpp;
+    }
+
+    public function setDpp(?Dpp $dpp): Variant
+    {
+        $this->dpp = $dpp;
+
+        return $this;
+    }
+
     /**
      * @return Product
      */
@@ -985,7 +1041,10 @@ class Variant implements \JsonSerializable
             'list_prices' => $this->listPrices,
             'external_links' => $this->externalLinks,
             'attributes' => $this->attributes,
-            'delivery_times' => $this->deliveryTimes
+            'delivery_times' => $this->deliveryTimes,
+            'carbon_footprint' => $this->carbonFootprint->jsonSerialize(),
+            'carbon_footprint_textile' => $this->carbonFootprint->jsonSerialize(),
+            'dpp' => $this->dpp->jsonSerialize(),
         ];
     }
 }
