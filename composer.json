@@ -3,7 +3,7 @@
   "description": "Client for European Sourcing customers",
   "license": "proprietary",
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.0",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^6.3 | ^7.9"
   },
