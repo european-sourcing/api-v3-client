@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Size;
 
 class SizeNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Size
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Size
     {
         $size = new Size();
         $size->setId($data['id']);

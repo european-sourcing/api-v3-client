@@ -11,18 +11,12 @@ class SupplierProfile extends AbstractIncludeExclude implements RequestElementIn
      */
     private $supplierProfileIds;
 
-    /**
-     * @param array $supplierProfileIds
-     */
     public function __construct(array $supplierProfileIds)
     {
         $this->supplierProfileIds = $supplierProfileIds;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'supplier_profile_id' => [

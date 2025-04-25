@@ -8,8 +8,5 @@ interface SearchLightNormalizerInterface
 {
     public function __construct(NormalizerService $normalizerService);
 
-    /**
-     * @return array|object
-     */
-    public function denormalize(array $data);
+    public function denormalize(array $data): object|array;
 }

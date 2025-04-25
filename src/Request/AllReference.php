@@ -17,10 +17,6 @@ class AllReference implements RequestElementInterface
      */
     private $type;
 
-    /**
-     * @param array $allReferences
-     * @param string $type
-     */
     public function __construct(array $allReferences, string $type)
     {
         $this->type = $type;
@@ -28,11 +24,9 @@ class AllReference implements RequestElementInterface
     }
 
     /**
-     * @return array
-     *
      * @throws InvalidArgumentException
      */
-    public function export()
+    public function export(): array
     {
         if (!in_array($this->type, ['strict', 'like'])) {
             throw new InvalidArgumentException(sprintf('Invalid type "%s"', $this->type));

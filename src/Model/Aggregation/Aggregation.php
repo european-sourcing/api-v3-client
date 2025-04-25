@@ -16,9 +16,6 @@ class Aggregation implements \JsonSerializable
      */
     private $rows;
 
-    /**
-     * @param string $name
-     */
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -33,32 +30,19 @@ class Aggregation implements \JsonSerializable
         return $this->name;
     }
 
-    /**
-     * @return array
-     */
     public function getRows(): array
     {
         return $this->rows;
     }
 
-    /**
-     * @param array $rows
-     *
-     * @return Aggregation
-     */
-    public function setRows(array $rows)
+    public function setRows(array $rows): static
     {
         $this->rows = $rows;
 
         return $this;
     }
 
-    /**
-     * @param AggregableInterface $row
-     *
-     * @return Aggregation
-     */
-    public function addRow(AggregableInterface $row)
+    public function addRow(AggregableInterface $row): static
     {
         $this->rows[] = $row;
 
@@ -68,7 +52,7 @@ class Aggregation implements \JsonSerializable
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'name' => $this->name,

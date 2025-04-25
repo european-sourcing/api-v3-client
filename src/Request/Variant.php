@@ -11,18 +11,12 @@ class Variant extends AbstractIncludeExclude implements RequestElementInterface
      */
     private $variantIds;
 
-    /**
-     * @param array $variantIds
-     */
     public function __construct(array $variantIds)
     {
         $this->variantIds = $variantIds;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'variant_id' => [

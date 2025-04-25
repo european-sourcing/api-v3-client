@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Aggregation\Country;
 
 class CountryNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Country
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Country
     {
         $country = new Country();
         $country->setCode($data['code']);

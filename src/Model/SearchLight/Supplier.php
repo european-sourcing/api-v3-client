@@ -18,7 +18,7 @@ class Supplier
         return $this->id;
     }
 
-    public function setId(int $id): Supplier
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -30,7 +30,7 @@ class Supplier
         return $this->name;
     }
 
-    public function setName(string $name): Supplier
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -42,7 +42,7 @@ class Supplier
         return $this->legalName;
     }
 
-    public function setLegalName(string $legalName): Supplier
+    public function setLegalName(string $legalName): static
     {
         $this->legalName = $legalName;
 
@@ -60,14 +60,14 @@ class Supplier
     /**
      * @param array<SupplierProfile> $supplierProfiles
      */
-    public function setSupplierProfiles(array $supplierProfiles): Supplier
+    public function setSupplierProfiles(array $supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
         return $this;
     }
 
-    public function addSupplierProfile(SupplierProfile $supplierProfile): Supplier
+    public function addSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfiles[] = $supplierProfile;
 

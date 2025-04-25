@@ -11,18 +11,12 @@ class Query implements RequestElementInterface
      */
     private $query;
 
-    /**
-     * @param string $query
-     */
     public function __construct(string $query)
     {
         $this->query = $query;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'query' => $this->query

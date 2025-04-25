@@ -15,7 +15,7 @@ class SupplierProfile
         return $this->id;
     }
 
-    public function setId(int $id): self
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -27,7 +27,7 @@ class SupplierProfile
         return $this->countryCode;
     }
 
-    public function setCountryCode(string $countryCode): self
+    public function setCountryCode(string $countryCode): static
     {
         $this->countryCode = $countryCode;
 

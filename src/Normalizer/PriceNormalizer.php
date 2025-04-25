@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Price;
 
 class PriceNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Price
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Price
     {
         $price = new Price();
         $price->setId($data['id']);

@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Aggregation\Category;
 
 class CategoryNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Category
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Category
     {
         $category = new Category();
         $category->setId($data['id']);

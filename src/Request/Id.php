@@ -11,18 +11,12 @@ class Id extends AbstractIncludeExclude implements RequestElementInterface
      */
     private $ids;
 
-    /**
-     * @param array $ids
-     */
     public function __construct(array $ids)
     {
         $this->ids = $ids;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'id' => [

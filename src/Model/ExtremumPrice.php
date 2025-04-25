@@ -15,7 +15,7 @@ class ExtremumPrice
         return $this->supplierProfileId;
     }
 
-    public function setSupplierProfileId(int $supplierProfileId): ExtremumPrice
+    public function setSupplierProfileId(int $supplierProfileId): static
     {
         $this->supplierProfileId = $supplierProfileId;
 
@@ -27,7 +27,7 @@ class ExtremumPrice
         return $this->lowestPrice;
     }
 
-    public function setLowestPrice(float $lowestPrice): ExtremumPrice
+    public function setLowestPrice(float $lowestPrice): static
     {
         $this->lowestPrice = $lowestPrice;
 
@@ -39,7 +39,7 @@ class ExtremumPrice
         return $this->highestPrice;
     }
 
-    public function setHighestPrice(float $highestPrice): ExtremumPrice
+    public function setHighestPrice(float $highestPrice): static
     {
         $this->highestPrice = $highestPrice;
 

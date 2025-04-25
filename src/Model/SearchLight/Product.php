@@ -26,7 +26,7 @@ class Product
         return $this->id;
     }
 
-    public function setId(int $id): Product
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -38,7 +38,7 @@ class Product
         return $this->internalReference;
     }
 
-    public function setInternalReference(string $internalReference): Product
+    public function setInternalReference(string $internalReference): static
     {
         $this->internalReference = $internalReference;
 
@@ -50,7 +50,7 @@ class Product
         return $this->hasMarking;
     }
 
-    public function setHasMarking(bool $hasMarking): Product
+    public function setHasMarking(bool $hasMarking): static
     {
         $this->hasMarking = $hasMarking;
 
@@ -62,7 +62,7 @@ class Product
         return $this->bestVariant;
     }
 
-    public function setBestVariant(Variant $bestVariant): Product
+    public function setBestVariant(Variant $bestVariant): static
     {
         $this->bestVariant = $bestVariant;
 
@@ -74,7 +74,7 @@ class Product
         return $this->brand;
     }
 
-    public function setBrand(?Brand $brand): Product
+    public function setBrand(?Brand $brand): static
     {
         $this->brand = $brand;
 
@@ -92,14 +92,14 @@ class Product
     /**
      * @param array<ExtremumPrice> $extremumPrices
      */
-    public function setExtremumPrices(array $extremumPrices): Product
+    public function setExtremumPrices(array $extremumPrices): static
     {
         $this->extremumPrices = $extremumPrices;
 
         return $this;
     }
 
-    public function addExtremumPrice(ExtremumPrice $extremumPrice): Product
+    public function addExtremumPrice(ExtremumPrice $extremumPrice): static
     {
         $this->extremumPrices[] = $extremumPrice;
 
@@ -111,7 +111,7 @@ class Product
         return $this->supplier;
     }
 
-    public function setSupplier(Supplier $supplier): Product
+    public function setSupplier(Supplier $supplier): static
     {
         $this->supplier = $supplier;
 

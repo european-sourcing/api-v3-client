@@ -13,7 +13,7 @@ class MinimumQuantity
         return $this->value;
     }
 
-    public function setValue(int $value): MinimumQuantity
+    public function setValue(int $value): static
     {
         $this->value = $value;
 
@@ -25,7 +25,7 @@ class MinimumQuantity
         return $this->supplierProfileId;
     }
 
-    public function setSupplierProfileId(int $supplierProfileId): MinimumQuantity
+    public function setSupplierProfileId(int $supplierProfileId): static
     {
         $this->supplierProfileId = $supplierProfileId;
 

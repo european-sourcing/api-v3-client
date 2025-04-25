@@ -29,10 +29,8 @@ class Label implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Label
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -49,10 +47,8 @@ class Label implements \JsonSerializable
 
     /**
      * @param string $slug
-     *
-     * @return Label
      */
-    public function setSlug($slug)
+    public function setSlug($slug): static
     {
         $this->slug = $slug;
 
@@ -69,10 +65,8 @@ class Label implements \JsonSerializable
 
     /**
      * @param string $name
-     *
-     * @return Label
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -80,13 +74,9 @@ class Label implements \JsonSerializable
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

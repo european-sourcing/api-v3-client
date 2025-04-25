@@ -17,10 +17,6 @@ class Attribute extends AbstractIncludeExclude implements RequestElementInterfac
      */
     private $attributeIds;
 
-    /**
-     * @param array $attributeIds
-     * @param string $operator
-     */
     public function __construct(array $attributeIds, string $operator)
     {
         $this->operator = $operator;
@@ -28,11 +24,9 @@ class Attribute extends AbstractIncludeExclude implements RequestElementInterfac
     }
 
     /**
-     * @return array
-     *
      * @throws InvalidArgumentException
      */
-    public function export()
+    public function export(): array
     {
         if (!in_array($this->operator, ['and', 'or'])) {
             throw new InvalidArgumentException(sprintf('Invalid operator "%s"', $this->operator));

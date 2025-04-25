@@ -17,7 +17,7 @@ class SearchResponse extends AbstractSearchResponse
     /**
      * @param array<Product> $products
      */
-    public function setProducts(array $products): SearchResponse
+    public function setProducts(array $products): static
     {
         $this->products = $products;
 

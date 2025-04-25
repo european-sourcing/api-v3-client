@@ -49,10 +49,8 @@ class Attribute implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Attribute
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -69,10 +67,8 @@ class Attribute implements \JsonSerializable
 
     /**
      * @param string $type
-     *
-     * @return Attribute
      */
-    public function setType($type)
+    public function setType($type): static
     {
         $this->type = $type;
 
@@ -89,10 +85,8 @@ class Attribute implements \JsonSerializable
 
     /**
      * @param string $value
-     *
-     * @return Attribute
      */
-    public function setValue($value)
+    public function setValue($value): static
     {
         $this->value = $value;
 
@@ -109,10 +103,8 @@ class Attribute implements \JsonSerializable
 
     /**
      * @param string $slug
-     *
-     * @return Attribute
      */
-    public function setSlug($slug)
+    public function setSlug($slug): static
     {
         $this->slug = $slug;
 
@@ -129,10 +121,8 @@ class Attribute implements \JsonSerializable
 
     /**
      * @param string $fullHierarchyValue
-     *
-     * @return Attribute
      */
-    public function setFullHierarchyValue($fullHierarchyValue)
+    public function setFullHierarchyValue($fullHierarchyValue): static
     {
         $this->fullHierarchyValue = $fullHierarchyValue;
 
@@ -149,10 +139,8 @@ class Attribute implements \JsonSerializable
 
     /**
      * @param Attribute $parent
-     *
-     * @return Attribute
      */
-    public function setParent($parent)
+    public function setParent($parent): static
     {
         $this->parent = $parent;
 
@@ -169,10 +157,8 @@ class Attribute implements \JsonSerializable
 
     /**
      * @param AttributeGroup $group
-     *
-     * @return Attribute
      */
-    public function setGroup($group)
+    public function setGroup($group): static
     {
         $this->group = $group;
 
@@ -180,13 +166,9 @@ class Attribute implements \JsonSerializable
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

@@ -38,10 +38,8 @@ class SupplierProfile implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $id
-     *
-     * @return SupplierProfile
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -58,30 +56,20 @@ class SupplierProfile implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $name
-     *
-     * @return SupplierProfile
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getCount(): int
     {
         return $this->count;
     }
 
-    /**
-     * @param int $count
-     *
-     * @return SupplierProfile
-     */
-    public function setCount(int $count): SupplierProfile
+    public function setCount(int $count): static
     {
         $this->count = $count;
 
@@ -93,7 +81,7 @@ class SupplierProfile implements \JsonSerializable, CountableAggregableInterface
         return $this->countryCode;
     }
 
-    public function setCountryCode(?string $countryCode): SupplierProfile
+    public function setCountryCode(?string $countryCode): static
     {
         $this->countryCode = $countryCode;
 
@@ -101,13 +89,9 @@ class SupplierProfile implements \JsonSerializable, CountableAggregableInterface
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

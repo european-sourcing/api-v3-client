@@ -29,7 +29,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->totalCarbonProduction;
     }
 
-    public function setTotalCarbonProduction(?float $totalCarbonProduction): CarbonFootprintTextile
+    public function setTotalCarbonProduction(?float $totalCarbonProduction): static
     {
         $this->totalCarbonProduction = $totalCarbonProduction;
 
@@ -41,7 +41,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->benchmarkCarbonProduction;
     }
 
-    public function setBenchmarkCarbonProduction(?float $benchmarkCarbonProduction): CarbonFootprintTextile
+    public function setBenchmarkCarbonProduction(?float $benchmarkCarbonProduction): static
     {
         $this->benchmarkCarbonProduction = $benchmarkCarbonProduction;
 
@@ -53,7 +53,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->savingCarbonProduction;
     }
 
-    public function setSavingCarbonProduction(?float $savingCarbonProduction): CarbonFootprintTextile
+    public function setSavingCarbonProduction(?float $savingCarbonProduction): static
     {
         $this->savingCarbonProduction = $savingCarbonProduction;
 
@@ -65,7 +65,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->totalWaterProduction;
     }
 
-    public function setTotalWaterProduction(?float $totalWaterProduction): CarbonFootprintTextile
+    public function setTotalWaterProduction(?float $totalWaterProduction): static
     {
         $this->totalWaterProduction = $totalWaterProduction;
 
@@ -77,7 +77,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->benchmarkWaterProduction;
     }
 
-    public function setBenchmarkWaterProduction(?float $benchmarkWaterProduction): CarbonFootprintTextile
+    public function setBenchmarkWaterProduction(?float $benchmarkWaterProduction): static
     {
         $this->benchmarkWaterProduction = $benchmarkWaterProduction;
 
@@ -89,7 +89,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->savingWaterProduction;
     }
 
-    public function setSavingWaterProduction(?float $savingWaterProduction): CarbonFootprintTextile
+    public function setSavingWaterProduction(?float $savingWaterProduction): static
     {
         $this->savingWaterProduction = $savingWaterProduction;
 
@@ -101,7 +101,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->totalGroundProduction;
     }
 
-    public function setTotalGroundProduction(?float $totalGroundProduction): CarbonFootprintTextile
+    public function setTotalGroundProduction(?float $totalGroundProduction): static
     {
         $this->totalGroundProduction = $totalGroundProduction;
 
@@ -113,7 +113,7 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->benchmarkGroundProduction;
     }
 
-    public function setBenchmarkGroundProduction(?float $benchmarkGroundProduction): CarbonFootprintTextile
+    public function setBenchmarkGroundProduction(?float $benchmarkGroundProduction): static
     {
         $this->benchmarkGroundProduction = $benchmarkGroundProduction;
 
@@ -125,14 +125,17 @@ class CarbonFootprintTextile implements JsonSerializable
         return $this->savingGroundProduction;
     }
 
-    public function setSavingGroundProduction(?float $savingGroundProduction): CarbonFootprintTextile
+    public function setSavingGroundProduction(?float $savingGroundProduction): static
     {
         $this->savingGroundProduction = $savingGroundProduction;
 
         return $this;
     }
 
-    public function jsonSerialize()
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize(): array
     {
         return [
             'total_carbon_production' => $this->totalCarbonProduction,

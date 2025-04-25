@@ -7,12 +7,7 @@ use EuropeanSourcing\Apiv3Client\Model\Variant;
 
 class VariantNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Variant
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Variant
     {
         $variant = new Variant();
         $variant->setId($data['id']);

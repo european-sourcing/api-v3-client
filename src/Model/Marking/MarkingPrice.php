@@ -21,7 +21,7 @@ class MarkingPrice
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(string $id): static
     {
         $this->id = $id;
 
@@ -33,7 +33,7 @@ class MarkingPrice
         return $this->fromQuantity;
     }
 
-    public function setFromQuantity(string $fromQuantity): self
+    public function setFromQuantity(string $fromQuantity): static
     {
         $this->fromQuantity = $fromQuantity;
 
@@ -45,7 +45,7 @@ class MarkingPrice
         return $this->value;
     }
 
-    public function setValue(string $value): self
+    public function setValue(string $value): static
     {
         $this->value = $value;
 
@@ -57,7 +57,7 @@ class MarkingPrice
         return $this->calculationValue;
     }
 
-    public function setCalculationValue(string $calculationValue): self
+    public function setCalculationValue(string $calculationValue): static
     {
         $this->calculationValue = $calculationValue;
 

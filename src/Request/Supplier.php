@@ -11,18 +11,12 @@ class Supplier extends AbstractIncludeExclude implements RequestElementInterface
      */
     private $supplierIds;
 
-    /**
-     * @param array $supplierIds
-     */
     public function __construct(array $supplierIds)
     {
         $this->supplierIds = $supplierIds;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'supplier_id' => [

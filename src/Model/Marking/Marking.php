@@ -24,7 +24,7 @@ class Marking
         return $this->id;
     }
 
-    public function setId(int $id): self
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -36,7 +36,7 @@ class Marking
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -48,7 +48,7 @@ class Marking
         return $this->slug;
     }
 
-    public function setSlug(string $slug): self
+    public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 
@@ -60,7 +60,7 @@ class Marking
         return $this->hierarchy;
     }
 
-    public function setHierarchy(array $hierarchy): self
+    public function setHierarchy(array $hierarchy): static
     {
         $this->hierarchy = $hierarchy;
 
@@ -72,7 +72,7 @@ class Marking
         return $this->fullHierarchyName;
     }
 
-    public function setFullHierarchyName(string $fullHierarchyName): self
+    public function setFullHierarchyName(string $fullHierarchyName): static
     {
         $this->fullHierarchyName = $fullHierarchyName;
 

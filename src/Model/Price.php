@@ -39,10 +39,8 @@ class Price implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Price
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -59,10 +57,8 @@ class Price implements \JsonSerializable
 
     /**
      * @param int $fromQuantity
-     *
-     * @return Price
      */
-    public function setFromQuantity($fromQuantity)
+    public function setFromQuantity($fromQuantity): static
     {
         $this->fromQuantity = $fromQuantity;
 
@@ -79,10 +75,8 @@ class Price implements \JsonSerializable
 
     /**
      * @param float $value
-     *
-     * @return Price
      */
-    public function setValue($value)
+    public function setValue($value): static
     {
         $this->value = $value;
 
@@ -99,30 +93,20 @@ class Price implements \JsonSerializable
 
     /**
      * @param float $calculationValue
-     *
-     * @return Price
      */
-    public function setCalculationValue($calculationValue)
+    public function setCalculationValue($calculationValue): static
     {
         $this->calculationValue = $calculationValue;
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
     public function getSupplierProfile(): SupplierProfile
     {
         return $this->supplierProfile;
     }
 
-    /**
-     * @param SupplierProfile $supplierProfile
-     *
-     * @return Price
-     */
-    public function setSupplierProfile(SupplierProfile $supplierProfile)
+    public function setSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfile = $supplierProfile;
 
@@ -132,7 +116,7 @@ class Price implements \JsonSerializable
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

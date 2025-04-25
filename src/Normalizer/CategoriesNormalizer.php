@@ -6,11 +6,6 @@ use EuropeanSourcing\Apiv3Client\Model\Category;
 
 class CategoriesNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return array
-     */
     public function denormalize(array $data): array
     {
         $categories = [];

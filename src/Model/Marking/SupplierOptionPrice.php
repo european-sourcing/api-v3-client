@@ -18,7 +18,7 @@ class SupplierOptionPrice
         return $this->fromQuantity;
     }
 
-    public function setFromQuantity(int $fromQuantity): SupplierOptionPrice
+    public function setFromQuantity(int $fromQuantity): static
     {
         $this->fromQuantity = $fromQuantity;
 
@@ -30,7 +30,7 @@ class SupplierOptionPrice
         return $this->value;
     }
 
-    public function setValue(float $value): SupplierOptionPrice
+    public function setValue(float $value): static
     {
         $this->value = $value;
 
@@ -42,7 +42,7 @@ class SupplierOptionPrice
         return $this->calculationValue;
     }
 
-    public function setCalculationValue(float $calculationValue): SupplierOptionPrice
+    public function setCalculationValue(float $calculationValue): static
     {
         $this->calculationValue = $calculationValue;
 

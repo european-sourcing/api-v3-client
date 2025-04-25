@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Image;
 
 class ImageNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Image
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Image
     {
         $image = new Image();
         $image->setId($data['id']);

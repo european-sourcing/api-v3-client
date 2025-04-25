@@ -12,26 +12,21 @@ class Not implements RequestElementInterface
      */
     private $element;
 
-    /**
-     * @param RequestElementInterface $element
-     */
     public function __construct(RequestElementInterface $element)
     {
         $this->element = $element;
     }
 
     /**
-     * @return array
-     *
      * @throws InvalidExcludeException
      */
-    public function export()
+    public function export(): array
     {
         if (!$this->element instanceof AbstractIncludeExclude) {
             throw new InvalidExcludeException(sprintf('Cannot exclude %s', get_class($this->element)));
         }
 
-        $this->element->setAction('exclude');
+        $this->element->setAction(AbstractIncludeExclude::EXCLUDE);
 
         return $this->element->export();
     }
