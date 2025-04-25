@@ -13,7 +13,7 @@ class Image
         return $this->id;
     }
 
-    public function setId(int $id): Image
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -25,7 +25,7 @@ class Image
         return $this->url;
     }
 
-    public function setUrl(string $url): Image
+    public function setUrl(string $url): static
     {
         $this->url = $url;
 

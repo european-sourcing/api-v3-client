@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\AttributeGroup;
 
 class AttributeGroupNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return AttributeGroup
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): AttributeGroup
     {
         $group = new AttributeGroup();
         $group->setId($data['id']);

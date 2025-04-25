@@ -35,7 +35,7 @@ class Variant
         return $this->id;
     }
 
-    public function setId(int $id): Variant
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -47,7 +47,7 @@ class Variant
         return $this->name;
     }
 
-    public function setName(string $name): Variant
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -59,7 +59,7 @@ class Variant
         return $this->internalReference;
     }
 
-    public function setInternalReference(string $internalReference): Variant
+    public function setInternalReference(string $internalReference): static
     {
         $this->internalReference = $internalReference;
 
@@ -71,7 +71,7 @@ class Variant
         return $this->supplierReference;
     }
 
-    public function setSupplierReference(string $supplierReference): Variant
+    public function setSupplierReference(string $supplierReference): static
     {
         $this->supplierReference = $supplierReference;
 
@@ -83,7 +83,7 @@ class Variant
         return $this->stock;
     }
 
-    public function setStock(?int $stock): Variant
+    public function setStock(?int $stock): static
     {
         $this->stock = $stock;
 
@@ -95,7 +95,7 @@ class Variant
         return $this->mainImage;
     }
 
-    public function setMainImage(Image $mainImage): Variant
+    public function setMainImage(Image $mainImage): static
     {
         $this->mainImage = $mainImage;
 
@@ -113,14 +113,14 @@ class Variant
     /**
      * @param array<SupplierProfile> $supplierProfiles
      */
-    public function setSupplierProfiles(array $supplierProfiles): Variant
+    public function setSupplierProfiles(array $supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
         return $this;
     }
 
-    public function addSupplierProfile(SupplierProfile $supplierProfile): Variant
+    public function addSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfiles[] = $supplierProfile;
 
@@ -138,14 +138,14 @@ class Variant
     /**
      * @param array<MinimumQuantity> $minimumQuantities
      */
-    public function setMinimumQuantities(array $minimumQuantities): Variant
+    public function setMinimumQuantities(array $minimumQuantities): static
     {
         $this->minimumQuantities = $minimumQuantities;
 
         return $this;
     }
 
-    public function addMinimumQuantity(MinimumQuantity $minimumQuantity): Variant
+    public function addMinimumQuantity(MinimumQuantity $minimumQuantity): static
     {
         $this->minimumQuantities[] = $minimumQuantity;
 
@@ -157,7 +157,7 @@ class Variant
         return $this->hasPlanetImpact;
     }
 
-    public function setHasPlanetImpact(bool $hasPlanetImpact): Variant
+    public function setHasPlanetImpact(bool $hasPlanetImpact): static
     {
         $this->hasPlanetImpact = $hasPlanetImpact;
 
@@ -169,7 +169,7 @@ class Variant
         return $this->product;
     }
 
-    public function setProduct(Product $product): Variant
+    public function setProduct(Product $product): static
     {
         $this->product = $product;
 

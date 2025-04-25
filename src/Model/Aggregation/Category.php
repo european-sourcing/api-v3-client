@@ -51,10 +51,8 @@ class Category implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $id
-     *
-     * @return Category
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -71,10 +69,8 @@ class Category implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $name
-     *
-     * @return Category
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -91,19 +87,14 @@ class Category implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $breadcrumb
-     *
-     * @return Category
      */
-    public function setBreadcrumb($breadcrumb)
+    public function setBreadcrumb($breadcrumb): static
     {
         $this->breadcrumb = $breadcrumb;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getCount(): int
     {
         return $this->count;
@@ -111,10 +102,8 @@ class Category implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $count
-     *
-     * @return Category
      */
-    public function setCount($count)
+    public function setCount($count): static
     {
         $this->count = $count;
 
@@ -131,10 +120,8 @@ class Category implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $parentId
-     *
-     * @return Category
      */
-    public function setParentId($parentId)
+    public function setParentId($parentId): static
     {
         $this->parentId = $parentId;
 
@@ -149,12 +136,7 @@ class Category implements \JsonSerializable, CountableAggregableInterface
         return $this->parent;
     }
 
-    /**
-     * @param Category $parent
-     *
-     * @return Category
-     */
-    public function setParent(Category $parent)
+    public function setParent(Category $parent): static
     {
         $this->parent = $parent;
 
@@ -169,24 +151,14 @@ class Category implements \JsonSerializable, CountableAggregableInterface
         return $this->children;
     }
 
-    /**
-     * @param array $children
-     *
-     * @return Category
-     */
-    public function setChildren(array $children)
+    public function setChildren(array $children): static
     {
         $this->children = $children;
 
         return $this;
     }
 
-    /**
-     * @param Category $category
-     *
-     * @return $this
-     */
-    public function addChildren(Category $category)
+    public function addChildren(Category $category): static
     {
         $this->children[] = $category;
 
@@ -194,13 +166,9 @@ class Category implements \JsonSerializable, CountableAggregableInterface
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

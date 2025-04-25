@@ -136,7 +136,7 @@ class VariantMarking
         return $this->id;
     }
 
-    public function setId(int $id): self
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -148,7 +148,7 @@ class VariantMarking
         return $this->key;
     }
 
-    public function setKey(int $key): self
+    public function setKey(int $key): static
     {
         $this->key = $key;
 
@@ -160,7 +160,7 @@ class VariantMarking
         return $this->includedInVariantPrices;
     }
 
-    public function setIncludedInVariantPrices(bool $includedInVariantPrices): self
+    public function setIncludedInVariantPrices(bool $includedInVariantPrices): static
     {
         $this->includedInVariantPrices = $includedInVariantPrices;
 
@@ -172,7 +172,7 @@ class VariantMarking
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -184,7 +184,7 @@ class VariantMarking
         return $this->width;
     }
 
-    public function setWidth(?float $width): self
+    public function setWidth(?float $width): static
     {
         $this->width = $width;
 
@@ -196,7 +196,7 @@ class VariantMarking
         return $this->minimumWidth;
     }
 
-    public function setMinimumWidth(?float $minimumWidth): self
+    public function setMinimumWidth(?float $minimumWidth): static
     {
         $this->minimumWidth = $minimumWidth;
 
@@ -208,7 +208,7 @@ class VariantMarking
         return $this->maximumWidth;
     }
 
-    public function setMaximumWidth(?float $maximumWidth): self
+    public function setMaximumWidth(?float $maximumWidth): static
     {
         $this->maximumWidth = $maximumWidth;
 
@@ -220,7 +220,7 @@ class VariantMarking
         return $this->length;
     }
 
-    public function setLength(?float $length): self
+    public function setLength(?float $length): static
     {
         $this->length = $length;
 
@@ -232,7 +232,7 @@ class VariantMarking
         return $this->minimumLength;
     }
 
-    public function setMinimumLength(?float $minimumLength): self
+    public function setMinimumLength(?float $minimumLength): static
     {
         $this->minimumLength = $minimumLength;
 
@@ -244,7 +244,7 @@ class VariantMarking
         return $this->maximumLength;
     }
 
-    public function setMaximumLength(?float $maximumLength): self
+    public function setMaximumLength(?float $maximumLength): static
     {
         $this->maximumLength = $maximumLength;
 
@@ -256,7 +256,7 @@ class VariantMarking
         return $this->diameter;
     }
 
-    public function setDiameter(?int $diameter): self
+    public function setDiameter(?int $diameter): static
     {
         $this->diameter = $diameter;
 
@@ -268,7 +268,7 @@ class VariantMarking
         return $this->minimumDiameter;
     }
 
-    public function setMinimumDiameter(?float $minimumDiameter): self
+    public function setMinimumDiameter(?float $minimumDiameter): static
     {
         $this->minimumDiameter = $minimumDiameter;
 
@@ -280,7 +280,7 @@ class VariantMarking
         return $this->maximumDiameter;
     }
 
-    public function setMaximumDiameter(?float $maximumDiameter): self
+    public function setMaximumDiameter(?float $maximumDiameter): static
     {
         $this->maximumDiameter = $maximumDiameter;
 
@@ -292,7 +292,7 @@ class VariantMarking
         return $this->fullColor;
     }
 
-    public function setFullColor(bool $fullColor): self
+    public function setFullColor(bool $fullColor): static
     {
         $this->fullColor = $fullColor;
 
@@ -304,7 +304,7 @@ class VariantMarking
         return $this->squaredSize;
     }
 
-    public function setSquaredSize(?float $squaredSize): self
+    public function setSquaredSize(?float $squaredSize): static
     {
         $this->squaredSize = $squaredSize;
 
@@ -316,7 +316,7 @@ class VariantMarking
         return $this->minimumSquaredSize;
     }
 
-    public function setMinimumSquaredSize(?float $minimumSquaredSize): self
+    public function setMinimumSquaredSize(?float $minimumSquaredSize): static
     {
         $this->minimumSquaredSize = $minimumSquaredSize;
 
@@ -328,7 +328,7 @@ class VariantMarking
         return $this->maximumSquaredSize;
     }
 
-    public function setMaximumSquaredSize(?float $maximumSquaredSize): self
+    public function setMaximumSquaredSize(?float $maximumSquaredSize): static
     {
         $this->maximumSquaredSize = $maximumSquaredSize;
 
@@ -340,7 +340,7 @@ class VariantMarking
         return $this->minimumQuantity;
     }
 
-    public function setMinimumQuantity(?int $minimumQuantity): self
+    public function setMinimumQuantity(?int $minimumQuantity): static
     {
         $this->minimumQuantity = $minimumQuantity;
 
@@ -352,7 +352,7 @@ class VariantMarking
         return $this->maximumQuantity;
     }
 
-    public function setMaximumQuantity(?int $maximumQuantity): self
+    public function setMaximumQuantity(?int $maximumQuantity): static
     {
         $this->maximumQuantity = $maximumQuantity;
 
@@ -364,7 +364,7 @@ class VariantMarking
         return $this->numberOfLogos;
     }
 
-    public function setNumberOfLogos(?int $numberOfLogos): self
+    public function setNumberOfLogos(?int $numberOfLogos): static
     {
         $this->numberOfLogos = $numberOfLogos;
 
@@ -376,7 +376,7 @@ class VariantMarking
         return $this->minimumNumberOfLogos;
     }
 
-    public function setMinimumNumberOfLogos(?int $minimumNumberOfLogos): self
+    public function setMinimumNumberOfLogos(?int $minimumNumberOfLogos): static
     {
         $this->minimumNumberOfLogos = $minimumNumberOfLogos;
 
@@ -388,7 +388,7 @@ class VariantMarking
         return $this->maximumNumberOfLogos;
     }
 
-    public function setMaximumNumberOfLogos(?int $maximumNumberOfLogos): self
+    public function setMaximumNumberOfLogos(?int $maximumNumberOfLogos): static
     {
         $this->maximumNumberOfLogos = $maximumNumberOfLogos;
 
@@ -400,7 +400,7 @@ class VariantMarking
         return $this->numberOfColors;
     }
 
-    public function setNumberOfColors(?int $numberOfColors): self
+    public function setNumberOfColors(?int $numberOfColors): static
     {
         $this->numberOfColors = $numberOfColors;
 
@@ -412,7 +412,7 @@ class VariantMarking
         return $this->minimumNumberOfColors;
     }
 
-    public function setMinimumNumberOfColors(?int $minimumNumberOfColors): self
+    public function setMinimumNumberOfColors(?int $minimumNumberOfColors): static
     {
         $this->minimumNumberOfColors = $minimumNumberOfColors;
 
@@ -424,7 +424,7 @@ class VariantMarking
         return $this->maximumNumberOfColors;
     }
 
-    public function setMaximumNumberOfColors(?int $maximumNumberOfColors): self
+    public function setMaximumNumberOfColors(?int $maximumNumberOfColors): static
     {
         $this->maximumNumberOfColors = $maximumNumberOfColors;
 
@@ -436,7 +436,7 @@ class VariantMarking
         return $this->numberOfPositions;
     }
 
-    public function setNumberOfPositions(?int $numberOfPositions): self
+    public function setNumberOfPositions(?int $numberOfPositions): static
     {
         $this->numberOfPositions = $numberOfPositions;
 
@@ -448,7 +448,7 @@ class VariantMarking
         return $this->minimumNumberOfPositions;
     }
 
-    public function setMinimumNumberOfPositions(?int $minimumNumberOfPositions): self
+    public function setMinimumNumberOfPositions(?int $minimumNumberOfPositions): static
     {
         $this->minimumNumberOfPositions = $minimumNumberOfPositions;
 
@@ -460,7 +460,7 @@ class VariantMarking
         return $this->maximumNumberOfPositions;
     }
 
-    public function setMaximumNumberOfPositions(?int $maximumNumberOfPositions): self
+    public function setMaximumNumberOfPositions(?int $maximumNumberOfPositions): static
     {
         $this->maximumNumberOfPositions = $maximumNumberOfPositions;
 
@@ -472,7 +472,7 @@ class VariantMarking
         return $this->comment;
     }
 
-    public function setComment(?string $comment): self
+    public function setComment(?string $comment): static
     {
         $this->comment = $comment;
 
@@ -484,7 +484,7 @@ class VariantMarking
         return $this->marking;
     }
 
-    public function setMarking(Marking $marking): self
+    public function setMarking(Marking $marking): static
     {
         $this->marking = $marking;
 
@@ -496,7 +496,7 @@ class VariantMarking
         return $this->markingPosition;
     }
 
-    public function setMarkingPosition(MarkingPosition $markingPosition): self
+    public function setMarkingPosition(MarkingPosition $markingPosition): static
     {
         $this->markingPosition = $markingPosition;
 
@@ -508,7 +508,7 @@ class VariantMarking
         return $this->supplierMarking;
     }
 
-    public function setSupplierMarking(SupplierMarking $supplierMarking): self
+    public function setSupplierMarking(SupplierMarking $supplierMarking): static
     {
         $this->supplierMarking = $supplierMarking;
 
@@ -520,14 +520,14 @@ class VariantMarking
         return $this->supplierOptions;
     }
 
-    public function setSupplierOptions(Collection $supplierOptions): self
+    public function setSupplierOptions(Collection $supplierOptions): static
     {
         $this->supplierOptions = $supplierOptions;
 
         return $this;
     }
 
-    public function addSupplierOption(SupplierOption $supplierOption): self
+    public function addSupplierOption(SupplierOption $supplierOption): static
     {
         $this->supplierOptions->add($supplierOption->getCode(), $supplierOption);
 
@@ -539,14 +539,14 @@ class VariantMarking
         return $this->supplierProfiles;
     }
 
-    public function setSupplierProfiles(Collection $supplierProfiles): self
+    public function setSupplierProfiles(Collection $supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
         return $this;
     }
 
-    public function addSupplierProfile(SupplierProfile $supplierProfile): self
+    public function addSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfiles->add($supplierProfile->getId(), $supplierProfile);
 
@@ -558,14 +558,14 @@ class VariantMarking
         return $this->staticFixedPrices;
     }
 
-    public function setStaticFixedPrices(Collection $staticFixedPrices): self
+    public function setStaticFixedPrices(Collection $staticFixedPrices): static
     {
         $this->staticFixedPrices = $staticFixedPrices;
 
         return $this;
     }
 
-    public function addStaticFixedPrice(StaticFixedPrice $staticFixedPrice): self
+    public function addStaticFixedPrice(StaticFixedPrice $staticFixedPrice): static
     {
         $this->staticFixedPrices->add($staticFixedPrice->getId(), $staticFixedPrice);
 
@@ -577,14 +577,14 @@ class VariantMarking
         return $this->dynamicFixedPrices;
     }
 
-    public function setDynamicFixedPrices(Collection $dynamicFixedPrices): self
+    public function setDynamicFixedPrices(Collection $dynamicFixedPrices): static
     {
         $this->dynamicFixedPrices = $dynamicFixedPrices;
 
         return $this;
     }
 
-    public function addDynamicFixedPrice(DynamicFixedPrice $dynamicFixedPrice): self
+    public function addDynamicFixedPrice(DynamicFixedPrice $dynamicFixedPrice): static
     {
         $this->dynamicFixedPrices->add($dynamicFixedPrice->getId(), $dynamicFixedPrice);
 
@@ -596,14 +596,14 @@ class VariantMarking
         return $this->staticVariablePriceHolders;
     }
 
-    public function setStaticVariablePriceHolders(Collection $staticVariablePriceHolders): self
+    public function setStaticVariablePriceHolders(Collection $staticVariablePriceHolders): static
     {
         $this->staticVariablePriceHolders = $staticVariablePriceHolders;
 
         return $this;
     }
 
-    public function addStaticVariablePriceHolder(StaticVariablePriceHolder $staticVariablePriceHolder): self
+    public function addStaticVariablePriceHolder(StaticVariablePriceHolder $staticVariablePriceHolder): static
     {
         $this->staticVariablePriceHolders->add($staticVariablePriceHolder->getId(), $staticVariablePriceHolder);
 
@@ -615,14 +615,14 @@ class VariantMarking
         return $this->dynamicVariablePriceHolders;
     }
 
-    public function setDynamicVariablePriceHolders(Collection $dynamicVariablePriceHolders): self
+    public function setDynamicVariablePriceHolders(Collection $dynamicVariablePriceHolders): static
     {
         $this->dynamicVariablePriceHolders = $dynamicVariablePriceHolders;
 
         return $this;
     }
 
-    public function addDynamicVariablePriceHolder(DynamicVariablePriceHolder $dynamicVariablePriceHolder): self
+    public function addDynamicVariablePriceHolder(DynamicVariablePriceHolder $dynamicVariablePriceHolder): static
     {
         $this->dynamicVariablePriceHolders->add($dynamicVariablePriceHolder->getId(), $dynamicVariablePriceHolder);
 

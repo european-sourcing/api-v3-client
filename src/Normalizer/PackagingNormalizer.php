@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Packaging;
 
 class PackagingNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Packaging
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Packaging
     {
         $packaging = new Packaging();
         $packaging->setId($data['id']);

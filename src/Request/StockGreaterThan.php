@@ -11,18 +11,12 @@ class StockGreaterThan implements RequestElementInterface
      */
     private $stockGreaterThan;
 
-    /**
-     * @param int $stockGreaterThan
-     */
     public function __construct(int $stockGreaterThan)
     {
         $this->stockGreaterThan = $stockGreaterThan;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'stock_greater_than' => $this->stockGreaterThan

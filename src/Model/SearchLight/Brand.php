@@ -13,7 +13,7 @@ class Brand
         return $this->id;
     }
 
-    public function setId(int $id): Brand
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -25,7 +25,7 @@ class Brand
         return $this->name;
     }
 
-    public function setName(string $name): Brand
+    public function setName(string $name): static
     {
         $this->name = $name;
 

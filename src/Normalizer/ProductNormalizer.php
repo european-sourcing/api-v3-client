@@ -8,13 +8,9 @@ use EuropeanSourcing\Apiv3Client\Model\Product;
 class ProductNormalizer
 {
     /**
-     * @param array $data
-     *
-     * @return Product
-     *
      * @throws \Exception
      */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Product
     {
         $product = new Product();
         $product->setId($data['id']);

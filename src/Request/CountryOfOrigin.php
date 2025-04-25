@@ -11,18 +11,12 @@ class CountryOfOrigin extends AbstractIncludeExclude implements RequestElementIn
      */
     private $countryOfOrigins;
 
-    /**
-     * @param array $countryOfOrigins
-     */
     public function __construct(array $countryOfOrigins)
     {
         $this->countryOfOrigins = $countryOfOrigins;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'country_of_origin' => [

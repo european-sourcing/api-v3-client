@@ -11,18 +11,12 @@ class CountryCode implements RequestElementInterface
      */
     private $countryCode;
 
-    /**
-     * @param string $countryCode
-     */
     public function __construct(string $countryCode)
     {
         $this->countryCode = $countryCode;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'country_code' => $this->countryCode

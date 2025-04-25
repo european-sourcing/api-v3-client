@@ -27,7 +27,7 @@ class CarbonFootprint implements JsonSerializable
         return $this->totalCarbonProduction;
     }
 
-    public function setTotalCarbonProduction(?float $totalCarbonProduction): CarbonFootprint
+    public function setTotalCarbonProduction(?float $totalCarbonProduction): static
     {
         $this->totalCarbonProduction = $totalCarbonProduction;
 
@@ -39,7 +39,7 @@ class CarbonFootprint implements JsonSerializable
         return $this->totalPackaging;
     }
 
-    public function setTotalPackaging(?float $totalPackaging): CarbonFootprint
+    public function setTotalPackaging(?float $totalPackaging): static
     {
         $this->totalPackaging = $totalPackaging;
 
@@ -51,7 +51,7 @@ class CarbonFootprint implements JsonSerializable
         return $this->totalLogistic;
     }
 
-    public function setTotalLogistic(?float $totalLogistic): CarbonFootprint
+    public function setTotalLogistic(?float $totalLogistic): static
     {
         $this->totalLogistic = $totalLogistic;
 
@@ -63,7 +63,7 @@ class CarbonFootprint implements JsonSerializable
         return $this->footprintUsage;
     }
 
-    public function setFootprintUsage(?float $footprintUsage): CarbonFootprint
+    public function setFootprintUsage(?float $footprintUsage): static
     {
         $this->footprintUsage = $footprintUsage;
 
@@ -75,7 +75,7 @@ class CarbonFootprint implements JsonSerializable
         return $this->footprintEndOfLife;
     }
 
-    public function setFootprintEndOfLife(?float $footprintEndOfLife): CarbonFootprint
+    public function setFootprintEndOfLife(?float $footprintEndOfLife): static
     {
         $this->footprintEndOfLife = $footprintEndOfLife;
 
@@ -87,7 +87,7 @@ class CarbonFootprint implements JsonSerializable
         return $this->total;
     }
 
-    public function setTotal(?float $total): CarbonFootprint
+    public function setTotal(?float $total): static
     {
         $this->total = $total;
 
@@ -99,7 +99,7 @@ class CarbonFootprint implements JsonSerializable
         return $this->score;
     }
 
-    public function setScore(?float $score): CarbonFootprint
+    public function setScore(?float $score): static
     {
         $this->score = $score;
 
@@ -111,14 +111,17 @@ class CarbonFootprint implements JsonSerializable
         return $this->scoreUnit;
     }
 
-    public function setScoreUnit(?string $scoreUnit): CarbonFootprint
+    public function setScoreUnit(?string $scoreUnit): static
     {
         $this->scoreUnit = $scoreUnit;
 
         return $this;
     }
 
-    public function jsonSerialize()
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize(): array
     {
         return [
             'total_carbon_production' => $this->totalCarbonProduction,

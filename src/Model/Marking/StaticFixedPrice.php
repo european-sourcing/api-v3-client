@@ -37,7 +37,7 @@ class StaticFixedPrice
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(string $id): static
     {
         $this->id = $id;
 
@@ -49,7 +49,7 @@ class StaticFixedPrice
         return $this->value;
     }
 
-    public function setValue(?string $value): self
+    public function setValue(?string $value): static
     {
         $this->value = $value;
 
@@ -61,7 +61,7 @@ class StaticFixedPrice
         return $this->calculationValue;
     }
 
-    public function setCalculationValue(string $calculationValue): self
+    public function setCalculationValue(string $calculationValue): static
     {
         $this->calculationValue = $calculationValue;
 
@@ -73,7 +73,7 @@ class StaticFixedPrice
         return $this->condition;
     }
 
-    public function setCondition(?string $condition): self
+    public function setCondition(?string $condition): static
     {
         $this->condition = $condition;
 
@@ -85,7 +85,7 @@ class StaticFixedPrice
         return $this->totalPrice;
     }
 
-    public function setTotalPrice(bool $totalPrice): self
+    public function setTotalPrice(bool $totalPrice): static
     {
         $this->totalPrice = $totalPrice;
 
@@ -97,14 +97,14 @@ class StaticFixedPrice
         return $this->markingFees;
     }
 
-    public function setMarkingFees(Collection $markingFees): self
+    public function setMarkingFees(Collection $markingFees): static
     {
         $this->markingFees = $markingFees;
 
         return $this;
     }
 
-    public function addMarkingFee(MarkingFee $markingFee): self
+    public function addMarkingFee(MarkingFee $markingFee): static
     {
         $this->markingFees->add($markingFee->getId(), $markingFee);
 
@@ -116,7 +116,7 @@ class StaticFixedPrice
         return $this->supplierProfile;
     }
 
-    public function setSupplierProfile(SupplierProfile $supplierProfile): self
+    public function setSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfile = $supplierProfile;
 

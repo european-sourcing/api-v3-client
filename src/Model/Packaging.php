@@ -49,10 +49,8 @@ class Packaging implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Packaging
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -69,10 +67,8 @@ class Packaging implements \JsonSerializable
 
     /**
      * @param int $innerQuantity
-     *
-     * @return Packaging
      */
-    public function setInnerQuantity($innerQuantity)
+    public function setInnerQuantity($innerQuantity): static
     {
         $this->innerQuantity = $innerQuantity;
 
@@ -89,10 +85,8 @@ class Packaging implements \JsonSerializable
 
     /**
      * @param Packaging $parent
-     *
-     * @return Packaging
      */
-    public function setParent($parent)
+    public function setParent($parent): static
     {
         $this->parent = $parent;
 
@@ -109,10 +103,8 @@ class Packaging implements \JsonSerializable
 
     /**
      * @param int $parentId
-     *
-     * @return Packaging
      */
-    public function setParentId($parentId)
+    public function setParentId($parentId): static
     {
         $this->parentId = $parentId;
 
@@ -129,10 +121,8 @@ class Packaging implements \JsonSerializable
 
     /**
      * @param string $type
-     *
-     * @return Packaging
      */
-    public function setType($type)
+    public function setType($type): static
     {
         $this->type = $type;
 
@@ -149,10 +139,8 @@ class Packaging implements \JsonSerializable
 
     /**
      * @param float $weight
-     *
-     * @return Packaging
      */
-    public function setWeight($weight)
+    public function setWeight($weight): static
     {
         $this->weight = $weight;
 
@@ -169,22 +157,15 @@ class Packaging implements \JsonSerializable
 
     /**
      * @param array $sizes
-     *
-     * @return Packaging
      */
-    public function setSizes($sizes)
+    public function setSizes($sizes): static
     {
         $this->sizes = $sizes;
 
         return $this;
     }
 
-    /**
-     * @param Size $size
-     *
-     * @return Packaging
-     */
-    public function addSize(Size $size)
+    public function addSize(Size $size): static
     {
         $this->sizes[] = $size;
 
@@ -204,13 +185,9 @@ class Packaging implements \JsonSerializable
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

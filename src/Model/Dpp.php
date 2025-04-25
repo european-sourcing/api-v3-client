@@ -15,7 +15,7 @@ class Dpp implements JsonSerializable
         return $this->id;
     }
 
-    public function setId(?string $id): Dpp
+    public function setId(?string $id): static
     {
         $this->id = $id;
 
@@ -27,14 +27,17 @@ class Dpp implements JsonSerializable
         return $this->url;
     }
 
-    public function setUrl(?string $url): Dpp
+    public function setUrl(?string $url): static
     {
         $this->url = $url;
 
         return $this;
     }
 
-    public function jsonSerialize()
+    /**
+     * @inheritDoc
+     */
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

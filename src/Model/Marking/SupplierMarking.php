@@ -21,7 +21,7 @@ class SupplierMarking
         return $this->id;
     }
 
-    public function setId(int $id): self
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -33,7 +33,7 @@ class SupplierMarking
         return $this->code;
     }
 
-    public function setCode(string $code): self
+    public function setCode(string $code): static
     {
         $this->code = $code;
 
@@ -45,7 +45,7 @@ class SupplierMarking
         return $this->comment;
     }
 
-    public function setComment(string $comment): self
+    public function setComment(string $comment): static
     {
         $this->comment = $comment;
 
@@ -57,7 +57,7 @@ class SupplierMarking
         return $this->nameComplement;
     }
 
-    public function setNameComplement(string $nameComplement): self
+    public function setNameComplement(string $nameComplement): static
     {
         $this->nameComplement = $nameComplement;
 

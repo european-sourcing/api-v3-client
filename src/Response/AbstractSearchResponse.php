@@ -20,7 +20,7 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
         return $this->totalProducts;
     }
 
-    public function setTotalProducts(int $totalProducts): AbstractSearchResponse
+    public function setTotalProducts(int $totalProducts): static
     {
         $this->totalProducts = $totalProducts;
 
@@ -38,14 +38,14 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @param array<Aggregation> $aggregations
      */
-    public function setAggregations(array $aggregations): AbstractSearchResponse
+    public function setAggregations(array $aggregations): static
     {
         $this->aggregations = $aggregations;
 
         return $this;
     }
 
-    public function addAggregation(Aggregation $aggregation): AbstractSearchResponse
+    public function addAggregation(Aggregation $aggregation): static
     {
         $this->aggregations[$aggregation->getName()] = $aggregation;
 

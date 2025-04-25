@@ -54,10 +54,8 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Supplier
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -74,10 +72,8 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param string $name
-     *
-     * @return Supplier
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -94,10 +90,8 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param string $slug
-     *
-     * @return Supplier
      */
-    public function setSlug($slug)
+    public function setSlug($slug): static
     {
         $this->slug = $slug;
 
@@ -114,10 +108,8 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param string $legalName
-     *
-     * @return Supplier
      */
-    public function setLegalName($legalName)
+    public function setLegalName($legalName): static
     {
         $this->legalName = $legalName;
 
@@ -134,10 +126,8 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param string $vatIdentificationNumber
-     *
-     * @return Supplier
      */
-    public function setVatIdentificationNumber($vatIdentificationNumber)
+    public function setVatIdentificationNumber($vatIdentificationNumber): static
     {
         $this->vatIdentificationNumber = $vatIdentificationNumber;
 
@@ -154,10 +144,8 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param int $count
-     *
-     * @return Supplier
      */
-    public function setCount($count)
+    public function setCount($count): static
     {
         $this->count = $count;
 
@@ -174,22 +162,15 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param array $supplierProfiles
-     *
-     * @return Supplier
      */
-    public function setSupplierProfiles($supplierProfiles)
+    public function setSupplierProfiles($supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
         return $this;
     }
 
-    /**
-     * @param SupplierProfile $supplierProfile
-     *
-     * @return Supplier
-     */
-    public function addSupplierProfile(SupplierProfile $supplierProfile)
+    public function addSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfiles[] = $supplierProfile;
 
@@ -206,22 +187,15 @@ class Supplier implements \JsonSerializable
 
     /**
      * @param array $supplierContacts
-     *
-     * @return Supplier
      */
-    public function setSupplierContacts($supplierContacts)
+    public function setSupplierContacts($supplierContacts): static
     {
         $this->supplierContacts = $supplierContacts;
 
         return $this;
     }
 
-    /**
-     * @param SupplierContact $supplierContact
-     *
-     * @return Supplier
-     */
-    public function addSupplierContact(SupplierContact $supplierContact)
+    public function addSupplierContact(SupplierContact $supplierContact): static
     {
         $this->supplierContacts[] = $supplierContact;
 
@@ -231,7 +205,7 @@ class Supplier implements \JsonSerializable
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

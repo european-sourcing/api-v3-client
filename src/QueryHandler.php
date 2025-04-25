@@ -76,10 +76,7 @@ class QueryHandler
         $this->language = $language;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         $searchExports = [];
         foreach ($this->searchHandlers as $searchHandler) {
@@ -127,10 +124,8 @@ class QueryHandler
 
     /**
      * @param int $page
-     *
-     * @return QueryHandler
      */
-    public function setPage($page)
+    public function setPage($page): static
     {
         $this->page = $page;
 
@@ -147,10 +142,8 @@ class QueryHandler
 
     /**
      * @param int $offset
-     *
-     * @return QueryHandler
      */
-    public function setOffset($offset)
+    public function setOffset($offset): static
     {
         $this->offset = $offset;
 
@@ -167,10 +160,8 @@ class QueryHandler
 
     /**
      * @param int $perpage
-     *
-     * @return QueryHandler
      */
-    public function setPerpage($perpage)
+    public function setPerpage($perpage): static
     {
         $this->perpage = $perpage;
 
@@ -187,10 +178,8 @@ class QueryHandler
 
     /**
      * @param string $sortField
-     *
-     * @return QueryHandler
      */
-    public function setSortField($sortField)
+    public function setSortField($sortField): static
     {
         $this->sortField = $sortField;
 
@@ -207,10 +196,8 @@ class QueryHandler
 
     /**
      * @param string $sortDirection
-     *
-     * @return QueryHandler
      */
-    public function setSortDirection($sortDirection)
+    public function setSortDirection($sortDirection): static
     {
         $this->sortDirection = $sortDirection;
 
@@ -227,22 +214,15 @@ class QueryHandler
 
     /**
      * @param array $searchHandlers
-     *
-     * @return QueryHandler
      */
-    public function setSearchHandlers($searchHandlers)
+    public function setSearchHandlers($searchHandlers): static
     {
         $this->searchHandlers = $searchHandlers;
 
         return $this;
     }
 
-    /**
-     * @param SearchHandler $searchHandler
-     *
-     * @return QueryHandler
-     */
-    public function addSearchHandler(SearchHandler $searchHandler)
+    public function addSearchHandler(SearchHandler $searchHandler): static
     {
         $this->searchHandlers[] = $searchHandler;
 
@@ -259,10 +239,8 @@ class QueryHandler
 
     /**
      * @param bool $oneVariant
-     *
-     * @return QueryHandler
      */
-    public function setOneVariant($oneVariant)
+    public function setOneVariant($oneVariant): static
     {
         $this->oneVariant = $oneVariant;
 
@@ -279,10 +257,8 @@ class QueryHandler
 
     /**
      * @param bool $enableAggregations
-     *
-     * @return QueryHandler
      */
-    public function setEnableAggregations($enableAggregations)
+    public function setEnableAggregations($enableAggregations): static
     {
         $this->enableAggregations = $enableAggregations;
 
@@ -299,9 +275,8 @@ class QueryHandler
 
     /**
      * @param array<string> $includeAggregations
-     * @return QueryHandler
      */
-    public function setIncludeAggregations(array $includeAggregations): QueryHandler
+    public function setIncludeAggregations(array $includeAggregations): static
     {
         $this->includeAggregations = $includeAggregations;
 

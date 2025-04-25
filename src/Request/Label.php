@@ -11,18 +11,12 @@ class Label extends AbstractIncludeExclude implements RequestElementInterface
      */
     private $labelIds;
 
-    /**
-     * @param array $labelIds
-     */
     public function __construct(array $labelIds)
     {
         $this->labelIds = $labelIds;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'label_id' => [

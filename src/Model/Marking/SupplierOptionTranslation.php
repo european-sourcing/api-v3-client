@@ -13,15 +13,12 @@ class SupplierOptionTranslation
     /** @var string */
     private $comment;
 
-    /**
-     * @return string
-     */
     public function getLang(): string
     {
         return $this->lang;
     }
 
-    public function setLang(string $lang): SupplierOptionTranslation
+    public function setLang(string $lang): static
     {
         $this->lang = $lang;
 
@@ -33,7 +30,7 @@ class SupplierOptionTranslation
         return $this->name;
     }
 
-    public function setName(string $name): SupplierOptionTranslation
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -45,7 +42,7 @@ class SupplierOptionTranslation
         return $this->comment;
     }
 
-    public function setComment(string $comment): SupplierOptionTranslation
+    public function setComment(string $comment): static
     {
         $this->comment = $comment;
 

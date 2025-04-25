@@ -46,20 +46,15 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
      */
     private $addressLine2;
 
-    /**
-     * @return int
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
      * @param int $id
-     *
-     * @return SupplierProfile
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -76,10 +71,8 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 
     /**
      * @param string $name
-     *
-     * @return SupplierProfile
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -96,10 +89,8 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 
     /**
      * @param string $countryCode
-     *
-     * @return SupplierProfile
      */
-    public function setCountryCode($countryCode)
+    public function setCountryCode($countryCode): static
     {
         $this->countryCode = $countryCode;
 
@@ -116,10 +107,8 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 
     /**
      * @param string $locality
-     *
-     * @return SupplierProfile
      */
-    public function setLocality($locality)
+    public function setLocality($locality): static
     {
         $this->locality = $locality;
 
@@ -136,10 +125,8 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 
     /**
      * @param string $association
-     *
-     * @return SupplierProfile
      */
-    public function setAssociation($association)
+    public function setAssociation($association): static
     {
         $this->association = $association;
 
@@ -156,10 +143,8 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 
     /**
      * @param string $postalCode
-     *
-     * @return SupplierProfile
      */
-    public function setPostalCode($postalCode)
+    public function setPostalCode($postalCode): static
     {
         $this->postalCode = $postalCode;
 
@@ -176,10 +161,8 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 
     /**
      * @param string $addressLine1
-     *
-     * @return SupplierProfile
      */
-    public function setAddressLine1($addressLine1)
+    public function setAddressLine1($addressLine1): static
     {
         $this->addressLine1 = $addressLine1;
 
@@ -196,10 +179,8 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
 
     /**
      * @param string $addressLine2
-     *
-     * @return SupplierProfile
      */
-    public function setAddressLine2($addressLine2)
+    public function setAddressLine2($addressLine2): static
     {
         $this->addressLine2 = $addressLine2;
 
@@ -207,13 +188,9 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Label;
 
 class LabelNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Label
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Label
     {
         $label = new Label();
         $label->setId($data['id']);

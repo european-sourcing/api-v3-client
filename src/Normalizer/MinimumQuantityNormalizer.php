@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\MinimumQuantity;
 
 class MinimumQuantityNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return MinimumQuantity
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): MinimumQuantity
     {
         $minimumQuantity = new MinimumQuantity();
         $minimumQuantity->setValue($data['value']);

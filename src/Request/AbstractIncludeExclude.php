@@ -2,34 +2,30 @@
 
 namespace EuropeanSourcing\Apiv3Client\Request;
 
+use InvalidArgumentException;
+
 abstract class AbstractIncludeExclude
 {
-    /**
-     * Include or exclude ?
-     *
-     * @var string
-     */
-    private $action;
+    public const INCLUDE = 'include';
+    public const EXCLUDE = 'exclude';
+    private const AUTHORIZED_ACTIONS = [self::INCLUDE, self::EXCLUDE];
 
-    /**
-     * @return string
-     */
-    public function getAction()
+    private string $action = self::INCLUDE;
+
+    public function getAction(): string
     {
-        if (null === $this->action) {
-            return 'include';
-        }
-
         return $this->action;
     }
 
-    /**
-     * @param string $action
-     *
-     * @return AbstractIncludeExclude
-     */
-    public function setAction($action)
+    public function setAction(string $action): static
     {
+        if (false === in_array($this->action, self::AUTHORIZED_ACTIONS)) {
+            throw new InvalidArgumentException(
+                'Invalid action parameter value. Got ' . $action . ' expected values '
+                . implode(' or ', self::AUTHORIZED_ACTIONS)
+            );
+        }
+
         $this->action = $action;
 
         return $this;

@@ -6,32 +6,16 @@ use EuropeanSourcing\Apiv3Client\Common\RequestElementInterface;
 
 class SearchHandler
 {
-    /**
-     * @var array
-     */
-    private $filters;
+    private array $filters = [];
 
-    public function __construct()
-    {
-        $this->filters = [];
-    }
-
-    /**
-     * @param RequestElementInterface $element
-     *
-     * @return SearchHandler
-     */
-    public function add(RequestElementInterface $element)
+    public function add(RequestElementInterface $element): static
     {
         $this->filters += $element->export();
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return $this->filters;
     }

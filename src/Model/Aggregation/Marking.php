@@ -41,10 +41,8 @@ class Marking implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $id
-     *
-     * @return Marking
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -61,10 +59,8 @@ class Marking implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $name
-     *
-     * @return Marking
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -81,19 +77,14 @@ class Marking implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $slug
-     *
-     * @return Marking
      */
-    public function setSlug($slug)
+    public function setSlug($slug): static
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getCount(): int
     {
         return $this->count;
@@ -101,10 +92,8 @@ class Marking implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $count
-     *
-     * @return Marking
      */
-    public function setCount($count)
+    public function setCount($count): static
     {
         $this->count = $count;
 
@@ -114,7 +103,7 @@ class Marking implements \JsonSerializable, CountableAggregableInterface
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

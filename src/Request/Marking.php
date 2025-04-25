@@ -11,18 +11,12 @@ class Marking extends AbstractIncludeExclude implements RequestElementInterface
      */
     private $markingIds;
 
-    /**
-     * @param array $markingIds
-     */
     public function __construct(array $markingIds)
     {
         $this->markingIds = $markingIds;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'marking_id' => [

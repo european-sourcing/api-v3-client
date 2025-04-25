@@ -47,15 +47,10 @@ class Client
      */
     private $token;
 
-    /**
-     * @param \GuzzleHttp\Client $guzzle
-     * @param $apiUrl
-     * @param $token
-     */
     public function __construct(
         \GuzzleHttp\Client $guzzle,
-        $apiUrl,
-        $token
+        string $apiUrl,
+        string $token
     ) {
         $this->guzzle = $guzzle;
         $this->apiUrl = $apiUrl;
@@ -63,14 +58,10 @@ class Client
     }
 
     /**
-     * @param QueryHandler $queryHandler
-     *
-     * @return SearchResponse
-     *
      * @throws GuzzleException
      * @throws Exception
      */
-    public function search(QueryHandler $queryHandler)
+    public function search(QueryHandler $queryHandler): SearchResponse
     {
         $body = json_encode(
             $queryHandler->export()
@@ -125,13 +116,9 @@ class Client
     }
 
     /**
-     * @param string $language
-     *
-     * @return Aggregation
-     *
      * @throws GuzzleException
      */
-    public function categories(string $language)
+    public function categories(string $language): Aggregation
     {
         $results = $this->guzzle->request('GET', $this->apiUrl . '/categories/' . $language, [
             'headers' => [
@@ -255,16 +242,6 @@ class Client
     }
 
     /**
-     * @param Variant $variant
-     * @param Marking $marking
-     * @param int $quantity
-     * @param int $nbColor
-     * @param int $nbLogo
-     * @param int $nbPosition
-     * @param int $markingMargin
-     * @param int $productMargin
-     *
-     * @return array
      * @throws GuzzleException
      */
     public function calculateMarking(
@@ -276,7 +253,7 @@ class Client
         int $nbPosition,
         int $markingMargin,
         int $productMargin
-    ) {
+    ): array {
         $body = [
             'variant_id' => $variant->getId(),
             'marking_id' => $marking->getId(),

@@ -103,10 +103,8 @@ class Product
 
     /**
      * @param int $id
-     *
-     * @return Product
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -152,10 +150,8 @@ class Product
 
     /**
      * @param string $supplierBaseReference
-     *
-     * @return Product
      */
-    public function setSupplierBaseReference($supplierBaseReference)
+    public function setSupplierBaseReference($supplierBaseReference): static
     {
         $this->supplierBaseReference = $supplierBaseReference;
 
@@ -172,10 +168,8 @@ class Product
 
     /**
      * @param string $internalReference
-     *
-     * @return Product
      */
-    public function setInternalReference($internalReference)
+    public function setInternalReference($internalReference): static
     {
         $this->internalReference = $internalReference;
 
@@ -192,10 +186,8 @@ class Product
 
     /**
      * @param string $countryOfOrigin
-     *
-     * @return Product
      */
-    public function setCountryOfOrigin($countryOfOrigin)
+    public function setCountryOfOrigin($countryOfOrigin): static
     {
         $this->countryOfOrigin = $countryOfOrigin;
 
@@ -212,10 +204,8 @@ class Product
 
     /**
      * @param string $unionCustomsCode
-     *
-     * @return Product
      */
-    public function setUnionCustomsCode($unionCustomsCode)
+    public function setUnionCustomsCode($unionCustomsCode): static
     {
         $this->unionCustomsCode = $unionCustomsCode;
 
@@ -232,10 +222,8 @@ class Product
 
     /**
      * @param bool $hasMarking
-     *
-     * @return Product
      */
-    public function setHasMarking($hasMarking)
+    public function setHasMarking($hasMarking): static
     {
         $this->hasMarking = $hasMarking;
 
@@ -252,10 +240,8 @@ class Product
 
     /**
      * @param \DateTime $lastIndexedAt
-     *
-     * @return Product
      */
-    public function setLastIndexedAt($lastIndexedAt)
+    public function setLastIndexedAt($lastIndexedAt): static
     {
         $this->lastIndexedAt = $lastIndexedAt;
 
@@ -272,10 +258,8 @@ class Product
 
     /**
      * @param \DateTime $createdAt
-     *
-     * @return Product
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt($createdAt): static
     {
         $this->createdAt = $createdAt;
 
@@ -292,10 +276,8 @@ class Product
 
     /**
      * @param \DateTime $updatedAt
-     *
-     * @return Product
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt($updatedAt): static
     {
         $this->updatedAt = $updatedAt;
 
@@ -312,22 +294,15 @@ class Product
 
     /**
      * @param array $images
-     *
-     * @return Product
      */
-    public function setImages($images)
+    public function setImages($images): static
     {
         $this->images = $images;
 
         return $this;
     }
 
-    /**
-     * @param Image $image
-     *
-     * @return Product
-     */
-    public function addimage(Image $image)
+    public function addimage(Image $image): static
     {
         $this->images[] = $image;
 
@@ -344,10 +319,8 @@ class Product
 
     /**
      * @param Variant $mainVariant
-     *
-     * @return Product
      */
-    public function setMainVariant($mainVariant)
+    public function setMainVariant($mainVariant): static
     {
         $this->mainVariant = $mainVariant;
 
@@ -364,10 +337,8 @@ class Product
 
     /**
      * @param Variant $bestVariant
-     *
-     * @return Product
      */
-    public function setBestVariant($bestVariant)
+    public function setBestVariant($bestVariant): static
     {
         $this->bestVariant = $bestVariant;
 
@@ -384,22 +355,15 @@ class Product
 
     /**
      * @param array $variants
-     *
-     * @return Product
      */
-    public function setVariants($variants)
+    public function setVariants($variants): static
     {
         $this->variants = $variants;
 
         return $this;
     }
 
-    /**
-     * @param Variant $variant
-     *
-     * @return Product
-     */
-    public function addVariant(Variant $variant)
+    public function addVariant(Variant $variant): static
     {
         $this->variants[] = $variant;
 
@@ -416,10 +380,8 @@ class Product
 
     /**
      * @param Category $mainCategory
-     *
-     * @return Product
      */
-    public function setMainCategory($mainCategory)
+    public function setMainCategory($mainCategory): static
     {
         $this->mainCategory = $mainCategory;
 
@@ -436,10 +398,8 @@ class Product
 
     /**
      * @param array $categories
-     *
-     * @return Product
      */
-    public function setCategories($categories)
+    public function setCategories($categories): static
     {
         $this->categories = $categories;
 
@@ -456,10 +416,8 @@ class Product
 
     /**
      * @param Supplier $supplier
-     *
-     * @return Product
      */
-    public function setSupplier($supplier)
+    public function setSupplier($supplier): static
     {
         $this->supplier = $supplier;
 
@@ -476,10 +434,8 @@ class Product
 
     /**
      * @param Brand $brand
-     *
-     * @return Product
      */
-    public function setBrand($brand)
+    public function setBrand($brand): static
     {
         $this->brand = $brand;
 
@@ -496,22 +452,15 @@ class Product
 
     /**
      * @param array $labels
-     *
-     * @return Product
      */
-    public function setLabels($labels)
+    public function setLabels($labels): static
     {
         $this->labels = $labels;
 
         return $this;
     }
 
-    /**
-     * @param Label $label
-     *
-     * @return Product
-     */
-    public function addLabel(Label $label)
+    public function addLabel(Label $label): static
     {
         $this->labels[] = $label;
 
