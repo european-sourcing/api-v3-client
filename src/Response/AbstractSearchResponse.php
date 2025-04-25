@@ -60,7 +60,7 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @inheritDoc
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->products[$offset]);
     }
@@ -68,7 +68,7 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @inheritDoc
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->products[$offset] ?? null;
     }
@@ -76,17 +76,15 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @inheritDoc
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         $this->products[$offset] = $value;
-
-        return $this;
     }
 
     /**
      * @inheritDoc
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->products[$offset]);
     }
@@ -94,7 +92,7 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @inheritDoc
      */
-    public function current()
+    public function current(): mixed
     {
         return current($this->products);
     }
@@ -102,7 +100,7 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @inheritDoc
      */
-    public function key()
+    public function key(): string|int|null
     {
         return key($this->products);
     }
@@ -110,23 +108,23 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @inheritDoc
      */
-    public function next()
+    public function next(): void
     {
-        return next($this->products);
+        next($this->products);
     }
 
     /**
      * @inheritDoc
      */
-    public function rewind()
+    public function rewind(): void
     {
-        return reset($this->products);
+        reset($this->products);
     }
 
     /**
      * @inheritDoc
      */
-    public function valid()
+    public function valid(): bool
     {
         return key($this->products) !== null;
     }
@@ -134,7 +132,7 @@ abstract class AbstractSearchResponse implements SearchResponseInterface
     /**
      * @inheritDoc
      */
-    public function count()
+    public function count(): int
     {
         return count($this->products);
     }
