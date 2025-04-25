@@ -11,18 +11,12 @@ class Brand extends AbstractIncludeExclude implements RequestElementInterface
      */
     private $brandIds;
 
-    /**
-     * @param array $brandIds
-     */
     public function __construct(array $brandIds)
     {
         $this->brandIds = $brandIds;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'brand_id' => [

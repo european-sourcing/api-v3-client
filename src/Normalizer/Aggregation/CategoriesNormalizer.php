@@ -7,12 +7,7 @@ use EuropeanSourcing\Apiv3Client\Model\Aggregation\Category;
 
 class CategoriesNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Aggregation
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Aggregation
     {
         $categories = [];
         $categoryNormalizer = new CategoryNormalizer();

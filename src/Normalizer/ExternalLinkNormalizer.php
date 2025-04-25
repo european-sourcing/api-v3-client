@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\ExternalLink;
 
 class ExternalLinkNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return ExternalLink
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): ExternalLink
     {
         $externalLink = new ExternalLink();
         $externalLink->setId($data['id']);

@@ -32,7 +32,7 @@ class SupplierOption
         return $this->code;
     }
 
-    public function setCode(string $code): self
+    public function setCode(string $code): static
     {
         $this->code = $code;
 
@@ -44,7 +44,7 @@ class SupplierOption
         return $this->count;
     }
 
-    public function setCount(int $count): self
+    public function setCount(int $count): static
     {
         $this->count = $count;
 
@@ -56,7 +56,7 @@ class SupplierOption
         return $this->translation;
     }
 
-    public function setTranslation(SupplierOptionTranslation $translation): self
+    public function setTranslation(SupplierOptionTranslation $translation): static
     {
         $this->translation = $translation;
 
@@ -68,14 +68,14 @@ class SupplierOption
         return $this->staticVariablePriceHolders;
     }
 
-    public function setStaticVariablePriceHolders(Collection $staticVariablePriceHolders): self
+    public function setStaticVariablePriceHolders(Collection $staticVariablePriceHolders): static
     {
         $this->staticVariablePriceHolders = $staticVariablePriceHolders;
 
         return $this;
     }
 
-    public function addStaticVariablePriceHolder(SupplierOptionStaticVariablePriceHolder $staticVariablePriceHolder): self
+    public function addStaticVariablePriceHolder(SupplierOptionStaticVariablePriceHolder $staticVariablePriceHolder): static
     {
         $this->staticVariablePriceHolders->add($staticVariablePriceHolder->getId(), $staticVariablePriceHolder);
 
@@ -87,14 +87,14 @@ class SupplierOption
         return $this->dynamicVariablePriceHolders;
     }
 
-    public function setDynamicVariablePriceHolders(Collection $dynamicVariablePriceHolders): self
+    public function setDynamicVariablePriceHolders(Collection $dynamicVariablePriceHolders): static
     {
         $this->dynamicVariablePriceHolders = $dynamicVariablePriceHolders;
 
         return $this;
     }
 
-    public function addDynamicVariablePriceHolder(SupplierOptionDynamicVariablePriceHolder $dynamicVariablePriceHolder): self
+    public function addDynamicVariablePriceHolder(SupplierOptionDynamicVariablePriceHolder $dynamicVariablePriceHolder): static
     {
         $this->dynamicVariablePriceHolders->add($dynamicVariablePriceHolder->getId(), $dynamicVariablePriceHolder);
 

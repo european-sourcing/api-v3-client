@@ -29,10 +29,8 @@ class DeliveryTime implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return DeliveryTime
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -49,10 +47,8 @@ class DeliveryTime implements \JsonSerializable
 
     /**
      * @param string $value
-     *
-     * @return DeliveryTime
      */
-    public function setValue($value)
+    public function setValue($value): static
     {
         $this->value = $value;
 
@@ -69,22 +65,15 @@ class DeliveryTime implements \JsonSerializable
 
     /**
      * @param array $supplierProfiles
-     *
-     * @return DeliveryTime
      */
-    public function setSupplierProfiles($supplierProfiles)
+    public function setSupplierProfiles($supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
         return $this;
     }
 
-    /**
-     * @param SupplierProfile $supplierProfile
-     *
-     * @return DeliveryTime
-     */
-    public function addSupplierProfile(SupplierProfile $supplierProfile)
+    public function addSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfiles[] = $supplierProfile;
 
@@ -92,13 +81,9 @@ class DeliveryTime implements \JsonSerializable
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

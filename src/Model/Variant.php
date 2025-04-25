@@ -195,10 +195,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Variant
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -215,10 +213,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param string $name
-     *
-     * @return Variant
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -235,10 +231,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param string $slug
-     *
-     * @return Variant
      */
-    public function setSlug($slug)
+    public function setSlug($slug): static
     {
         $this->slug = $slug;
 
@@ -255,10 +249,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param string $description
-     *
-     * @return Variant
      */
-    public function setDescription($description)
+    public function setDescription($description): static
     {
         $this->description = $description;
 
@@ -275,10 +267,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param string $rawDescription
-     *
-     * @return Variant
      */
-    public function setRawDescription($rawDescription)
+    public function setRawDescription($rawDescription): static
     {
         $this->rawDescription = $rawDescription;
 
@@ -295,10 +285,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param string $supplierReference
-     *
-     * @return Variant
      */
-    public function setSupplierReference($supplierReference)
+    public function setSupplierReference($supplierReference): static
     {
         $this->supplierReference = $supplierReference;
 
@@ -315,10 +303,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param int $stock
-     *
-     * @return Variant
      */
-    public function setStock($stock)
+    public function setStock($stock): static
     {
         $this->stock = $stock;
 
@@ -335,10 +321,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param string $markingAdditionalInformation
-     *
-     * @return Variant
      */
-    public function setMarkingAdditionalInformation($markingAdditionalInformation)
+    public function setMarkingAdditionalInformation($markingAdditionalInformation): static
     {
         $this->markingAdditionalInformation = $markingAdditionalInformation;
 
@@ -355,22 +339,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $keywords
-     *
-     * @return Variant
      */
-    public function setKeywords($keywords)
+    public function setKeywords($keywords): static
     {
         $this->keywords = $keywords;
 
         return $this;
     }
 
-    /**
-     * @param Keyword $keyword
-     *
-     * @return Variant
-     */
-    public function addKeyword(Keyword $keyword)
+    public function addKeyword(Keyword $keyword): static
     {
         $this->keywords[] = $keyword;
 
@@ -387,22 +364,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $supplierProfiles
-     *
-     * @return Variant
      */
-    public function setSupplierProfiles($supplierProfiles)
+    public function setSupplierProfiles($supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
         return $this;
     }
 
-    /**
-     * @param SupplierProfile $supplierProfile
-     *
-     * @return Variant
-     */
-    public function addSupplierProfile(SupplierProfile $supplierProfile)
+    public function addSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfiles[] = $supplierProfile;
 
@@ -419,22 +389,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $sizes
-     *
-     * @return Variant
      */
-    public function setSizes($sizes)
+    public function setSizes($sizes): static
     {
         $this->sizes = $sizes;
 
         return $this;
     }
 
-    /**
-     * @param Size $size
-     *
-     * @return Variant
-     */
-    public function addSize(Size $size)
+    public function addSize(Size $size): static
     {
         $this->sizes[] = $size;
 
@@ -467,10 +430,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param float $netWeight
-     *
-     * @return Variant
      */
-    public function setNetWeight($netWeight)
+    public function setNetWeight($netWeight): static
     {
         $this->netWeight = $netWeight;
 
@@ -487,10 +448,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param float $grossWeight
-     *
-     * @return Variant
      */
-    public function setGrossWeight($grossWeight)
+    public function setGrossWeight($grossWeight): static
     {
         $this->grossWeight = $grossWeight;
 
@@ -507,10 +466,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param string $europeanArticleNumbering
-     *
-     * @return Variant
      */
-    public function setEuropeanArticleNumbering($europeanArticleNumbering)
+    public function setEuropeanArticleNumbering($europeanArticleNumbering): static
     {
         $this->europeanArticleNumbering = $europeanArticleNumbering;
 
@@ -527,10 +484,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param bool $mandatoryMarking
-     *
-     * @return Variant
      */
-    public function setMandatoryMarking($mandatoryMarking)
+    public function setMandatoryMarking($mandatoryMarking): static
     {
         $this->mandatoryMarking = $mandatoryMarking;
 
@@ -547,10 +502,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param Image $mainImage
-     *
-     * @return Variant
      */
-    public function setMainImage($mainImage)
+    public function setMainImage($mainImage): static
     {
         $this->mainImage = $mainImage;
 
@@ -567,22 +520,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $images
-     *
-     * @return Variant
      */
-    public function setImages($images)
+    public function setImages($images): static
     {
         $this->images = $images;
 
         return $this;
     }
 
-    /**
-     * @param Image $image
-     *
-     * @return Variant
-     */
-    public function addImage(Image $image)
+    public function addImage(Image $image): static
     {
         $this->images[] = $image;
 
@@ -599,10 +545,8 @@ class Variant implements \JsonSerializable
 
     /**
      * @param Packaging $packaging
-     *
-     * @return Variant
      */
-    public function setPackaging($packaging)
+    public function setPackaging($packaging): static
     {
         $this->packaging = $packaging;
 
@@ -619,22 +563,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $minimumQuantities
-     *
-     * @return Variant
      */
-    public function setMinimumQuantities($minimumQuantities)
+    public function setMinimumQuantities($minimumQuantities): static
     {
         $this->minimumQuantities = $minimumQuantities;
 
         return $this;
     }
 
-    /**
-     * @param MinimumQuantity $minimumQuantity
-     *
-     * @return Variant
-     */
-    public function addMinimumQuantity(MinimumQuantity $minimumQuantity)
+    public function addMinimumQuantity(MinimumQuantity $minimumQuantity): static
     {
         $this->minimumQuantities[] = $minimumQuantity;
 
@@ -644,7 +581,7 @@ class Variant implements \JsonSerializable
     /**
      * Minimal command quantity
      *
-     * @return MinimumQuantity|mixed|null
+     * @return MinimumQuantity|null
      */
     public function getLowestMinimumQuantity()
     {
@@ -687,12 +624,7 @@ class Variant implements \JsonSerializable
         return $this->prices;
     }
 
-    /**
-     * @param Price $price
-     *
-     * @return Variant
-     */
-    public function setPrice(Price $price)
+    public function setPrice(Price $price): static
     {
         $this->price = $price;
 
@@ -740,12 +672,7 @@ class Variant implements \JsonSerializable
         return $bestPrice;
     }
 
-    /**
-     * @param Price $price
-     *
-     * @return Variant
-     */
-    public function addPrice(Price $price)
+    public function addPrice(Price $price): static
     {
         $this->prices[] = $price;
 
@@ -760,12 +687,7 @@ class Variant implements \JsonSerializable
         return $this->lowestPrice;
     }
 
-    /**
-     * @param Price $lowestPrice
-     *
-     * @return Variant
-     */
-    public function setLowestPrice(Price $lowestPrice)
+    public function setLowestPrice(Price $lowestPrice): static
     {
         $this->lowestPrice = $lowestPrice;
 
@@ -782,22 +704,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $samplePrices
-     *
-     * @return Variant
      */
-    public function setSamplePrices($samplePrices)
+    public function setSamplePrices($samplePrices): static
     {
         $this->samplePrices = $samplePrices;
 
         return $this;
     }
 
-    /**
-     * @param Price $samplePrice
-     *
-     * @return Variant
-     */
-    public function addSamplePrice(Price $samplePrice)
+    public function addSamplePrice(Price $samplePrice): static
     {
         $this->samplePrices[] = $samplePrice;
 
@@ -814,22 +729,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $listPrices
-     *
-     * @return Variant
      */
-    public function setListPrices($listPrices)
+    public function setListPrices($listPrices): static
     {
         $this->listPrices = $listPrices;
 
         return $this;
     }
 
-    /**
-     * @param Price $listPrice
-     *
-     * @return Variant
-     */
-    public function addListPrice(Price $listPrice)
+    public function addListPrice(Price $listPrice): static
     {
         $this->listPrices[] = $listPrice;
 
@@ -846,22 +754,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $externalLinks
-     *
-     * @return Variant
      */
-    public function setExternalLinks($externalLinks)
+    public function setExternalLinks($externalLinks): static
     {
         $this->externalLinks = $externalLinks;
 
         return $this;
     }
 
-    /**
-     * @param ExternalLink $externalLink
-     *
-     * @return Variant
-     */
-    public function addExternalLink(ExternalLink $externalLink)
+    public function addExternalLink(ExternalLink $externalLink): static
     {
         $this->externalLinks[] = $externalLink;
 
@@ -878,22 +779,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $attributes
-     *
-     * @return Variant
      */
-    public function setAttributes($attributes)
+    public function setAttributes($attributes): static
     {
         $this->attributes = $attributes;
 
         return $this;
     }
 
-    /**
-     * @param Attribute $attribute
-     *
-     * @return Variant
-     */
-    public function addAttribute(Attribute $attribute)
+    public function addAttribute(Attribute $attribute): static
     {
         $this->attributes[] = $attribute;
 
@@ -910,22 +804,15 @@ class Variant implements \JsonSerializable
 
     /**
      * @param array $deliveryTimes
-     *
-     * @return Variant
      */
-    public function setDeliveryTimes($deliveryTimes)
+    public function setDeliveryTimes($deliveryTimes): static
     {
         $this->deliveryTimes = $deliveryTimes;
 
         return $this;
     }
 
-    /**
-     * @param DeliveryTime $deliveryTime
-     *
-     * @return Variant
-     */
-    public function addDeliveryTime(DeliveryTime $deliveryTime)
+    public function addDeliveryTime(DeliveryTime $deliveryTime): static
     {
         $this->deliveryTimes[] = $deliveryTime;
 
@@ -937,7 +824,7 @@ class Variant implements \JsonSerializable
         return $this->hasPlanetImpact;
     }
 
-    public function setHasPlanetImpact(bool $hasPlanetImpact): Variant
+    public function setHasPlanetImpact(bool $hasPlanetImpact): static
     {
         $this->hasPlanetImpact = $hasPlanetImpact;
 
@@ -949,7 +836,7 @@ class Variant implements \JsonSerializable
         return $this->carbonFootprint;
     }
 
-    public function setCarbonFootprint(?CarbonFootprint $carbonFootprint): Variant
+    public function setCarbonFootprint(?CarbonFootprint $carbonFootprint): static
     {
         $this->carbonFootprint = $carbonFootprint;
 
@@ -961,7 +848,7 @@ class Variant implements \JsonSerializable
         return $this->carbonFootprintTextile;
     }
 
-    public function setCarbonFootprintTextile(?CarbonFootprintTextile $carbonFootprintTextile): Variant
+    public function setCarbonFootprintTextile(?CarbonFootprintTextile $carbonFootprintTextile): static
     {
         $this->carbonFootprintTextile = $carbonFootprintTextile;
 
@@ -973,26 +860,19 @@ class Variant implements \JsonSerializable
         return $this->dpp;
     }
 
-    public function setDpp(?Dpp $dpp): Variant
+    public function setDpp(?Dpp $dpp): static
     {
         $this->dpp = $dpp;
 
         return $this;
     }
 
-    /**
-     * @return Product
-     */
     public function getProduct(): Product
     {
         return $this->product;
     }
 
-    /**
-     * @param Product $product
-     * @return Variant
-     */
-    public function setProduct(Product $product): Variant
+    public function setProduct(Product $product): static
     {
         $this->product = $product;
 
@@ -1004,7 +884,7 @@ class Variant implements \JsonSerializable
         return $this->internalReference;
     }
 
-    public function setInternalReference(string $internalReference): Variant
+    public function setInternalReference(string $internalReference): static
     {
         $this->internalReference = $internalReference;
 
@@ -1014,7 +894,7 @@ class Variant implements \JsonSerializable
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

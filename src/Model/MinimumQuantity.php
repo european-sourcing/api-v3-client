@@ -24,29 +24,20 @@ class MinimumQuantity implements \JsonSerializable
 
     /**
      * @param string $value
-     *
-     * @return MinimumQuantity
      */
-    public function setValue($value)
+    public function setValue($value): static
     {
         $this->value = $value;
 
         return $this;
     }
 
-    /**
-     * @return SupplierProfile
-     */
     public function getSupplierProfile(): SupplierProfile
     {
         return $this->supplierProfile;
     }
 
-    /**
-     * @param SupplierProfile $supplierProfile
-     * @return MinimumQuantity
-     */
-    public function setSupplierProfile(SupplierProfile $supplierProfile): self
+    public function setSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfile = $supplierProfile;
 
@@ -56,7 +47,7 @@ class MinimumQuantity implements \JsonSerializable
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'value' => $this->value,

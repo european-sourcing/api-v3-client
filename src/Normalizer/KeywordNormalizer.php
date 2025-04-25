@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Keyword;
 
 class KeywordNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Keyword
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Keyword
     {
         $keyword = new Keyword();
         $keyword->setId($data['id']);

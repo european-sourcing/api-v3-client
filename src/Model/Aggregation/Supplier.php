@@ -36,10 +36,8 @@ class Supplier implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $id
-     *
-     * @return Brand
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -56,19 +54,14 @@ class Supplier implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $name
-     *
-     * @return Brand
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getCount(): int
     {
         return $this->count;
@@ -76,10 +69,8 @@ class Supplier implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $count
-     *
-     * @return Brand
      */
-    public function setCount($count)
+    public function setCount($count): static
     {
         $this->count = $count;
 
@@ -89,12 +80,11 @@ class Supplier implements \JsonSerializable, CountableAggregableInterface
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'slug' => $this->slug,
             'count' => $this->count
         ];
     }

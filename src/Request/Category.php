@@ -11,18 +11,12 @@ class Category extends AbstractIncludeExclude implements RequestElementInterface
      */
     private $categoryIds;
 
-    /**
-     * @param array $categoryIds
-     */
     public function __construct(array $categoryIds)
     {
         $this->categoryIds = $categoryIds;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'category_id' => [

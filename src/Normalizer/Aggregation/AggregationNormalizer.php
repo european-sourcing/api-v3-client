@@ -6,13 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Aggregation\Aggregation;
 
 class AggregationNormalizer
 {
-    /**
-     * @param array $data
-     * @param string $objectNormalizerName
-     *
-     * @return Aggregation
-     */
-    public function denormalize(array $data, string $objectNormalizerName)
+    public function denormalize(array $data, string $objectNormalizerName): Aggregation
     {
         $aggregation = new Aggregation($data['name']);
 

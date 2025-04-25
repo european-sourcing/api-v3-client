@@ -17,10 +17,6 @@ class LastIndexed implements RequestElementInterface
      */
     private $date;
 
-    /**
-     * @param \DateTime $date
-     * @param string $type
-     */
     public function __construct(\DateTime $date, string $type)
     {
         $this->type = $type;
@@ -28,10 +24,9 @@ class LastIndexed implements RequestElementInterface
     }
 
     /**
-     * @return array
      * @throws InvalidArgumentException
      */
-    public function export()
+    public function export(): array
     {
         if (!in_array($this->type, ['since', 'before'])) {
             throw new InvalidArgumentException(sprintf('Invalid type "%s"', $this->type));

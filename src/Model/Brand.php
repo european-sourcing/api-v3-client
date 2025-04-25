@@ -39,10 +39,8 @@ class Brand implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Brand
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -59,10 +57,8 @@ class Brand implements \JsonSerializable
 
     /**
      * @param string $name
-     *
-     * @return Brand
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -79,10 +75,8 @@ class Brand implements \JsonSerializable
 
     /**
      * @param string $slug
-     *
-     * @return Brand
      */
-    public function setSlug($slug)
+    public function setSlug($slug): static
     {
         $this->slug = $slug;
 
@@ -99,10 +93,8 @@ class Brand implements \JsonSerializable
 
     /**
      * @param string $suffix
-     *
-     * @return Brand
      */
-    public function setSuffix($suffix)
+    public function setSuffix($suffix): static
     {
         $this->suffix = $suffix;
 
@@ -119,10 +111,8 @@ class Brand implements \JsonSerializable
 
     /**
      * @param Image $logo
-     *
-     * @return Brand
      */
-    public function setLogo($logo)
+    public function setLogo($logo): static
     {
         $this->logo = $logo;
 
@@ -132,7 +122,7 @@ class Brand implements \JsonSerializable
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

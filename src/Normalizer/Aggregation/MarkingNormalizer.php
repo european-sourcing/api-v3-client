@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Aggregation\Marking;
 
 class MarkingNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Marking
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Marking
     {
         $marking = new Marking();
         $marking->setId($data['id']);

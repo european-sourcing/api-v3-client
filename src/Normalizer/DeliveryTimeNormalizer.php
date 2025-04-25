@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\DeliveryTime;
 
 class DeliveryTimeNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return DeliveryTime
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): DeliveryTime
     {
         $deliveryTime = new DeliveryTime();
         $deliveryTime->setId($data['id']);

@@ -15,7 +15,7 @@ class SupplierProfile
         return $this->id;
     }
 
-    public function setId(int $id): SupplierProfile
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -27,7 +27,7 @@ class SupplierProfile
         return $this->name;
     }
 
-    public function setName(?string $name): SupplierProfile
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
@@ -39,7 +39,7 @@ class SupplierProfile
         return $this->countryCode;
     }
 
-    public function setCountryCode(?string $countryCode): SupplierProfile
+    public function setCountryCode(?string $countryCode): static
     {
         $this->countryCode = $countryCode;
 

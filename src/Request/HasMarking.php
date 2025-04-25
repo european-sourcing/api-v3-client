@@ -11,18 +11,12 @@ class HasMarking extends AbstractIncludeExclude implements RequestElementInterfa
      */
     private $hasMarking;
 
-    /**
-     * @param bool $hasMarking
-     */
     public function __construct(bool $hasMarking)
     {
         $this->hasMarking = $hasMarking;
     }
 
-    /**
-     * @return array
-     */
-    public function export()
+    public function export(): array
     {
         return [
             'has_marking' => $this->hasMarking

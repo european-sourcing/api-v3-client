@@ -5,13 +5,9 @@ namespace EuropeanSourcing\Apiv3Client\Normalizer;
 class ProductsNormalizer
 {
     /**
-     * @param array $data
-     *
-     * @return array
-     *
      * @throws \Exception
      */
-    public function denormalize(array $data)
+    public function denormalize(array $data): array
     {
         $products = [];
 

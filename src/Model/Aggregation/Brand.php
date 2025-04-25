@@ -40,10 +40,8 @@ class Brand implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $id
-     *
-     * @return Brand
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -60,10 +58,8 @@ class Brand implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $name
-     *
-     * @return Brand
      */
-    public function setName($name)
+    public function setName($name): static
     {
         $this->name = $name;
 
@@ -75,16 +71,13 @@ class Brand implements \JsonSerializable, CountableAggregableInterface
         return $this->slug;
     }
 
-    public function setSlug(string $slug): Brand
+    public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getCount(): int
     {
         return $this->count;
@@ -92,10 +85,8 @@ class Brand implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $count
-     *
-     * @return Brand
      */
-    public function setCount($count)
+    public function setCount($count): static
     {
         $this->count = $count;
 
@@ -107,7 +98,7 @@ class Brand implements \JsonSerializable, CountableAggregableInterface
         return $this->logo;
     }
 
-    public function setLogo(?string $logo): Brand
+    public function setLogo(?string $logo): static
     {
         $this->logo = $logo;
 
@@ -117,7 +108,7 @@ class Brand implements \JsonSerializable, CountableAggregableInterface
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

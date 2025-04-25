@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Attribute;
 
 class AttributeNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Attribute
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Attribute
     {
         $attribute = new Attribute();
         $attribute->setId($data['id']);

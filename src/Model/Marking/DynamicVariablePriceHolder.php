@@ -35,7 +35,7 @@ class DynamicVariablePriceHolder
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(string $id): static
     {
         $this->id = $id;
 
@@ -47,7 +47,7 @@ class DynamicVariablePriceHolder
         return $this->condition;
     }
 
-    public function setCondition(?string $condition): self
+    public function setCondition(?string $condition): static
     {
         $this->condition = $condition;
 
@@ -59,7 +59,7 @@ class DynamicVariablePriceHolder
         return $this->totalPrice;
     }
 
-    public function setTotalPrice(bool $totalPrice): self
+    public function setTotalPrice(bool $totalPrice): static
     {
         $this->totalPrice = $totalPrice;
 
@@ -71,14 +71,14 @@ class DynamicVariablePriceHolder
         return $this->markingFees;
     }
 
-    public function setMarkingFees(Collection $markingFees): self
+    public function setMarkingFees(Collection $markingFees): static
     {
         $this->markingFees = $markingFees;
 
         return $this;
     }
 
-    public function addMarkingFee(MarkingFee $markingFee): self
+    public function addMarkingFee(MarkingFee $markingFee): static
     {
         $this->markingFees->add($markingFee->getId(), $markingFee);
 
@@ -90,7 +90,7 @@ class DynamicVariablePriceHolder
         return $this->supplierProfile;
     }
 
-    public function setSupplierProfile(SupplierProfile $supplierProfile): self
+    public function setSupplierProfile(SupplierProfile $supplierProfile): static
     {
         $this->supplierProfile = $supplierProfile;
 
@@ -102,14 +102,14 @@ class DynamicVariablePriceHolder
         return $this->prices;
     }
 
-    public function setPrices(Collection $prices): self
+    public function setPrices(Collection $prices): static
     {
         $this->prices = $prices;
 
         return $this;
     }
 
-    public function addPrice(MarkingPrice $markingPrice): self
+    public function addPrice(MarkingPrice $markingPrice): static
     {
         $this->prices->add($markingPrice->getFromQuantity(), $markingPrice);
 

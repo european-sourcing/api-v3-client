@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Aggregation\Supplier;
 
 class SupplierNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Supplier
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Supplier
     {
         $supplier = new Supplier();
         $supplier->setId($data['id']);

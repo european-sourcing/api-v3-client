@@ -17,10 +17,6 @@ class SupplierBaseReference extends AbstractIncludeExclude implements RequestEle
      */
     private $type;
 
-    /**
-     * @param array $supplierBaseReferences
-     * @param string $type
-     */
     public function __construct(array $supplierBaseReferences, string $type)
     {
         $this->type = $type;
@@ -28,11 +24,9 @@ class SupplierBaseReference extends AbstractIncludeExclude implements RequestEle
     }
 
     /**
-     * @return array
-     *
      * @throws InvalidArgumentException
      */
-    public function export()
+    public function export(): array
     {
         if (!in_array($this->type, ['strict', 'like'])) {
             throw new InvalidArgumentException(sprintf('Invalid type "%s"', $this->type));

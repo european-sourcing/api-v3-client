@@ -31,19 +31,14 @@ class Country implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param string $code
-     *
-     * @return Country
      */
-    public function setCode($code)
+    public function setCode($code): static
     {
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getCount(): int
     {
         return $this->count;
@@ -51,10 +46,8 @@ class Country implements \JsonSerializable, CountableAggregableInterface
 
     /**
      * @param int $count
-     *
-     * @return Country
      */
-    public function setCount($count)
+    public function setCount($count): static
     {
         $this->count = $count;
 
@@ -64,7 +57,7 @@ class Country implements \JsonSerializable, CountableAggregableInterface
     /**
      * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'code' => $this->code,

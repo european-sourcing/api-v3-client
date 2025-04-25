@@ -25,7 +25,7 @@ class SupplierOptionStaticVariablePriceHolder
         return $this->id;
     }
 
-    public function setId(string $id): self
+    public function setId(string $id): static
     {
         $this->id = $id;
 
@@ -37,14 +37,14 @@ class SupplierOptionStaticVariablePriceHolder
         return $this->optionPrices;
     }
 
-    public function setOptionPrices(Collection $optionPrices): self
+    public function setOptionPrices(Collection $optionPrices): static
     {
         $this->optionPrices = $optionPrices;
 
         return $this;
     }
 
-    public function addOptionPrice(SupplierOptionPrice $supplierOptionPrice): self
+    public function addOptionPrice(SupplierOptionPrice $supplierOptionPrice): static
     {
         $this->optionPrices->add($supplierOptionPrice->getFromQuantity(), $supplierOptionPrice);
 
@@ -56,7 +56,7 @@ class SupplierOptionStaticVariablePriceHolder
         return $this->supplierProfileId;
     }
 
-    public function setSupplierProfileId(int $supplierProfileId): self
+    public function setSupplierProfileId(int $supplierProfileId): static
     {
         $this->supplierProfileId = $supplierProfileId;
 

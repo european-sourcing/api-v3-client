@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\Brand;
 
 class BrandNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return Brand
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): Brand
     {
         $brand = new Brand();
         $brand->setId($data['id']);

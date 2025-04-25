@@ -17,10 +17,6 @@ class InternalReference extends AbstractIncludeExclude implements RequestElement
      */
     private $type;
 
-    /**
-     * @param array $internalReferences
-     * @param string $type
-     */
     public function __construct(array $internalReferences, string $type)
     {
         $this->type = $type;
@@ -28,11 +24,9 @@ class InternalReference extends AbstractIncludeExclude implements RequestElement
     }
 
     /**
-     * @return array
-     *
      * @throws InvalidArgumentException
      */
-    public function export()
+    public function export(): array
     {
         if (!in_array($this->type, ['strict', 'like'])) {
             throw new InvalidArgumentException(sprintf('Invalid type "%s"', $this->type));

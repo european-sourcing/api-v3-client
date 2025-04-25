@@ -6,12 +6,7 @@ use EuropeanSourcing\Apiv3Client\Model\SupplierContact;
 
 class SupplierContactNormalizer
 {
-    /**
-     * @param array $data
-     *
-     * @return SupplierContact
-     */
-    public function denormalize(array $data)
+    public function denormalize(array $data): SupplierContact
     {
         $supplierContact = new SupplierContact();
 

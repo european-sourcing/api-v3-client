@@ -18,7 +18,7 @@ class MarkingFee
         return $this->id;
     }
 
-    public function setId(int $id): MarkingFee
+    public function setId(int $id): static
     {
         $this->id = $id;
 
@@ -30,7 +30,7 @@ class MarkingFee
         return $this->name;
     }
 
-    public function setName(string $name): MarkingFee
+    public function setName(string $name): static
     {
         $this->name = $name;
 
@@ -42,7 +42,7 @@ class MarkingFee
         return $this->slug;
     }
 
-    public function setSlug(string $slug): MarkingFee
+    public function setSlug(string $slug): static
     {
         $this->slug = $slug;
 

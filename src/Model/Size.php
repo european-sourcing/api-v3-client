@@ -29,10 +29,8 @@ class Size implements \JsonSerializable
 
     /**
      * @param int $id
-     *
-     * @return Size
      */
-    public function setId($id)
+    public function setId($id): static
     {
         $this->id = $id;
 
@@ -49,10 +47,8 @@ class Size implements \JsonSerializable
 
     /**
      * @param string $type
-     *
-     * @return Size
      */
-    public function setType($type)
+    public function setType($type): static
     {
         $this->type = $type;
 
@@ -69,10 +65,8 @@ class Size implements \JsonSerializable
 
     /**
      * @param string $value
-     *
-     * @return Size
      */
-    public function setValue($value)
+    public function setValue($value): static
     {
         $this->value = $value;
 
@@ -80,13 +74,9 @@ class Size implements \JsonSerializable
     }
 
     /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
+     * @inheritDoc
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
