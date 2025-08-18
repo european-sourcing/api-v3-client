@@ -10,9 +10,9 @@ class StaticFixedPriceNormalizer
     {
         $staticFixedPrice = new StaticFixedPrice();
         $staticFixedPrice->setId($data['id']);
-        $staticFixedPrice->setValue($data['value']);
+        $staticFixedPrice->setValue($data['value'] ?? null);
         $staticFixedPrice->setCalculationValue($data['calculation_value']);
-        $staticFixedPrice->setCondition($data['condition']);
+        $staticFixedPrice->setCondition($data['condition'] ?? null);
         $staticFixedPrice->setTotalPrice((bool) $data['total_price']);
 
         $supplierProfileNormalizer = new SupplierProfileNormalizer();
@@ -20,9 +20,11 @@ class StaticFixedPriceNormalizer
             $supplierProfileNormalizer->denormalize($data['supplier_profile'])
         );
 
-        $markingFeeNormalizer = new MarkingFeeNormalizer();
-        foreach ($data['marking_fees'] as $markingFee) {
-            $staticFixedPrice->addMarkingFee($markingFeeNormalizer->denormalize($markingFee));
+        if (false === empty($data['marking_fees'])) {
+            $markingFeeNormalizer = new MarkingFeeNormalizer();
+            foreach ($data['marking_fees'] as $markingFee) {
+                $staticFixedPrice->addMarkingFee($markingFeeNormalizer->denormalize($markingFee));
+            }
         }
 
         return $staticFixedPrice;

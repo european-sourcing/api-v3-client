@@ -19,15 +19,9 @@ class Category implements \JsonSerializable
      */
     private $breadcrumb;
 
-    /**
-     * @var Category
-     */
-    private $parent;
+    private ?Category $parent = null;
 
-    /**
-     * @var int
-     */
-    private $parentId;
+    private ?int $parentId = null;
 
     /**
      * @var array
@@ -88,36 +82,24 @@ class Category implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return Category
-     */
-    public function getParent()
+    public function getParent(): ?Category
     {
         return $this->parent;
     }
 
-    /**
-     * @param Category $parent
-     */
-    public function setParent($parent): static
+    public function setParent(?Category $parent): static
     {
         $this->parent = $parent;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getParentId()
+    public function getParentId(): ?int
     {
         return $this->parentId;
     }
 
-    /**
-     * @param int $parentId
-     */
-    public function setParentId($parentId): static
+    public function setParentId(?int $parentId): static
     {
         $this->parentId = $parentId;
 

@@ -12,7 +12,7 @@ class DynamicFixedPriceNormalizer
         $dynamicFixedPrice->setId($data['id']);
         $dynamicFixedPrice->setValue($data['value']);
         $dynamicFixedPrice->setCalculationValue($data['calculation_value']);
-        $dynamicFixedPrice->setCondition($data['condition']);
+        $dynamicFixedPrice->setCondition($data['condition'] ?? null);
         $dynamicFixedPrice->setTotalPrice((bool) $data['total_price']);
 
         $supplierProfileNormalizer = new SupplierProfileNormalizer();
@@ -20,9 +20,11 @@ class DynamicFixedPriceNormalizer
             $supplierProfileNormalizer->denormalize($data['supplier_profile'])
         );
 
-        $markingFeeNormalizer = new MarkingFeeNormalizer();
-        foreach ($data['marking_fees'] as $markingFee) {
-            $dynamicFixedPrice->addMarkingFee($markingFeeNormalizer->denormalize($markingFee));
+        if (false === empty($data['marking_fees'])) {
+            $markingFeeNormalizer = new MarkingFeeNormalizer();
+            foreach ($data['marking_fees'] as $markingFee) {
+                $dynamicFixedPrice->addMarkingFee($markingFeeNormalizer->denormalize($markingFee));
+            }
         }
 
         return $dynamicFixedPrice;

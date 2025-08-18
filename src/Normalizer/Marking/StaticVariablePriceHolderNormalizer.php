@@ -10,7 +10,7 @@ class StaticVariablePriceHolderNormalizer
     {
         $staticVariablePriceHolder = new StaticVariablePriceHolder();
         $staticVariablePriceHolder->setId($data['id']);
-        $staticVariablePriceHolder->setCondition($data['condition']);
+        $staticVariablePriceHolder->setCondition($data['condition'] ?? null);
         $staticVariablePriceHolder->setTotalPrice($data['total_price']);
 
         $supplierProfileNormalizer = new SupplierProfileNormalizer();
@@ -18,18 +18,22 @@ class StaticVariablePriceHolderNormalizer
             $supplierProfileNormalizer->denormalize($data['supplier_profile'])
         );
 
-        $markingFeeNormalizer = new MarkingFeeNormalizer();
-        foreach ($data['marking_fees'] as $markingFee) {
-            $staticVariablePriceHolder->addMarkingFee(
-                $markingFeeNormalizer->denormalize($markingFee)
-            );
+        if (false === empty($data['marking_fees'])) {
+            $markingFeeNormalizer = new MarkingFeeNormalizer();
+            foreach ($data['marking_fees'] as $markingFee) {
+                $staticVariablePriceHolder->addMarkingFee(
+                    $markingFeeNormalizer->denormalize($markingFee)
+                );
+            }
         }
 
-        $markingPriceNormalizer = new MarkingPriceNormalizer();
-        foreach ($data['static_variable_prices'] as $staticVariablePrice) {
-            $staticVariablePriceHolder->addPrice(
-                $markingPriceNormalizer->denormalize($staticVariablePrice)
-            );
+        if (false === empty($data['static_variable_prices'])) {
+            $markingPriceNormalizer = new MarkingPriceNormalizer();
+            foreach ($data['static_variable_prices'] as $staticVariablePrice) {
+                $staticVariablePriceHolder->addPrice(
+                    $markingPriceNormalizer->denormalize($staticVariablePrice)
+                );
+            }
         }
 
         return $staticVariablePriceHolder;

@@ -10,10 +10,10 @@ class PackagingNormalizer
     {
         $packaging = new Packaging();
         $packaging->setId($data['id']);
-        $packaging->setType($data['type']);
-        $packaging->setInnerQuantity($data['inner_quantity']);
-        $packaging->setWeight($data['weight']);
-        $packaging->setParentId($data['parent_id']);
+        $packaging->setType($data['type'] ?? null);
+        $packaging->setInnerQuantity($data['inner_quantity'] ?? null);
+        $packaging->setWeight($data['weight'] ?? null);
+        $packaging->setParentId($data['parent_id'] ?? null);
 
         if (!empty($data['variant_packaging_sizes'])) {
             $sizeNormalizer = new SizeNormalizer();

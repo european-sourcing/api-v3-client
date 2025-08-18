@@ -36,105 +36,78 @@ class Variant implements \JsonSerializable
      */
     private $supplierReference;
 
-    /**
-     * @var int
-     */
-    private $stock;
+    private ?int $stock = null;
 
-    /**
-     * @var string
-     */
-    private $markingAdditionalInformation;
+    private ?string $markingAdditionalInformation = null;
 
-    /**
-     * @var float
-     */
-    private $netWeight;
+    private ?float $netWeight = null;
 
-    /**
-     * @var float
-     */
-    private $grossWeight;
+    private ?float $grossWeight = null;
 
-    /**
-     * @var string
-     */
-    private $europeanArticleNumbering;
+    private ?string $europeanArticleNumbering = null;
 
     /**
      * @var bool
      */
     private $mandatoryMarking;
 
-    /**
-     * @var Image
-     */
-    private $mainImage;
+    private ?Image $mainImage = null;
+
+    private array $images = [];
 
     /**
-     * @var array
+     * @var array<Keyword>
      */
-    private $images;
+    private array $keywords = [];
 
     /**
-     * @var array
+     * @var array<SupplierProfile>
      */
-    private $keywords;
+    private array $supplierProfiles = [];
 
     /**
-     * @var array
+     * @var array<Size>
      */
-    private $supplierProfiles;
+    private array $sizes = [];
+
+    private ?Packaging $packaging = null;
 
     /**
-     * @var array
+     * @var array<MinimumQuantity>
      */
-    private $sizes;
+    private array $minimumQuantities = [];
 
     /**
-     * @var Packaging
+     * @var array<Price>
      */
-    private $packaging;
+    private array $prices = [];
+
+    private ?Price $lowestPrice = null;
 
     /**
-     * @var array
+     * @var array<Price>
      */
-    private $minimumQuantities;
+    private array $samplePrices = [];
 
     /**
-     * @var array
+     * @var array<Price>
      */
-    private $prices;
+    private array $listPrices = [];
 
     /**
-     * @var Price
+     * @var array<ExternalLink>
      */
-    private $lowestPrice;
+    private array $externalLinks = [];
 
     /**
-     * @var array
+     * @var array<Attribute>
      */
-    private $samplePrices;
+    private array $attributes = [];
 
     /**
-     * @var array
+     * @var array<DeliveryTime>
      */
-    private $listPrices;
-
-    /**
-     * @var array
-     */
-    private $externalLinks;
-
-    /**
-     * @var array
-     */
-    private $attributes;
-
-    /**
-     * @var array
-     */
-    private $deliveryTimes;
+    private array $deliveryTimes = [];
 
     private bool $hasPlanetImpact;
 
@@ -150,14 +123,6 @@ class Variant implements \JsonSerializable
     private $product;
 
     private string $internalReference;
-
-    public function __construct()
-    {
-        $this->minimumQuantities = [];
-        $this->prices = [];
-        $this->attributes = [];
-        $this->supplierProfiles = [];
-    }
 
     public function processAttributes()
     {
@@ -293,36 +258,24 @@ class Variant implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getStock()
+    public function getStock(): ?int
     {
         return $this->stock;
     }
 
-    /**
-     * @param int $stock
-     */
-    public function setStock($stock): static
+    public function setStock(?int $stock): static
     {
         $this->stock = $stock;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getMarkingAdditionalInformation()
+    public function getMarkingAdditionalInformation(): ?string
     {
         return $this->markingAdditionalInformation;
     }
 
-    /**
-     * @param string $markingAdditionalInformation
-     */
-    public function setMarkingAdditionalInformation($markingAdditionalInformation): static
+    public function setMarkingAdditionalInformation(?string $markingAdditionalInformation): static
     {
         $this->markingAdditionalInformation = $markingAdditionalInformation;
 
@@ -330,17 +283,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Keyword>
      */
-    public function getKeywords()
+    public function getKeywords(): array
     {
         return $this->keywords;
     }
 
     /**
-     * @param array $keywords
+     * @param array<Keyword> $keywords
      */
-    public function setKeywords($keywords): static
+    public function setKeywords(array $keywords): static
     {
         $this->keywords = $keywords;
 
@@ -355,17 +308,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<SupplierProfile>
      */
-    public function getSupplierProfiles()
+    public function getSupplierProfiles(): array
     {
         return $this->supplierProfiles;
     }
 
     /**
-     * @param array $supplierProfiles
+     * @param array<SupplierProfile> $supplierProfiles
      */
-    public function setSupplierProfiles($supplierProfiles): static
+    public function setSupplierProfiles(array $supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
@@ -380,17 +333,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Size>
      */
-    public function getSizes()
+    public function getSizes(): array
     {
         return $this->sizes;
     }
 
     /**
-     * @param array $sizes
+     * @param array<Size> $sizes
      */
-    public function setSizes($sizes): static
+    public function setSizes(array $sizes): static
     {
         $this->sizes = $sizes;
 
@@ -420,54 +373,36 @@ class Variant implements \JsonSerializable
         return implode(' x ', $values);
     }
 
-    /**
-     * @return float
-     */
-    public function getNetWeight()
+    public function getNetWeight(): ?float
     {
         return $this->netWeight;
     }
 
-    /**
-     * @param float $netWeight
-     */
-    public function setNetWeight($netWeight): static
+    public function setNetWeight(?float $netWeight): static
     {
         $this->netWeight = $netWeight;
 
         return $this;
     }
 
-    /**
-     * @return float
-     */
-    public function getGrossWeight()
+    public function getGrossWeight(): ?float
     {
         return $this->grossWeight;
     }
 
-    /**
-     * @param float $grossWeight
-     */
-    public function setGrossWeight($grossWeight): static
+    public function setGrossWeight(?float $grossWeight): static
     {
         $this->grossWeight = $grossWeight;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getEuropeanArticleNumbering()
+    public function getEuropeanArticleNumbering(): ?string
     {
         return $this->europeanArticleNumbering;
     }
 
-    /**
-     * @param string $europeanArticleNumbering
-     */
-    public function setEuropeanArticleNumbering($europeanArticleNumbering): static
+    public function setEuropeanArticleNumbering(?string $europeanArticleNumbering): static
     {
         $this->europeanArticleNumbering = $europeanArticleNumbering;
 
@@ -492,18 +427,12 @@ class Variant implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return Image
-     */
-    public function getMainImage()
+    public function getMainImage(): ?Image
     {
         return $this->mainImage;
     }
 
-    /**
-     * @param Image $mainImage
-     */
-    public function setMainImage($mainImage): static
+    public function setMainImage(?Image $mainImage): static
     {
         $this->mainImage = $mainImage;
 
@@ -511,17 +440,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Image>
      */
-    public function getImages()
+    public function getImages(): array
     {
         return $this->images;
     }
 
     /**
-     * @param array $images
+     * @param array<Image> $images
      */
-    public function setImages($images): static
+    public function setImages(array $images): static
     {
         $this->images = $images;
 
@@ -535,18 +464,12 @@ class Variant implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return Packaging
-     */
-    public function getPackaging()
+    public function getPackaging(): ?Packaging
     {
         return $this->packaging;
     }
 
-    /**
-     * @param Packaging $packaging
-     */
-    public function setPackaging($packaging): static
+    public function setPackaging(?Packaging $packaging): static
     {
         $this->packaging = $packaging;
 
@@ -554,17 +477,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<MinimumQuantity>
      */
-    public function getMinimumQuantities()
+    public function getMinimumQuantities(): array
     {
         return $this->minimumQuantities;
     }
 
     /**
-     * @param array $minimumQuantities
+     * @param array<MinimumQuantity> $minimumQuantities
      */
-    public function setMinimumQuantities($minimumQuantities): static
+    public function setMinimumQuantities(array $minimumQuantities): static
     {
         $this->minimumQuantities = $minimumQuantities;
 
@@ -606,7 +529,6 @@ class Variant implements \JsonSerializable
     public function getLowestQuantity()
     {
         $lowestQuantity = null;
-        /** @var Price $price */
         foreach ($this->prices as $price) {
             if ((null === $lowestQuantity) || ($price->getFromQuantity() < $lowestQuantity)) {
                 $lowestQuantity = $price->getFromQuantity();
@@ -617,16 +539,19 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Price>
      */
-    public function getPrices()
+    public function getPrices(): array
     {
         return $this->prices;
     }
 
-    public function setPrice(Price $price): static
+    /**
+     * @param array<Price> $price
+     */
+    public function setPrices(array $price): static
     {
-        $this->price = $price;
+        $this->prices = $price;
 
         return $this;
     }
@@ -639,8 +564,6 @@ class Variant implements \JsonSerializable
     public function getPriceForQuantity($quantity)
     {
         $bestPrice = null;
-
-        /** @var Price $price */
         foreach ($this->prices as $price) {
             if ($price->getFromQuantity() <= $quantity) {
                 $bestPrice = $price;
@@ -658,11 +581,10 @@ class Variant implements \JsonSerializable
     public function getPriceForQuantityWithSupplierProfile($quantity, SupplierProfileInterface $supplierProfile)
     {
         $bestPrice = null;
-
-        /** @var Price $price */
         foreach ($this->prices as $price) {
             if (
-                $price->getSupplierProfile()->getId() == $supplierProfile->getId()
+                null !== $price->getSupplierProfile()
+                && $price->getSupplierProfile()->getId() == $supplierProfile->getId()
                 && $price->getFromQuantity() <= $quantity
             ) {
                 $bestPrice = $price;
@@ -679,15 +601,12 @@ class Variant implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return Price
-     */
-    public function getLowestPrice()
+    public function getLowestPrice(): ?Price
     {
         return $this->lowestPrice;
     }
 
-    public function setLowestPrice(Price $lowestPrice): static
+    public function setLowestPrice(?Price $lowestPrice): static
     {
         $this->lowestPrice = $lowestPrice;
 
@@ -695,17 +614,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Price>
      */
-    public function getSamplePrices()
+    public function getSamplePrices(): array
     {
         return $this->samplePrices;
     }
 
     /**
-     * @param array $samplePrices
+     * @param array<Price> $samplePrices
      */
-    public function setSamplePrices($samplePrices): static
+    public function setSamplePrices(array $samplePrices): static
     {
         $this->samplePrices = $samplePrices;
 
@@ -720,17 +639,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Price>
      */
-    public function getListPrices()
+    public function getListPrices(): array
     {
         return $this->listPrices;
     }
 
     /**
-     * @param array $listPrices
+     * @param array<Price> $listPrices
      */
-    public function setListPrices($listPrices): static
+    public function setListPrices(array $listPrices): static
     {
         $this->listPrices = $listPrices;
 
@@ -770,17 +689,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Attribute>
      */
-    public function getAttributes()
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
 
     /**
-     * @param array $attributes
+     * @param array<Attribute> $attributes
      */
-    public function setAttributes($attributes): static
+    public function setAttributes(array $attributes): static
     {
         $this->attributes = $attributes;
 
@@ -795,17 +714,17 @@ class Variant implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<DeliveryTime>
      */
-    public function getDeliveryTimes()
+    public function getDeliveryTimes(): array
     {
         return $this->deliveryTimes;
     }
 
     /**
-     * @param array $deliveryTimes
+     * @param array<DeliveryTime> $deliveryTimes
      */
-    public function setDeliveryTimes($deliveryTimes): static
+    public function setDeliveryTimes(array $deliveryTimes): static
     {
         $this->deliveryTimes = $deliveryTimes;
 

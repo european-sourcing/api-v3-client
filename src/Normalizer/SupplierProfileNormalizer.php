@@ -24,7 +24,7 @@ class SupplierProfileNormalizer
         }
 
         if (isset($data['address_line2'])) {
-            $supplierProfile->setAddressLine1($data['address_line2']);
+            $supplierProfile->setAddressLine2($data['address_line2']);
         }
 
         if (isset($data['association'])) {

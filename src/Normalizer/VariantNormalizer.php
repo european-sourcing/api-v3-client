@@ -16,11 +16,11 @@ class VariantNormalizer
         $variant->setDescription($data['description']);
         $variant->setRawDescription($data['raw_description']);
         $variant->setSupplierReference($data['supplier_reference']);
-        $variant->setStock($data['stock']);
-        $variant->setMarkingAdditionalInformation($data['marking_additional_information']);
-        $variant->setNetWeight($data['net_weight']);
-        $variant->setGrossWeight($data['gross_weight']);
-        $variant->setEuropeanArticleNumbering($data['european_article_numbering']);
+        $variant->setStock($data['stock'] ?? null);
+        $variant->setMarkingAdditionalInformation($data['marking_additional_information'] ?? null);
+        $variant->setNetWeight($data['net_weight'] ?? null);
+        $variant->setGrossWeight($data['gross_weight'] ?? null);
+        $variant->setEuropeanArticleNumbering($data['european_article_numbering'] ?? null);
         $variant->setMandatoryMarking($data['mandatory_marking']);
         $variant->setInternalReference($data['internal_reference']);
         $variant->setHasPlanetImpact($data['has_planet_impact']);

@@ -13,47 +13,47 @@ class VariantMarkingNormalizer
         $variantMarking->setKey($data['key']);
         $variantMarking->setIncludedInVariantPrices($data['included_in_variant_prices'] ?? false);
         $variantMarking->setType($data['type']);
-        $variantMarking->setComment($data['comment']);
+        $variantMarking->setComment($data['comment'] ?? null);
 
         // width
-        $variantMarking->setWidth($data['width']);
-        $variantMarking->setMinimumWidth($data['minimum_width']);
-        $variantMarking->setMaximumWidth($data['maximum_width']);
+        $variantMarking->setWidth($data['width'] ?? null);
+        $variantMarking->setMinimumWidth($data['minimum_width'] ?? null);
+        $variantMarking->setMaximumWidth($data['maximum_width'] ?? null);
 
         // length
-        $variantMarking->setLength($data['length']);
-        $variantMarking->setMinimumLength($data['minimum_length']);
-        $variantMarking->setMaximumLength($data['maximum_length']);
+        $variantMarking->setLength($data['length'] ?? null);
+        $variantMarking->setMinimumLength($data['minimum_length'] ?? null);
+        $variantMarking->setMaximumLength($data['maximum_length'] ?? null);
 
         // diameter
-        $variantMarking->setDiameter($data['diameter']);
-        $variantMarking->setMinimumDiameter($data['minimum_diameter']);
-        $variantMarking->setMaximumDiameter($data['maximum_diameter']);
+        $variantMarking->setDiameter($data['diameter'] ?? null);
+        $variantMarking->setMinimumDiameter($data['minimum_diameter'] ?? null);
+        $variantMarking->setMaximumDiameter($data['maximum_diameter'] ?? null);
 
         // Squared size
-        $variantMarking->setSquaredSize($data['squared_size']);
-        $variantMarking->setMinimumSquaredSize($data['minimum_squared_size']);
-        $variantMarking->setMaximumSquaredSize($data['maximum_squared_size']);
+        $variantMarking->setSquaredSize($data['squared_size'] ?? null);
+        $variantMarking->setMinimumSquaredSize($data['minimum_squared_size'] ?? null);
+        $variantMarking->setMaximumSquaredSize($data['maximum_squared_size'] ?? null);
 
         // quantity
-        $variantMarking->setMinimumQuantity($data['minimum_quantity']);
-        $variantMarking->setMaximumQuantity($data['maximum_quantity']);
+        $variantMarking->setMinimumQuantity($data['minimum_quantity'] ?? null);
+        $variantMarking->setMaximumQuantity($data['maximum_quantity'] ?? null);
 
         // logos
-        $variantMarking->setNumberOfLogos($data['number_of_logos']);
-        $variantMarking->setMinimumNumberOfLogos($data['minimum_number_of_logos']);
-        $variantMarking->setMaximumNumberOfLogos($data['maximum_number_of_logos']);
+        $variantMarking->setNumberOfLogos($data['number_of_logos'] ?? null);
+        $variantMarking->setMinimumNumberOfLogos($data['minimum_number_of_logos'] ?? null);
+        $variantMarking->setMaximumNumberOfLogos($data['maximum_number_of_logos'] ?? null);
 
         // colors
         $variantMarking->setFullColor($data['full_color']);
-        $variantMarking->setNumberOfColors($data['number_of_colors']);
-        $variantMarking->setMinimumNumberOfColors($data['minimum_number_of_colors']);
-        $variantMarking->setMaximumNumberOfColors($data['maximum_number_of_colors']);
+        $variantMarking->setNumberOfColors($data['number_of_colors'] ?? null);
+        $variantMarking->setMinimumNumberOfColors($data['minimum_number_of_colors'] ?? null);
+        $variantMarking->setMaximumNumberOfColors($data['maximum_number_of_colors'] ?? null);
 
         // positions
-        $variantMarking->setNumberOfPositions($data['number_of_positions']);
-        $variantMarking->setMinimumNumberOfPositions($data['minimum_number_of_positions']);
-        $variantMarking->setMaximumNumberOfPositions($data['maximum_number_of_positions']);
+        $variantMarking->setNumberOfPositions($data['number_of_positions'] ?? null);
+        $variantMarking->setMinimumNumberOfPositions($data['minimum_number_of_positions'] ?? null);
+        $variantMarking->setMaximumNumberOfPositions($data['maximum_number_of_positions'] ?? null);
 
         // marking
         $markingNormalizer = new MarkingNormalizer();
@@ -66,15 +66,19 @@ class VariantMarkingNormalizer
         }
 
         // supplier options
-        $supplierOptionNormalizer = new SupplierOptionNormalizer();
-        foreach ($data['supplier_options'] as $supplierOption) {
-            $variantMarking->addSupplierOption($supplierOptionNormalizer->denormalize($supplierOption));
+        if (false === empty($data['supplier_options'])) {
+            $supplierOptionNormalizer = new SupplierOptionNormalizer();
+            foreach ($data['supplier_options'] as $supplierOption) {
+                $variantMarking->addSupplierOption($supplierOptionNormalizer->denormalize($supplierOption));
+            }
         }
 
         // supplier profiles
-        $supplierProfileNormalizer = new SupplierProfileNormalizer();
-        foreach ($data['supplier_profiles'] as $supplierProfile) {
-            $variantMarking->addSupplierProfile($supplierProfileNormalizer->denormalize($supplierProfile));
+        if (false === empty($data['supplier_profiles'])) {
+            $supplierProfileNormalizer = new SupplierProfileNormalizer();
+            foreach ($data['supplier_profiles'] as $supplierProfile) {
+                $variantMarking->addSupplierProfile($supplierProfileNormalizer->denormalize($supplierProfile));
+            }
         }
 
         // static fixed prices

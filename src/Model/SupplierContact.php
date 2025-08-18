@@ -6,60 +6,36 @@ namespace EuropeanSourcing\Apiv3Client\Model;
 
 class SupplierContact implements \JsonSerializable
 {
-    /**
-     * @var string|null
-     */
-    private $mainEmail;
+    private ?string $mainEmail = null;
+
+    private ?array $emails = null;
     
     /**
-     * @var array|null
+     * @var array<string>|null
      */
-    private $emails;
-    
-    /**
-     * @var array|null
-     */
-    private $phoneNumbers;
+    private ?array $phoneNumbers = null;
 
     /**
-     * @var array|null
+     * @var array<string>|null
      */
-    private $faxNumbers;
+    private ?array $faxNumbers = null;
 
-    /**
-     * @var string|null
-     */
-    private $personalTitle;
+    private ?string $personalTitle = null;
 
-    /**
-     * @var string|null
-     */
-    private $lastname;
+    private ?string $lastname = null;
 
-    /**
-     * @var string|null
-     */
-    private $firstname;
+    private ?string $firstname = null;
 
-    /**
-     * @var string|null
-     */
-    private $mainLanguage;
+    private ?string $mainLanguage = null;
 
-    /**
-     * @var array|null
-     */
-    private $languages;
+    private ?array $languages = null;
 
-    /**
-     * @var string|null
-     */
-    private $countryCode;
+    private ?string $countryCode = null;
 
     /**
      * @var null|array{address_line1: string, address_line2: string|null, postal_code: string|null, country_code: string, locality: string}
      */
-    private $address;
+    private ?array $address = null;
 
     public function getMainEmail(): ?string
     {

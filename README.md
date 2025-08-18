@@ -27,7 +27,7 @@ shown below:
     "version": "0.0.1",
     "type": "project",
     "require": {
-        "european-sourcing/apiv3-client": "^4.0.0"
+        "european-sourcing/apiv3-client": "^5.0.0"
     },
     "repositories": [
         {
@@ -64,7 +64,7 @@ $guzzleClient = new GuzzleClient([
 
 $apiClient = new Client(
     $guzzleClient,
-    'https://product-api.europeansourcing.com/api/v1.1',
+    'https://product-api.europeansourcing.com/api/v1.2',
     $YOUR_API_TOKEN
 );
 

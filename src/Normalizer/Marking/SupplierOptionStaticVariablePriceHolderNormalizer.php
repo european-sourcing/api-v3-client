@@ -12,9 +12,11 @@ class SupplierOptionStaticVariablePriceHolderNormalizer
         $staticVariablePriceHolder->setId($data['id']);
         $staticVariablePriceHolder->setSupplierProfileId($data['supplier_profile_id']);
 
-        $optionPriceNormalizer = new SupplierOptionPriceNormalizer();
-        foreach ($data['option_prices'] as $optionPrice) {
-            $staticVariablePriceHolder->addOptionPrice($optionPriceNormalizer->denormalize($optionPrice));
+        if (false === empty($data['option_prices'])) {
+            $optionPriceNormalizer = new SupplierOptionPriceNormalizer();
+            foreach ($data['option_prices'] as $optionPrice) {
+                $staticVariablePriceHolder->addOptionPrice($optionPriceNormalizer->denormalize($optionPrice));
+            }
         }
 
         return $staticVariablePriceHolder;

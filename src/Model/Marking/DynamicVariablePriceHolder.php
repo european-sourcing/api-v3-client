@@ -9,8 +9,7 @@ class DynamicVariablePriceHolder
     /** @var string */
     private $id;
 
-    /** @var string */
-    private $condition;
+    private ?string $condition = null;
 
     /** @var bool */
     private $totalPrice;

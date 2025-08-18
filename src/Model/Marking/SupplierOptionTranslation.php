@@ -10,8 +10,7 @@ class SupplierOptionTranslation
     /** @var string */
     private $name;
 
-    /** @var string */
-    private $comment;
+    private ?string $comment = null;
 
     public function getLang(): string
     {
@@ -37,12 +36,12 @@ class SupplierOptionTranslation
         return $this;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(string $comment): static
+    public function setComment(?string $comment): static
     {
         $this->comment = $comment;
 

@@ -10,11 +10,9 @@ class SupplierMarking
     /** @var string */
     private $code;
 
-    /** @var string */
-    private $comment;
+    private ?string $comment = null;
 
-    /** @var string */
-    private $nameComplement;
+    private ?string $nameComplement = null;
 
     public function getId(): int
     {
@@ -40,24 +38,24 @@ class SupplierMarking
         return $this;
     }
 
-    public function getComment(): string
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    public function setComment(string $comment): static
+    public function setComment(?string $comment): static
     {
         $this->comment = $comment;
 
         return $this;
     }
 
-    public function getNameComplement(): string
+    public function getNameComplement(): ?string
     {
         return $this->nameComplement;
     }
 
-    public function setNameComplement(string $nameComplement): static
+    public function setNameComplement(?string $nameComplement): static
     {
         $this->nameComplement = $nameComplement;
 

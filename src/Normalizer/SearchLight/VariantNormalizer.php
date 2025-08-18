@@ -23,7 +23,7 @@ class VariantNormalizer extends AbstractSearchLightCachableNormalizer
         $variant->setName($data['name']);
         $variant->setInternalReference($data['internal_reference']);
         $variant->setSupplierReference($data['supplier_reference']);
-        $variant->setStock($data['stock']);
+        $variant->setStock($data['stock'] ?? null);
         $variant->setHasPlanetImpact($data['has_planet_impact'] ?? false);
 
         if (false === empty($data['supplier_profiles'])) {
