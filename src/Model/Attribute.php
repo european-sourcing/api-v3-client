@@ -29,10 +29,7 @@ class Attribute implements \JsonSerializable
      */
     private $fullHierarchyValue;
 
-    /**
-     * @var Attribute
-     */
-    private $parent;
+    private ?Attribute $parent = null;
 
     /**
      * @var AttributeGroup
@@ -129,18 +126,12 @@ class Attribute implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return Attribute
-     */
-    public function getParent()
+    public function getParent(): ?Attribute
     {
         return $this->parent;
     }
 
-    /**
-     * @param Attribute $parent
-     */
-    public function setParent($parent): static
+    public function setParent(?Attribute $parent): static
     {
         $this->parent = $parent;
 

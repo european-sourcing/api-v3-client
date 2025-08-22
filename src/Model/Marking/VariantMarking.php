@@ -18,87 +18,62 @@ class VariantMarking
     /** @var string */
     private $type;
 
-    /** @var string */
-    private $comment;
+    private ?string $comment = null;
 
-    /** @var float */
-    private $width;
+    private ?float $width = null;
 
-    /** @var float */
-    private $minimumWidth;
+    private ?float $minimumWidth = null;
 
-    /** @var float */
-    private $maximumWidth;
+    private ?float $maximumWidth = null;
 
-    /** @var float */
-    private $length;
+    private ?float $length = null;
 
-    /** @var float */
-    private $minimumLength;
+    private ?float $minimumLength = null;
 
-    /** @var float */
-    private $maximumLength;
+    private ?float $maximumLength = null;
 
-    /** @var int */
-    private $diameter;
+    private ?int $diameter = null;
 
-    /** @var float */
-    private $minimumDiameter;
+    private ?float $minimumDiameter = null;
 
-    /** @var float */
-    private $maximumDiameter;
+    private ?float $maximumDiameter = null;
 
-    /** @var float */
-    private $squaredSize;
+    private ?float $squaredSize = null;
 
-    /** @var float */
-    private $minimumSquaredSize;
+    private ?float $minimumSquaredSize = null;
 
-    /** @var float */
-    private $maximumSquaredSize;
+    private ?float $maximumSquaredSize = null;
 
-    /** @var int */
-    private $minimumQuantity;
+    private ?int $minimumQuantity = null;
 
-    /** @var int */
-    private $maximumQuantity;
+    private ?int $maximumQuantity = null;
 
-    /** @var int */
-    private $numberOfLogos;
+    private ?int $numberOfLogos = null;
 
-    /** @var int */
-    private $minimumNumberOfLogos;
+    private ?int $minimumNumberOfLogos = null;
 
-    /** @var int */
-    private $maximumNumberOfLogos;
+    private ?int $maximumNumberOfLogos = null;
 
 
     /** @var bool */
     private $fullColor;
 
-    /** @var int */
-    private $numberOfColors;
+    private ?int $numberOfColors = null;
 
-    /** @var int */
-    private $minimumNumberOfColors;
+    private ?int $minimumNumberOfColors = null;
 
-    /** @var int */
-    private $maximumNumberOfColors;
+    private ?int $maximumNumberOfColors = null;
 
-    /** @var int */
-    private $numberOfPositions;
+    private ?int $numberOfPositions = null;
 
-    /** @var int */
-    private $minimumNumberOfPositions;
+    private ?int $minimumNumberOfPositions = null;
 
-    /** @var int */
-    private $maximumNumberOfPositions;
+    private ?int $maximumNumberOfPositions = null;
 
     /** @var Marking */
     private $marking;
 
-    /** @var MarkingPosition */
-    private $markingPosition;
+    private ?MarkingPosition $markingPosition = null;
 
     /** @var SupplierMarking */
     private $supplierMarking;
@@ -496,7 +471,7 @@ class VariantMarking
         return $this->markingPosition;
     }
 
-    public function setMarkingPosition(MarkingPosition $markingPosition): static
+    public function setMarkingPosition(?MarkingPosition $markingPosition): static
     {
         $this->markingPosition = $markingPosition;
 

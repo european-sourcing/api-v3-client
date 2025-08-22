@@ -9,14 +9,12 @@ class StaticFixedPrice
     /** @var string */
     private $id;
 
-    /** @var string|null */
-    private $value;
+    private ?string $value = null;
 
     /** @var string */
     private $calculationValue;
 
-    /** @var string */
-    private $condition;
+    private ?string $condition = null;
 
     /** @var bool */
     private $totalPrice;

@@ -15,8 +15,7 @@ class DynamicFixedPrice
     /** @var string */
     private $calculationValue;
 
-    /** @var string */
-    private $condition;
+    private ?string $condition = null;
 
     /** @var bool */
     private $totalPrice;

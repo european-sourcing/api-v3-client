@@ -14,7 +14,7 @@ class Variant
 
     private ?int $stock = null;
 
-    private Image $mainImage;
+    private ?Image $mainImage = null;
 
     /**
      * @var array<SupplierProfile>
@@ -90,12 +90,12 @@ class Variant
         return $this;
     }
 
-    public function getMainImage(): Image
+    public function getMainImage(): ?Image
     {
         return $this->mainImage;
     }
 
-    public function setMainImage(Image $mainImage): static
+    public function setMainImage(?Image $mainImage): static
     {
         $this->mainImage = $mainImage;
 

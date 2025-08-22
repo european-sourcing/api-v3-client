@@ -16,8 +16,8 @@ class ProductNormalizer
         $product->setId($data['id']);
         $product->setSupplierBaseReference($data['supplier_base_reference']);
         $product->setInternalReference($data['internal_reference']);
-        $product->setCountryOfOrigin($data['country_of_origin']);
-        $product->setUnionCustomsCode($data['union_customs_code']);
+        $product->setCountryOfOrigin($data['country_of_origin'] ?? null);
+        $product->setUnionCustomsCode($data['union_customs_code'] ?? null);
         $product->setHasMarking($data['has_marking']);
         $product->setLastIndexedAt(new \DateTime($data['last_indexed_at']));
         $product->setCreatedAt(new \DateTime($data['created_at']));
@@ -52,8 +52,7 @@ class ProductNormalizer
             $categoriesNormalizer = new CategoriesNormalizer();
             $product->setCategories($categoriesNormalizer->denormalize($data['categories']));
 
-            /** @var Category $category */
-            foreach ($product->getCategories() as &$category) {
+            foreach ($product->getCategories() as $category) {
                 if ($category->getId() == $data['main_category_id']) {
                     $product->setMainCategory($category);
                 }

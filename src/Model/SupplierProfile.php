@@ -11,40 +11,19 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
      */
     private $id;
 
-    /**
-     * @var string
-     */
-    private $name;
+    private ?string $name = null;
 
-    /**
-     * @var string
-     */
-    private $countryCode;
+    private ?string $countryCode = null;
 
-    /**
-     * @var string
-     */
-    private $locality;
+    private ?string $locality = null;
 
-    /**
-     * @var string
-     */
-    private $association;
+    private ?string $association = null;
 
-    /**
-     * @var string
-     */
-    private $postalCode;
+    private ?string $postalCode = null;
 
-    /**
-     * @var string
-     */
-    private $addressLine1;
+    private ?string $addressLine1 = null;
 
-    /**
-     * @var string
-     */
-    private $addressLine2;
+    private ?string $addressLine2 = null;
 
     public function getId(): int
     {
@@ -61,126 +40,84 @@ class SupplierProfile implements \JsonSerializable, SupplierProfileInterface
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     */
-    public function setName($name): static
+    public function setName(?string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getCountryCode()
+    public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
-    /**
-     * @param string $countryCode
-     */
-    public function setCountryCode($countryCode): static
+    public function setCountryCode(?string $countryCode): static
     {
         $this->countryCode = $countryCode;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getLocality()
+    public function getLocality(): ?string
     {
         return $this->locality;
     }
 
-    /**
-     * @param string $locality
-     */
-    public function setLocality($locality): static
+    public function setLocality(?string $locality): static
     {
         $this->locality = $locality;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getAssociation()
+    public function getAssociation(): ?string
     {
         return $this->association;
     }
 
-    /**
-     * @param string $association
-     */
-    public function setAssociation($association): static
+    public function setAssociation(?string $association): static
     {
         $this->association = $association;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getPostalCode()
+    public function getPostalCode(): ?string
     {
         return $this->postalCode;
     }
 
-    /**
-     * @param string $postalCode
-     */
-    public function setPostalCode($postalCode): static
+    public function setPostalCode(?string $postalCode): static
     {
         $this->postalCode = $postalCode;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getAddressLine1()
+    public function getAddressLine1(): ?string
     {
         return $this->addressLine1;
     }
 
-    /**
-     * @param string $addressLine1
-     */
-    public function setAddressLine1($addressLine1): static
+    public function setAddressLine1(?string $addressLine1): static
     {
         $this->addressLine1 = $addressLine1;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getAddressLine2()
+    public function getAddressLine2(): ?string
     {
         return $this->addressLine2;
     }
 
-    /**
-     * @param string $addressLine2
-     */
-    public function setAddressLine2($addressLine2): static
+    public function setAddressLine2(?string $addressLine2): static
     {
         $this->addressLine2 = $addressLine2;
 

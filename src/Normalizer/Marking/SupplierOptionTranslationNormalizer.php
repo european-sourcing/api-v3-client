@@ -11,7 +11,7 @@ class SupplierOptionTranslationNormalizer
         $supplierOptionTranslation = new SupplierOptionTranslation();
         $supplierOptionTranslation->setLang($data['lang']);
         $supplierOptionTranslation->setName($data['name']);
-        $supplierOptionTranslation->setComment($data['comment']);
+        $supplierOptionTranslation->setComment($data['comment'] ?? null);
 
         return $supplierOptionTranslation;
     }

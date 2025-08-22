@@ -9,10 +9,7 @@ class Size implements \JsonSerializable
      */
     private $id;
 
-    /**
-     * @var string
-     */
-    private $type;
+    private ?string $type = null;
 
     /**
      * @var string
@@ -37,18 +34,12 @@ class Size implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType($type): static
+    public function setType(?string $type): static
     {
         $this->type = $type;
 

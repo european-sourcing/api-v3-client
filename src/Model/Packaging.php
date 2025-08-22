@@ -9,35 +9,17 @@ class Packaging implements \JsonSerializable
      */
     private $id;
 
-    /**
-     * @var int
-     */
-    private $innerQuantity;
+     private ?int $innerQuantity = null;
 
-    /**
-     * @var Packaging
-     */
-    private $parent;
+    private ?Packaging $parent = null;
 
-    /**
-     * @var int
-     */
-    private $parentId;
+    private ?int $parentId = null;
 
-    /**
-     * @var string
-     */
-    private $type;
+    private ?string $type = null;
 
-    /**
-     * @var float
-     */
-    private $weight;
+    private ?float $weight = null;
 
-    /**
-     * @var array
-     */
-    private $sizes;
+    private array $sizes = [];
 
     /**
      * @return int
@@ -57,90 +39,60 @@ class Packaging implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getInnerQuantity()
+    public function getInnerQuantity(): ?int
     {
         return $this->innerQuantity;
     }
 
-    /**
-     * @param int $innerQuantity
-     */
-    public function setInnerQuantity($innerQuantity): static
+    public function setInnerQuantity(?int $innerQuantity): static
     {
         $this->innerQuantity = $innerQuantity;
 
         return $this;
     }
 
-    /**
-     * @return Packaging
-     */
-    public function getParent()
+    public function getParent(): ?Packaging
     {
         return $this->parent;
     }
 
-    /**
-     * @param Packaging $parent
-     */
-    public function setParent($parent): static
+    public function setParent(?Packaging $parent): static
     {
         $this->parent = $parent;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getParentId()
+    public function getParentId(): ?int
     {
         return $this->parentId;
     }
 
-    /**
-     * @param int $parentId
-     */
-    public function setParentId($parentId): static
+    public function setParentId(?int $parentId): static
     {
         $this->parentId = $parentId;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     */
-    public function setType($type): static
+    public function setType(?string $type): static
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * @return float
-     */
-    public function getWeight()
+    public function getWeight(): ?float
     {
         return $this->weight;
     }
 
-    /**
-     * @param float $weight
-     */
-    public function setWeight($weight): static
+    public function setWeight(?float $weight): static
     {
         $this->weight = $weight;
 
@@ -148,17 +100,17 @@ class Packaging implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<Size>
      */
-    public function getSizes()
+    public function getSizes(): array
     {
         return $this->sizes;
     }
 
     /**
-     * @param array $sizes
+     * @param array<Size> $sizes
      */
-    public function setSizes($sizes): static
+    public function setSizes(array $sizes): static
     {
         $this->sizes = $sizes;
 
