@@ -15,14 +15,20 @@ class SupplierOptionNormalizer
         $supplierOptionTranslationNormalizer = new SupplierOptionTranslationNormalizer();
         $supplierOption->setTranslation($supplierOptionTranslationNormalizer->denormalize($data['translations']));
 
-        $staticVariablePriceHolderNormalizer = new SupplierOptionStaticVariablePriceHolderNormalizer();
-        foreach ($data['supplier_option_static_variable_price_holders'] as $supplierOptionStaticVariablePriceHolder) {
-            $supplierOption->addStaticVariablePriceHolder($staticVariablePriceHolderNormalizer->denormalize($supplierOptionStaticVariablePriceHolder));
+        if (false === empty($data['supplier_option_static_variable_price_holders'])) {
+            $staticVariablePriceHolderNormalizer = new SupplierOptionStaticVariablePriceHolderNormalizer();
+            foreach ($data['supplier_option_static_variable_price_holders'] as $supplierOptionStaticVariablePriceHolder) {
+                $supplierOption->addStaticVariablePriceHolder(
+                    $staticVariablePriceHolderNormalizer->denormalize($supplierOptionStaticVariablePriceHolder)
+                );
+            }
         }
 
-        $dynamicVariablePriceHolderNormalizer = new SupplierOptionDynamicVariablePriceHolderNormalizer();
-        foreach ($data['supplier_option_dynamic_variable_price_holders'] as $supplierOptionDynamicVariablePriceHolder) {
-            $supplierOption->addDynamicVariablePriceHolder($dynamicVariablePriceHolderNormalizer->denormalize($supplierOptionDynamicVariablePriceHolder));
+        if (false === empty($data['supplier_option_dynamic_variable_price_holders'])) {
+            $dynamicVariablePriceHolderNormalizer = new SupplierOptionDynamicVariablePriceHolderNormalizer();
+            foreach ($data['supplier_option_dynamic_variable_price_holders'] as $supplierOptionDynamicVariablePriceHolder) {
+                $supplierOption->addDynamicVariablePriceHolder($dynamicVariablePriceHolderNormalizer->denormalize($supplierOptionDynamicVariablePriceHolder));
+            }
         }
 
         return $supplierOption;

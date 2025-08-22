@@ -19,15 +19,9 @@ class Brand implements \JsonSerializable
      */
     private $slug;
 
-    /**
-     * @var string
-     */
-    private $suffix;
+    private ?string $suffix = null;
 
-    /**
-     * @var Image
-     */
-    private $logo;
+    private ?Image $logo = null;
 
     /**
      * @return int
@@ -83,36 +77,24 @@ class Brand implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getSuffix()
+    public function getSuffix(): ?string
     {
         return $this->suffix;
     }
 
-    /**
-     * @param string $suffix
-     */
-    public function setSuffix($suffix): static
+    public function setSuffix(?string $suffix): static
     {
         $this->suffix = $suffix;
 
         return $this;
     }
 
-    /**
-     * @return Image
-     */
-    public function getLogo()
+    public function getLogo(): ?Image
     {
         return $this->logo;
     }
 
-    /**
-     * @param Image $logo
-     */
-    public function setLogo($logo): static
+    public function setLogo(?Image $logo): static
     {
         $this->logo = $logo;
 

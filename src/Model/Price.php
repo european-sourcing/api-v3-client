@@ -9,10 +9,7 @@ class Price implements \JsonSerializable
      */
     private $id;
 
-    /**
-     * @var int
-     */
-    private $fromQuantity;
+    private ?int $fromQuantity = null;
 
     /**
      * @var float
@@ -24,10 +21,7 @@ class Price implements \JsonSerializable
      */
     private $calculationValue;
 
-    /**
-     * @var SupplierProfile
-     */
-    private $supplierProfile;
+    private ?SupplierProfile $supplierProfile = null;
 
     /**
      * @return int
@@ -47,18 +41,12 @@ class Price implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getFromQuantity()
+    public function getFromQuantity(): ?int
     {
         return $this->fromQuantity;
     }
 
-    /**
-     * @param int $fromQuantity
-     */
-    public function setFromQuantity($fromQuantity): static
+    public function setFromQuantity(?int $fromQuantity): static
     {
         $this->fromQuantity = $fromQuantity;
 
@@ -101,12 +89,12 @@ class Price implements \JsonSerializable
         return $this;
     }
 
-    public function getSupplierProfile(): SupplierProfile
+    public function getSupplierProfile(): ?SupplierProfile
     {
         return $this->supplierProfile;
     }
 
-    public function setSupplierProfile(SupplierProfile $supplierProfile): static
+    public function setSupplierProfile(?SupplierProfile $supplierProfile): static
     {
         $this->supplierProfile = $supplierProfile;
 

@@ -20,12 +20,8 @@ class SupplierProfileNormalizer extends AbstractSearchLightCachableNormalizer
     {
         /** @var SupplierProfile $supplierProfile */
         $supplierProfile = $this->getCache($data['id']);
-        if (true === array_key_exists('name', $data)) {
-            $supplierProfile->setName($data['name']);
-        }
-        if (true === array_key_exists('country_code', $data)) {
-            $supplierProfile->setCountryCode($data['country_code']);
-        }
+        $supplierProfile->setName($data['name'] ?? null);
+        $supplierProfile->setCountryCode($data['country_code'] ?? null);
 
         return $supplierProfile;
     }

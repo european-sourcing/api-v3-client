@@ -10,10 +10,12 @@ class AggregationNormalizer
     {
         $aggregation = new Aggregation($data['name']);
 
-        $objectNormalizer = new $objectNormalizerName();
+        if (false === empty($data['rows'])) {
+            $objectNormalizer = new $objectNormalizerName();
 
-        foreach ($data['rows'] as $row) {
-            $aggregation->addRow($objectNormalizer->denormalize($row));
+            foreach ($data['rows'] as $row) {
+                $aggregation->addRow($objectNormalizer->denormalize($row));
+            }
         }
 
         return $aggregation;

@@ -77,7 +77,7 @@ class Client
         $results = json_decode($response->getBody(), true);
 
         $productsNormalizer = new ProductsNormalizer();
-        $products = $productsNormalizer->denormalize($results['products']);
+        $products = $productsNormalizer->denormalize($results['products'] ?? []);
 
         $searchResponse = new SearchResponse();
         $this->initSearchResponse($searchResponse, $products, $results);
@@ -107,7 +107,7 @@ class Client
         $normalizerService = new NormalizerService();
         /** @var ProductsLightNormalizer $productsNormalizer */
         $productsNormalizer = $normalizerService->getNormalizer(ProductsLightNormalizer::class);
-        $products = $productsNormalizer->denormalize($results['products']);
+        $products = $productsNormalizer->denormalize($results['products'] ?? []);
 
         $searchResponse = new SearchLightResponse();
         $this->initSearchResponse($searchResponse, $products, $results);
@@ -290,15 +290,6 @@ class Client
 
         if (!empty($results['aggregations'])) {
             foreach ($results['aggregations'] as $aggregation) {
-                $objectNormalizerName = null;
-
-                if ($aggregation['name'] === 'categories') {
-                    $normalizer = new CategoriesNormalizer();
-                    $searchResponse->addAggregation(
-                        $normalizer->denormalize($aggregation['rows'])
-                    );
-                }
-
                 switch ($aggregation['name']) {
                     case 'marking':
                         $objectNormalizerName = MarkingNormalizer::class;
@@ -323,17 +314,23 @@ class Client
                     case 'attributes':
                         $objectNormalizerName = AttributeNormalizer::class;
                         break;
+                    case 'categories':
+                        $normalizer = new CategoriesNormalizer();
+                        $searchResponse->addAggregation(
+                            $normalizer->denormalize($aggregation['rows'] ?? [])
+                        );
+                        continue 2;
+                    default:
+                        continue 2;
                 }
 
-                if (null !== $objectNormalizerName) {
-                    $normalizer = new AggregationNormalizer();
-                    $searchResponse->addAggregation(
-                        $normalizer->denormalize(
-                            $aggregation,
-                            $objectNormalizerName
-                        )
-                    );
-                }
+                $normalizer = new AggregationNormalizer();
+                $searchResponse->addAggregation(
+                    $normalizer->denormalize(
+                        $aggregation,
+                        $objectNormalizerName
+                    )
+                );
             }
         }
     }

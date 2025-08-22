@@ -10,7 +10,7 @@ class SizeNormalizer
     {
         $size = new Size();
         $size->setId($data['id']);
-        $size->setType($data['type']);
+        $size->setType($data['type'] ?? null);
         $size->setValue($data['value']);
 
         return $size;

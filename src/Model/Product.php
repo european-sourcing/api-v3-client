@@ -18,15 +18,9 @@ class Product
      */
     private $internalReference;
 
-    /**
-     * @var string
-     */
-    private $countryOfOrigin;
+    private ?string $countryOfOrigin = null;
 
-    /**
-     * @var string
-     */
-    private $unionCustomsCode;
+    private ?string $unionCustomsCode = null;
 
     /**
      * @var bool
@@ -53,45 +47,30 @@ class Product
      */
     private $images;
 
-    /**
-     * @var Variant
-     */
-    private $mainVariant;
+    private ?Variant $mainVariant = null;
+
+    private ?Variant $bestVariant = null;
 
     /**
-     * @var Variant
+     * @var array<Variant>
      */
-    private $bestVariant;
+    private array $variants = [];
+
+    private ?Category $mainCategory = null;
 
     /**
-     * @var array
+     * @var array<Category>
      */
-    private $variants;
+    private array $categories = [];
+
+    private ?Supplier $supplier = null;
+
+    private ?Brand $brand = null;
 
     /**
-     * @var Category
+     * @var array<Label>
      */
-    private $mainCategory;
-
-    /**
-     * @var array
-     */
-    private $categories;
-
-    /**
-     * @var Supplier
-     */
-    private $supplier;
-
-    /**
-     * @var Brand
-     */
-    private $brand;
-
-    /**
-     * @var array
-     */
-    private $labels;
+    private array $labels = [];
 
     /**
      * @return int
@@ -176,36 +155,24 @@ class Product
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getCountryOfOrigin()
+    public function getCountryOfOrigin(): ?string
     {
         return $this->countryOfOrigin;
     }
 
-    /**
-     * @param string $countryOfOrigin
-     */
-    public function setCountryOfOrigin($countryOfOrigin): static
+    public function setCountryOfOrigin(?string $countryOfOrigin): static
     {
         $this->countryOfOrigin = $countryOfOrigin;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getUnionCustomsCode()
+    public function getUnionCustomsCode(): ?string
     {
         return $this->unionCustomsCode;
     }
 
-    /**
-     * @param string $unionCustomsCode
-     */
-    public function setUnionCustomsCode($unionCustomsCode): static
+    public function setUnionCustomsCode(?string $unionCustomsCode): static
     {
         $this->unionCustomsCode = $unionCustomsCode;
 
@@ -309,36 +276,24 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Variant
-     */
-    public function getMainVariant()
+    public function getMainVariant(): ?Variant
     {
         return $this->mainVariant;
     }
 
-    /**
-     * @param Variant $mainVariant
-     */
-    public function setMainVariant($mainVariant): static
+    public function setMainVariant(?Variant $mainVariant): static
     {
         $this->mainVariant = $mainVariant;
 
         return $this;
     }
 
-    /**
-     * @return Variant
-     */
-    public function getBestVariant()
+    public function getBestVariant(): ?Variant
     {
         return $this->bestVariant;
     }
 
-    /**
-     * @param Variant $bestVariant
-     */
-    public function setBestVariant($bestVariant): static
+    public function setBestVariant(?Variant $bestVariant): static
     {
         $this->bestVariant = $bestVariant;
 
@@ -346,17 +301,17 @@ class Product
     }
 
     /**
-     * @return array
+     * @return array<Variant>
      */
-    public function getVariants()
+    public function getVariants(): array
     {
         return $this->variants;
     }
 
     /**
-     * @param array $variants
+     * @param array<Variant> $variants
      */
-    public function setVariants($variants): static
+    public function setVariants(array $variants): static
     {
         $this->variants = $variants;
 
@@ -370,18 +325,12 @@ class Product
         return $this;
     }
 
-    /**
-     * @return Category
-     */
-    public function getMainCategory()
+    public function getMainCategory(): ?Category
     {
         return $this->mainCategory;
     }
 
-    /**
-     * @param Category $mainCategory
-     */
-    public function setMainCategory($mainCategory): static
+    public function setMainCategory(?Category $mainCategory): static
     {
         $this->mainCategory = $mainCategory;
 
@@ -389,53 +338,41 @@ class Product
     }
 
     /**
-     * @return array
+     * @return array<Category>
      */
-    public function getCategories()
+    public function getCategories(): array
     {
         return $this->categories;
     }
 
     /**
-     * @param array $categories
+     * @param array<Category> $categories
      */
-    public function setCategories($categories): static
+    public function setCategories(array $categories): static
     {
         $this->categories = $categories;
 
         return $this;
     }
 
-    /**
-     * @return Supplier
-     */
-    public function getSupplier()
+    public function getSupplier(): ?Supplier
     {
         return $this->supplier;
     }
 
-    /**
-     * @param Supplier $supplier
-     */
-    public function setSupplier($supplier): static
+    public function setSupplier(?Supplier $supplier): static
     {
         $this->supplier = $supplier;
 
         return $this;
     }
 
-    /**
-     * @return Brand
-     */
-    public function getBrand()
+    public function getBrand(): ?Brand
     {
         return $this->brand;
     }
 
-    /**
-     * @param Brand $brand
-     */
-    public function setBrand($brand): static
+    public function setBrand(?Brand $brand): static
     {
         $this->brand = $brand;
 
@@ -443,17 +380,17 @@ class Product
     }
 
     /**
-     * @return array
+     * @return array<Label>
      */
-    public function getLabels()
+    public function getLabels(): array
     {
         return $this->labels;
     }
 
     /**
-     * @param array $labels
+     * @param array<Label> $labels
      */
-    public function setLabels($labels): static
+    public function setLabels(array $labels): static
     {
         $this->labels = $labels;
 

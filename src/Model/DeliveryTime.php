@@ -14,10 +14,7 @@ class DeliveryTime implements \JsonSerializable
      */
     private $value;
 
-    /**
-     * @var array
-     */
-    private $supplierProfiles;
+    private array $supplierProfiles = [];
 
     /**
      * @return int
@@ -56,17 +53,17 @@ class DeliveryTime implements \JsonSerializable
     }
 
     /**
-     * @return array
+     * @return array<SupplierProfile>
      */
-    public function getSupplierProfiles()
+    public function getSupplierProfiles(): array
     {
         return $this->supplierProfiles;
     }
 
     /**
-     * @param array $supplierProfiles
+     * @param array<SupplierProfile> $supplierProfiles
      */
-    public function setSupplierProfiles($supplierProfiles): static
+    public function setSupplierProfiles(array $supplierProfiles): static
     {
         $this->supplierProfiles = $supplierProfiles;
 
