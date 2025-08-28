@@ -21,15 +21,12 @@ class Variant implements \JsonSerializable
      */
     private $slug;
 
-    /**
-     * @var string
-     */
-    private $description;
+    private ?string $description = null;
 
     /**
      * @var string
      */
-    private $rawDescription;
+    private ?string $rawDescription = null;
 
     /**
      * @var string
@@ -204,36 +201,24 @@ class Variant implements \JsonSerializable
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription($description): static
+    public function setDescription(?string $description): static
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getRawDescription()
+    public function getRawDescription(): ?string
     {
         return $this->rawDescription;
     }
 
-    /**
-     * @param string $rawDescription
-     */
-    public function setRawDescription($rawDescription): static
+    public function setRawDescription(?string $rawDescription): static
     {
         $this->rawDescription = $rawDescription;
 
