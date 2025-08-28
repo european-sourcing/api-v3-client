@@ -2,10 +2,9 @@
 
 namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
-use EuropeanSourcing\Apiv3Client\Model\Category;
 use EuropeanSourcing\Apiv3Client\Model\Product;
 
-class ProductNormalizer
+class ProductNormalizer extends AbstractNormalizer
 {
     /**
      * @throws \Exception
@@ -72,7 +71,7 @@ class ProductNormalizer
         }
 
         if (!empty($data['brand'])) {
-            $brandNormalizer = new BrandNormalizer();
+            $brandNormalizer = $this->normalizerService->getNormalizer(BrandNormalizer::class);
             $product->setBrand($brandNormalizer->denormalize($data['brand']));
         }
 

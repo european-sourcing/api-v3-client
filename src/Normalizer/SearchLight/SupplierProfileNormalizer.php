@@ -3,8 +3,9 @@
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 use EuropeanSourcing\Apiv3Client\Model\SearchLight\SupplierProfile;
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractCachableNormalizer;
 
-class SupplierProfileNormalizer extends AbstractSearchLightCachableNormalizer
+class SupplierProfileNormalizer extends AbstractCachableNormalizer
 {
     public function getNewItem($id): SupplierProfile
     {

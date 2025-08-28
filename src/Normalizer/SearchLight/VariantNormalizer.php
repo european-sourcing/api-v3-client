@@ -3,8 +3,9 @@
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 use EuropeanSourcing\Apiv3Client\Model\SearchLight\Variant;
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractCachableNormalizer;
 
-class VariantNormalizer extends AbstractSearchLightCachableNormalizer
+class VariantNormalizer extends AbstractCachableNormalizer
 {
     public function getNewItem($id): Variant
     {

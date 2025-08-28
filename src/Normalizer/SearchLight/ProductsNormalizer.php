@@ -2,9 +2,10 @@
 
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractNormalizer;
 use Exception;
 
-class ProductsNormalizer extends AbstractSearchLightNormalizer
+class ProductsNormalizer extends AbstractNormalizer
 {
     /**
      * @throws Exception

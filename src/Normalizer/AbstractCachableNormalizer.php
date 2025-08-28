@@ -1,8 +1,8 @@
 <?php
 
-namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
-abstract class AbstractSearchLightCachableNormalizer extends AbstractSearchLightNormalizer
+abstract class AbstractCachableNormalizer extends AbstractNormalizer
 {
     /** @var array<string|int, object> */
     private array $cache = [];

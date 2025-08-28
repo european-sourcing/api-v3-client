@@ -3,8 +3,9 @@
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 use EuropeanSourcing\Apiv3Client\Model\ExtremumPrice;
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractNormalizer;
 
-class ExtremumPriceNormalizer extends AbstractSearchLightNormalizer
+class ExtremumPriceNormalizer extends AbstractNormalizer
 {
     /**
      * @param array{supplier_profile_id: int, lowest_price: float, highest_price: float} $data

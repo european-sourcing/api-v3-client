@@ -3,8 +3,9 @@
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 use EuropeanSourcing\Apiv3Client\Model\SearchLight\Brand;
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractCachableNormalizer;
 
-class BrandNormalizer extends AbstractSearchLightCachableNormalizer
+class BrandNormalizer extends AbstractCachableNormalizer
 {
     protected function getNewItem($id): Brand
     {

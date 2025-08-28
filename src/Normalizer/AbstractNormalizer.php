@@ -1,10 +1,10 @@
 <?php
 
-namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
+namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
 use EuropeanSourcing\Apiv3Client\Service\NormalizerService;
 
-abstract class AbstractSearchLightNormalizer implements SearchLightNormalizerInterface
+abstract class AbstractNormalizer implements NormalizerInterface
 {
     protected NormalizerService $normalizerService;
 

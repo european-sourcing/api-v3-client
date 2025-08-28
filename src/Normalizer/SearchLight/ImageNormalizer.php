@@ -3,8 +3,9 @@
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 use EuropeanSourcing\Apiv3Client\Model\SearchLight\Image;
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractCachableNormalizer;
 
-class ImageNormalizer extends AbstractSearchLightCachableNormalizer
+class ImageNormalizer extends AbstractCachableNormalizer
 {
     protected function getNewItem($id): Image
     {
