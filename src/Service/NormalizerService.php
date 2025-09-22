@@ -2,14 +2,21 @@
 
 namespace EuropeanSourcing\Apiv3Client\Service;
 
-use EuropeanSourcing\Apiv3Client\Normalizer\SearchLight\SearchLightNormalizerInterface;
+use EuropeanSourcing\Apiv3Client\Normalizer\NormalizerInterface;
 
 class NormalizerService
 {
-    /** @var array<SearchLightNormalizerInterface> */
+    /** @var array<NormalizerInterface> */
     private array $normalizers = [];
 
-    public function getNormalizer(string $class): SearchLightNormalizerInterface
+    /**
+     * @param class-string<T> $class
+     *
+     * @return NormalizerInterface<T>
+     *
+     * @template T of object
+     */
+    public function getNormalizer(string $class): NormalizerInterface
     {
         if (false === array_key_exists($class, $this->normalizers)) {
             $this->normalizers[$class] = new $class($this);

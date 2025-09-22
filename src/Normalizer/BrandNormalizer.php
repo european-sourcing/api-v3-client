@@ -4,12 +4,12 @@ namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
 use EuropeanSourcing\Apiv3Client\Model\Brand;
 
-class BrandNormalizer
+class BrandNormalizer extends AbstractCachableNormalizer
 {
     public function denormalize(array $data): Brand
     {
-        $brand = new Brand();
-        $brand->setId($data['id']);
+        /** @var Brand $brand */
+        $brand = $this->getCache($data['id']);
         $brand->setName($data['name']);
         $brand->setSlug($data['slug']);
 
@@ -23,5 +23,12 @@ class BrandNormalizer
         }
 
         return $brand;
+    }
+
+    protected function getNewItem($id): object
+    {
+        $brand = new Brand();
+
+        return $brand->setId($id);
     }
 }

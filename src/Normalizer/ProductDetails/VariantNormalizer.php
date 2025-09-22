@@ -1,11 +1,21 @@
 <?php
 
-namespace EuropeanSourcing\Apiv3Client\Normalizer;
+namespace EuropeanSourcing\Apiv3Client\Normalizer\ProductDetails;
 
-use EuropeanSourcing\Apiv3Client\Model\Price;
-use EuropeanSourcing\Apiv3Client\Model\Variant;
+use EuropeanSourcing\Apiv3Client\Model\ProductDetails\Variant;
+use EuropeanSourcing\Apiv3Client\Normalizer\CarbonFootprintNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\CarbonFootprintTextileNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\DppNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\ExternalLinkNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\PackagingHierarchyNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\PriceNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\SearchLight\ImageNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\SearchLight\MinimumQuantityNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\SearchLight\SupplierProfileNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\SizeNormalizer;
 
-class VariantNormalizer
+class VariantNormalizer extends AbstractNormalizer
 {
     public function denormalize(array $data): Variant
     {
@@ -42,9 +52,8 @@ class VariantNormalizer
         $dpp = new DppNormalizer();
         $variant->setDpp($dpp->denormalize($data));
 
-        // images
         if (!empty($data['variant_images'])) {
-            $imageNormalizer = new ImageNormalizer();
+            $imageNormalizer = $this->normalizerService->getNormalizer(ImageNormalizer::class);
             foreach ($data['variant_images'] as $row) {
                 $image = $imageNormalizer->denormalize($row);
                 $variant->addImage($image);
@@ -55,23 +64,13 @@ class VariantNormalizer
             }
         }
 
-        // keywords
-        if (!empty($data['keywords'])) {
-            $keywordNormalizer = new KeywordNormalizer();
-            foreach ($data['keywords'] as $row) {
-                $variant->addKeyword($keywordNormalizer->denormalize($row));
-            }
-        }
-
-        // supplier_profiles
         if (!empty($data['supplier_profiles'])) {
-            $supplierProfileNormalizer = new SupplierProfileNormalizer();
+            $supplierProfileNormalizer = $this->normalizerService->getNormalizer(SupplierProfileNormalizer::class);
             foreach ($data['supplier_profiles'] as $row) {
                 $variant->addSupplierProfile($supplierProfileNormalizer->denormalize($row));
             }
         }
 
-        // sizes
         if (!empty($data['variant_sizes'])) {
             $sizeNormalizer = new SizeNormalizer();
             foreach ($data['variant_sizes'] as $row) {
@@ -79,15 +78,13 @@ class VariantNormalizer
             }
         }
 
-        // packaging
         if (!empty($data['variant_packaging'])) {
             $packagingNormalizer = new PackagingHierarchyNormalizer();
             $variant->setPackaging($packagingNormalizer->denormalize($data['variant_packaging']));
         }
 
-        // minimum_quantities
         if (!empty($data['variant_minimum_quantities'])) {
-            $minimumQuantityNormalizer = new MinimumQuantityNormalizer();
+            $minimumQuantityNormalizer = $this->normalizerService->getNormalizer(MinimumQuantityNormalizer::class);
             foreach ($data['variant_minimum_quantities'] as $row) {
                 if (empty($row['value'])) {
                     continue;
@@ -96,12 +93,10 @@ class VariantNormalizer
             }
         }
 
-        // prices
         if (!empty($data['variant_prices'])) {
             $priceNormalizer = new PriceNormalizer();
             $lowestPrice = null;
             foreach ($data['variant_prices'] as $row) {
-                /** @var Price $price */
                 $price = $priceNormalizer->denormalize($row);
                 $variant->addPrice($price);
 
@@ -113,7 +108,6 @@ class VariantNormalizer
             $variant->setLowestPrice($lowestPrice);
         }
 
-        // sample_prices
         if (!empty($data['variant_sample_prices'])) {
             $priceNormalizer = new PriceNormalizer();
             foreach ($data['variant_sample_prices'] as $row) {
@@ -121,7 +115,6 @@ class VariantNormalizer
             }
         }
 
-        // list_prices
         if (!empty($data['variant_list_prices'])) {
             $priceNormalizer = new PriceNormalizer();
             foreach ($data['variant_list_prices'] as $row) {
@@ -129,27 +122,10 @@ class VariantNormalizer
             }
         }
 
-        // external_links
         if (!empty($data['variant_external_links'])) {
             $externalLinkNormalizer = new ExternalLinkNormalizer();
             foreach ($data['variant_external_links'] as $row) {
                 $variant->addExternalLink($externalLinkNormalizer->denormalize($row));
-            }
-        }
-
-        // attributes
-        if (!empty($data['attributes'])) {
-            $attributeNormalizer = new AttributeNormalizer();
-            foreach ($data['attributes'] as $row) {
-                $variant->addAttribute($attributeNormalizer->denormalize($row));
-            }
-        }
-
-        // delivery_times
-        if (!empty($data['variant_delivery_times'])) {
-            $deliveryTimeNormalizer = new DeliveryTimeNormalizer();
-            foreach ($data['variant_delivery_times'] as $row) {
-                $variant->addDeliveryTime($deliveryTimeNormalizer->denormalize($row));
             }
         }
 

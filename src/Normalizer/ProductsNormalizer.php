@@ -2,7 +2,7 @@
 
 namespace EuropeanSourcing\Apiv3Client\Normalizer;
 
-class ProductsNormalizer
+class ProductsNormalizer extends AbstractNormalizer
 {
     /**
      * @throws \Exception
@@ -11,7 +11,7 @@ class ProductsNormalizer
     {
         $products = [];
 
-        $productNormalizer = new ProductNormalizer();
+        $productNormalizer = $this->normalizerService->getNormalizer(ProductNormalizer::class);
         foreach ($data as $row) {
             $products[] = $productNormalizer->denormalize($row);
         }
