@@ -2,9 +2,10 @@
 
 namespace EuropeanSourcing\Apiv3Client\Common;
 
+use Countable;
 use Iterator;
 
-class Collection implements Iterator
+class Collection implements Iterator, Countable
 {
     private array $items;
 
@@ -63,5 +64,13 @@ class Collection implements Iterator
     public function rewind(): void
     {
         reset($this->items);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function count(): int
+    {
+        return count($this->items);
     }
 }

@@ -2,10 +2,11 @@
 
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractCachableNormalizer;
 use Exception;
 use EuropeanSourcing\Apiv3Client\Model\SearchLight\Product;
 
-class ProductNormalizer extends AbstractSearchLightCachableNormalizer
+class ProductNormalizer extends AbstractCachableNormalizer
 {
     protected function getNewItem($id): Product
     {

@@ -3,8 +3,9 @@
 namespace EuropeanSourcing\Apiv3Client\Normalizer\SearchLight;
 
 use EuropeanSourcing\Apiv3Client\Model\SearchLight\MinimumQuantity;
+use EuropeanSourcing\Apiv3Client\Normalizer\AbstractNormalizer;
 
-class MinimumQuantityNormalizer extends AbstractSearchLightNormalizer
+class MinimumQuantityNormalizer extends AbstractNormalizer
 {
     /**
      * @param array{value: int, supplier_profile: array} $data

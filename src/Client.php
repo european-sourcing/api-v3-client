@@ -2,6 +2,9 @@
 
 namespace EuropeanSourcing\Apiv3Client;
 
+use EuropeanSourcing\Apiv3Client\Model\ProductDetails\Product;
+use EuropeanSourcing\Apiv3Client\Normalizer\ProductDetails\ProductNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\ProductDetailsNormalizer;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use EuropeanSourcing\Apiv3Client\Common\Collection;
@@ -76,7 +79,8 @@ class Client
 
         $results = json_decode($response->getBody(), true);
 
-        $productsNormalizer = new ProductsNormalizer();
+        $normalizerService = new NormalizerService();
+        $productsNormalizer = $normalizerService->getNormalizer(ProductsNormalizer::class);
         $products = $productsNormalizer->denormalize($results['products'] ?? []);
 
         $searchResponse = new SearchResponse();
@@ -113,6 +117,36 @@ class Client
         $this->initSearchResponse($searchResponse, $products, $results);
 
         return $searchResponse;
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public function productDetailsByVariantId(int $variantId, ?string $countryCode = null): Product
+    {
+        $options = [
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ];
+
+        if (null !== $countryCode) {
+            $options['query'] = ['country_code' => $countryCode];
+        }
+
+        $results = $this->guzzle->request(
+            'GET',
+            $this->apiUrl . '/products/details/byVariantId/' . $variantId,
+            $options
+        );
+
+        $normalizerService = new NormalizerService();
+        /** @var ProductNormalizer $productsNormalizer */
+        $productsNormalizer = $normalizerService->getNormalizer(ProductNormalizer::class);
+
+        return $productsNormalizer->denormalize(
+            json_decode($results->getBody(), true)
+        );
     }
 
     /**
