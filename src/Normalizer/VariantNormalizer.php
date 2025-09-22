@@ -13,8 +13,8 @@ class VariantNormalizer
         $variant->setId($data['id']);
         $variant->setName($data['name']);
         $variant->setSlug($data['slug']);
-        $variant->setDescription($data['description']);
-        $variant->setRawDescription($data['raw_description']);
+        $variant->setDescription($data['description'] ?? null);
+        $variant->setRawDescription($data['raw_description'] ?? null);
         $variant->setSupplierReference($data['supplier_reference']);
         $variant->setStock($data['stock'] ?? null);
         $variant->setMarkingAdditionalInformation($data['marking_additional_information'] ?? null);
