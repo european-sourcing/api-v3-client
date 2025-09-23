@@ -14,6 +14,7 @@ class ProductNormalizer extends AbstractNormalizer
     public function denormalize(array $data): Product
     {
         $product = new Product();
+        $product->setId($data['id']);
         $product->setSupplierBaseReference($data['supplier_base_reference']);
         $product->setInternalReference($data['internal_reference']);
         $product->setCountryOfOrigin($data['country_of_origin'] ?? null);
@@ -22,8 +23,8 @@ class ProductNormalizer extends AbstractNormalizer
 
         $variantNormalizer = $this->normalizerService->getNormalizer(VariantNormalizer::class);
         $bestVariant = $variantNormalizer->denormalize($data['best_variant']);
+        $bestVariant->setProduct($product);
         $product->setBestVariant($bestVariant);
-        $product->getBestVariant()->setProduct($product);
 
         $multipleGroupNormalizer = $this->normalizerService->getNormalizer(MultipleAttributeGroupNormalizer::class);
         $simpleGroupNormalizer = $this->normalizerService->getNormalizer(SimpleAttributeGroupNormalizer::class);
