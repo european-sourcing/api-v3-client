@@ -533,6 +533,7 @@ class Variant
     public function setMainImage(?Image $mainImage): self
     {
         $this->mainImage = $mainImage;
+        array_unshift($this->images, $mainImage);
 
         return $this;
     }
