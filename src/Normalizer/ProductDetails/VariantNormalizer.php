@@ -56,10 +56,10 @@ class VariantNormalizer extends AbstractNormalizer
             $imageNormalizer = $this->normalizerService->getNormalizer(ImageNormalizer::class);
             foreach ($data['variant_images'] as $row) {
                 $image = $imageNormalizer->denormalize($row);
-                $variant->addImage($image);
-
                 if ($row['id'] == $data['main_variant_image_id']) {
                     $variant->setMainImage($image);
+                } else {
+                    $variant->addImage($image);
                 }
             }
         }
