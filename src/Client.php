@@ -122,11 +122,12 @@ class Client
     /**
      * @throws GuzzleException
      */
-    public function productDetailsByVariantId(int $variantId, ?string $countryCode = null): Product
+    public function productDetailsByVariantId(int $variantId, string $languageCode = 'fr', ?string $countryCode = null): Product
     {
         $options = [
             'headers' => [
-                'X-AUTH-TOKEN' => $this->getToken()
+                'X-AUTH-TOKEN' => $this->getToken(),
+                'Accept-Language' => $languageCode,
             ]
         ];
 
