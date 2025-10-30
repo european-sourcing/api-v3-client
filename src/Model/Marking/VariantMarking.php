@@ -9,8 +9,7 @@ class VariantMarking
     /** @var int */
     private $id;
 
-    /** @var int */
-    private $key;
+    private string $key;
 
     /** @var bool */
     private $includedInVariantPrices;
@@ -118,12 +117,12 @@ class VariantMarking
         return $this;
     }
 
-    public function getKey(): int
+    public function getKey(): string
     {
         return $this->key;
     }
 
-    public function setKey(int $key): static
+    public function setKey(string $key): static
     {
         $this->key = $key;
 
