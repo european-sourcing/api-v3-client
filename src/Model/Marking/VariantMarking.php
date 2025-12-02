@@ -143,12 +143,12 @@ class VariantMarking
         return $this;
     }
 
-    public function getKey(): int
+    public function getKey(): string
     {
         return $this->key;
     }
 
-    public function setKey(int $key): self
+    public function setKey(string $key): self
     {
         $this->key = $key;
 
