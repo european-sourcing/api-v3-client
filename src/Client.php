@@ -275,8 +275,10 @@ class Client
         int $nbLogo,
         int $nbPosition,
         int $markingMargin,
-        int $productMargin
-    ) {
+        int $productMargin,
+        ?int $length = null,
+        ?int $width = null
+    ): array {
         $body = [
             'variant_id' => $variant->getId(),
             'marking_id' => $marking->getId(),
@@ -285,7 +287,9 @@ class Client
             'nbLogo' => $nbLogo,
             'nbPosition' => $nbPosition,
             'default_marking_margin' => $markingMargin,
-            'default_margin' => $productMargin
+            'default_margin' => $productMargin,
+            'length' => $length,
+            'width' => $width,
         ];
 
         $results = $this->guzzle->request('POST', sprintf('%s/marking/fr/calculatePrice', $this->apiUrl), [
