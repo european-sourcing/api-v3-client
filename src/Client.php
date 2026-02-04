@@ -4,7 +4,6 @@ namespace EuropeanSourcing\Apiv3Client;
 
 use EuropeanSourcing\Apiv3Client\Model\ProductDetails\Product;
 use EuropeanSourcing\Apiv3Client\Normalizer\ProductDetails\ProductNormalizer;
-use EuropeanSourcing\Apiv3Client\Normalizer\ProductDetailsNormalizer;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use EuropeanSourcing\Apiv3Client\Common\Collection;
@@ -287,7 +286,9 @@ class Client
         int $nbLogo,
         int $nbPosition,
         int $markingMargin,
-        int $productMargin
+        int $productMargin,
+        ?int $length = null,
+        ?int $width = null
     ): array {
         $body = [
             'variant_id' => $variant->getId(),
@@ -297,7 +298,9 @@ class Client
             'nbLogo' => $nbLogo,
             'nbPosition' => $nbPosition,
             'default_marking_margin' => $markingMargin,
-            'default_margin' => $productMargin
+            'default_margin' => $productMargin,
+            'length' => $length,
+            'width' => $width,
         ];
 
         $results = $this->guzzle->request('POST', sprintf('%s/marking/fr/calculatePrice', $this->apiUrl), [
