@@ -21,8 +21,12 @@ class SupplierProfileNormalizer extends AbstractCachableNormalizer
     {
         /** @var SupplierProfile $supplierProfile */
         $supplierProfile = $this->getCache($data['id']);
-        $supplierProfile->setName($data['name'] ?? null);
-        $supplierProfile->setCountryCode($data['country_code'] ?? null);
+        if (isset($data['name'])) {
+            $supplierProfile->setName($data['name']);
+        }
+        if (isset($data['country_code'])) {
+            $supplierProfile->setCountryCode($data['country_code']);
+        }
 
         return $supplierProfile;
     }
