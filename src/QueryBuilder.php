@@ -25,6 +25,7 @@ use EuropeanSourcing\Apiv3Client\Request\StockGreaterThan;
 use EuropeanSourcing\Apiv3Client\Request\Supplier;
 use EuropeanSourcing\Apiv3Client\Request\SupplierBaseReference;
 use EuropeanSourcing\Apiv3Client\Request\SupplierProfile;
+use EuropeanSourcing\Apiv3Client\Request\SupplierProfileCountriesCodes;
 use EuropeanSourcing\Apiv3Client\Request\SupplierProfileCountryCode;
 use EuropeanSourcing\Apiv3Client\Request\SupplierReference;
 use EuropeanSourcing\Apiv3Client\Request\Variant;
@@ -140,6 +141,14 @@ class QueryBuilder
     public function supplierProfileCountry(string $countryCode): SupplierProfileCountryCode
     {
         return new SupplierProfileCountryCode($countryCode);
+    }
+
+    /**
+     * @param array<string> $countriesCodes
+     */
+    public function supplierProfileCountries(array $countriesCodes): SupplierProfileCountriesCodes
+    {
+        return new SupplierProfileCountriesCodes($countriesCodes);
     }
 
     public function variantMinimumQuantity(int $quantity): VariantMinimumQuantity
