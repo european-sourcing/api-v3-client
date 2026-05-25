@@ -2,13 +2,10 @@
 
 namespace EuropeanSourcing\Apiv3Client;
 
-use EuropeanSourcing\Apiv3Client\Model\ProductDetails\Product;
-use EuropeanSourcing\Apiv3Client\Normalizer\ProductDetails\ProductNormalizer;
-use Exception;
-use GuzzleHttp\Exception\GuzzleException;
 use EuropeanSourcing\Apiv3Client\Common\Collection;
 use EuropeanSourcing\Apiv3Client\Model\Aggregation\Aggregation;
 use EuropeanSourcing\Apiv3Client\Model\Marking\Marking;
+use EuropeanSourcing\Apiv3Client\Model\ProductDetails\Product;
 use EuropeanSourcing\Apiv3Client\Model\Variant;
 use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\AggregationNormalizer;
 use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\AttributeNormalizer;
@@ -20,6 +17,8 @@ use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\MarkingNormalizer;
 use EuropeanSourcing\Apiv3Client\Normalizer\Aggregation\SupplierProfileNormalizer;
 use EuropeanSourcing\Apiv3Client\Normalizer\BrandsNormalizer;
 use EuropeanSourcing\Apiv3Client\Normalizer\Marking\VariantMarkingsNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\MarkingLight\VariantMarkingsNormalizer as VariantMarkingsLightNormalizer;
+use EuropeanSourcing\Apiv3Client\Normalizer\ProductDetails\ProductNormalizer;
 use EuropeanSourcing\Apiv3Client\Normalizer\ProductsNormalizer;
 use EuropeanSourcing\Apiv3Client\Normalizer\SearchLight\ProductsNormalizer as ProductsLightNormalizer;
 use EuropeanSourcing\Apiv3Client\Normalizer\SupplierNormalizer;
@@ -28,6 +27,8 @@ use EuropeanSourcing\Apiv3Client\Response\SearchLightResponse;
 use EuropeanSourcing\Apiv3Client\Response\SearchResponse;
 use EuropeanSourcing\Apiv3Client\Response\SearchResponseInterface;
 use EuropeanSourcing\Apiv3Client\Service\NormalizerService;
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 
 use function json_decode;
 use function json_encode;
@@ -121,8 +122,11 @@ class Client
     /**
      * @throws GuzzleException
      */
-    public function productDetailsByVariantId(int $variantId, string $languageCode = 'fr', ?string $countryCode = null): Product
-    {
+    public function productDetailsByVariantId(
+        int $variantId,
+        string $languageCode = 'fr',
+        ?string $countryCode = null
+    ): Product {
         $options = [
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken(),
@@ -269,6 +273,27 @@ class Client
         ]);
 
         $variantMarkingsNormalizer = new VariantMarkingsNormalizer();
+
+        return $variantMarkingsNormalizer->denormalize(
+            json_decode($results->getBody(), true)
+        );
+    }
+
+    /**
+     * @throws GuzzleException
+     */
+    public function markingLight(int $variantId, string $lang): Collection
+    {
+        $results = $this->guzzle->request('GET', $this->apiUrl . '/markings/light/' . $lang . '/' . $variantId, [
+            'headers' => [
+                'X-AUTH-TOKEN' => $this->getToken()
+            ]
+        ]);
+
+        $normalizerService = new NormalizerService();
+
+        /** @var VariantMarkingsLightNormalizer $productsNormalizer */
+        $variantMarkingsNormalizer = $normalizerService->getNormalizer(VariantMarkingsLightNormalizer::class);
 
         return $variantMarkingsNormalizer->denormalize(
             json_decode($results->getBody(), true)
