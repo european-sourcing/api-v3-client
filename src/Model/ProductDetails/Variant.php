@@ -2,7 +2,6 @@
 
 namespace EuropeanSourcing\Apiv3Client\Model\ProductDetails;
 
-use EuropeanSourcing\Apiv3Client\Model\AttributeGroup;
 use EuropeanSourcing\Apiv3Client\Model\CarbonFootprint;
 use EuropeanSourcing\Apiv3Client\Model\CarbonFootprintTextile;
 use EuropeanSourcing\Apiv3Client\Model\Dpp;
@@ -19,6 +18,11 @@ class Variant
     private int $id;
 
     private string $name;
+
+    /**
+     * @var array<string, string>
+     */
+    private array $nameTranslations = [];
 
     private string $slug;
 
@@ -127,6 +131,33 @@ class Variant
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getNameTranslations(): array
+    {
+        return $this->nameTranslations;
+    }
+
+    /**
+     * @param array<string, string> $nameTranslations
+     */
+    public function setNameTranslations(array $nameTranslations): self
+    {
+        $this->nameTranslations = $nameTranslations;
+
+        return $this;
+    }
+
+    public function getNameTranslation(string $locale): string
+    {
+        if (array_key_exists($locale, $this->nameTranslations)) {
+            return $this->nameTranslations[$locale];
+        }
+
+        return '';
     }
 
     public function getSlug(): string
@@ -473,7 +504,7 @@ class Variant
     }
 
     /**
-     * @param  array<Price> $listPrices
+     * @param array<Price> $listPrices
      */
     public function setListPrices(array $listPrices): self
     {

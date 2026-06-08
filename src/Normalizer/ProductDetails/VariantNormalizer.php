@@ -129,6 +129,10 @@ class VariantNormalizer extends AbstractNormalizer
             }
         }
 
+        if (!empty($data['name_translations'])) {
+            $variant->setNameTranslations($data['name_translations']);
+        }
+
         return $variant;
     }
 }
