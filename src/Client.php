@@ -120,12 +120,14 @@ class Client
     }
 
     /**
+     * @param array<string>|null $withTranslations
      * @throws GuzzleException
      */
     public function productDetailsByVariantId(
         int $variantId,
         string $languageCode = 'fr',
-        ?string $countryCode = null
+        ?string $countryCode = null,
+        ?array $withTranslations = null
     ): Product {
         $options = [
             'headers' => [
@@ -133,9 +135,18 @@ class Client
                 'Accept-Language' => $languageCode,
             ]
         ];
+        $query = [];
 
         if (null !== $countryCode) {
-            $options['query'] = ['country_code' => $countryCode];
+            $query['country_code'] = $countryCode;
+        }
+
+        if (!empty($withTranslations)) {
+            $query['with_translations'] = implode(',', $withTranslations);
+        }
+
+        if (0 < count($query)) {
+            $options['query'] = $query;
         }
 
         $results = $this->guzzle->request(
