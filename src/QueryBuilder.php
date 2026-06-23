@@ -17,6 +17,7 @@ use EuropeanSourcing\Apiv3Client\Request\Id;
 use EuropeanSourcing\Apiv3Client\Request\InternalReference;
 use EuropeanSourcing\Apiv3Client\Request\Label;
 use EuropeanSourcing\Apiv3Client\Request\LastIndexed;
+use EuropeanSourcing\Apiv3Client\Request\MadeIn;
 use EuropeanSourcing\Apiv3Client\Request\Marking;
 use EuropeanSourcing\Apiv3Client\Request\Not;
 use EuropeanSourcing\Apiv3Client\Request\Price;
@@ -169,5 +170,10 @@ class QueryBuilder
     public function hasDpp(bool $hasDpp): HasDpp
     {
         return new HasDpp($hasDpp);
+    }
+
+    public function madeIn(array $madeIn): MadeIn
+    {
+        return new MadeIn($madeIn);
     }
 }
