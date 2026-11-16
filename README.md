@@ -146,3 +146,13 @@ foreach ($products as $product) {
 }
 ?>
 ```
+
+## Development
+
+```shell
+# Install dependencies
+composer install
+
+# Run the test suite (PHPUnit 9.6)
+vendor/bin/phpunit
+```
