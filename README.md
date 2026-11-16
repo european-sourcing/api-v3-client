@@ -56,11 +56,9 @@ use EuropeanSourcing\Apiv3Client\SearchHandler;
 
 $YOUR_API_TOKEN = 'YOUR_API_TOKEN';
 
-$guzzleClient = new GuzzleClient([
-    'headers' => [
-        'Content-Type' => 'application/json',
-    ]
-]);
+// The client sets the `Content-Type: application/json` header itself
+// on the requests that send a JSON body.
+$guzzleClient = new GuzzleClient();
 
 $apiClient = new Client(
     $guzzleClient,
