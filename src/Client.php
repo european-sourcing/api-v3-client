@@ -193,7 +193,9 @@ class Client
             ]
         ]);
 
-        $brandsNormalizer = new BrandsNormalizer();
+        $normalizerService = new NormalizerService();
+        /** @var BrandsNormalizer $brandsNormalizer */
+        $brandsNormalizer = $normalizerService->getNormalizer(BrandsNormalizer::class);
 
         return $brandsNormalizer->denormalize(
             json_decode($results->getBody(), true)
