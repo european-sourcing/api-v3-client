@@ -31,7 +31,6 @@ use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 
 use function json_decode;
-use function json_encode;
 
 class Client
 {
@@ -66,12 +65,8 @@ class Client
      */
     public function search(QueryHandler $queryHandler): SearchResponse
     {
-        $body = json_encode(
-            $queryHandler->export()
-        );
-
         $response = $this->guzzle->request('POST', $this->apiUrl . '/search', [
-            'body' => $body,
+            'json' => $queryHandler->export(),
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -95,12 +90,8 @@ class Client
      */
     public function searchLight(QueryHandler $queryHandler): SearchLightResponse
     {
-        $body = json_encode(
-            $queryHandler->export()
-        );
-
         $response = $this->guzzle->request('POST', $this->apiUrl . '/search/light', [
-            'body' => $body,
+            'json' => $queryHandler->export(),
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ]
@@ -193,7 +184,9 @@ class Client
             ]
         ]);
 
-        $brandsNormalizer = new BrandsNormalizer();
+        $normalizerService = new NormalizerService();
+        /** @var BrandsNormalizer $brandsNormalizer */
+        $brandsNormalizer = $normalizerService->getNormalizer(BrandsNormalizer::class);
 
         return $brandsNormalizer->denormalize(
             json_decode($results->getBody(), true)
@@ -343,7 +336,7 @@ class Client
             'headers' => [
                 'X-AUTH-TOKEN' => $this->getToken()
             ],
-            'body' => json_encode($body)
+            'json' => $body
         ]);
 
         return json_decode($results->getBody(), true);

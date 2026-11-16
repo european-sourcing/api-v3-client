@@ -13,6 +13,11 @@ To install and update this package we recommend to use [Composer](https://getcom
 composer require european-sourcing/apiv3-client
 ```
 
+## Compatibility
+
+- PHP >= 8.0
+- Guzzle 6.3+, 7.9+ or 8.x
+
 ## Prerequisites 
 
 Since this package isn't directly available on the official Packagist repository, but only on this Github repository,
@@ -56,11 +61,9 @@ use EuropeanSourcing\Apiv3Client\SearchHandler;
 
 $YOUR_API_TOKEN = 'YOUR_API_TOKEN';
 
-$guzzleClient = new GuzzleClient([
-    'headers' => [
-        'Content-Type' => 'application/json',
-    ]
-]);
+// The client sets the `Content-Type: application/json` header itself
+// on the requests that send a JSON body.
+$guzzleClient = new GuzzleClient();
 
 $apiClient = new Client(
     $guzzleClient,
@@ -145,4 +148,14 @@ foreach ($products as $product) {
     echo "Produit ID " . $product->getId() . " - " . $product->getBestVariant()->getName() . "<br/>";
 }
 ?>
+```
+
+## Development
+
+```shell
+# Install dependencies
+composer install
+
+# Run the test suite (PHPUnit 9.6)
+vendor/bin/phpunit
 ```

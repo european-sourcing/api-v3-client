@@ -1,6 +1,6 @@
 <?php
 
-namespace EuropeanSourcing\Apiv3Client\Tests;
+namespace EuropeanSourcing\Apiv3Client\Tests\Normalizer;
 
 use EuropeanSourcing\Apiv3Client\Model\SupplierProfile;
 use EuropeanSourcing\Apiv3Client\Normalizer\SupplierProfileNormalizer;
@@ -8,23 +8,28 @@ use PHPUnit\Framework\TestCase;
 
 class SupplierProfileNormalizerTest extends TestCase
 {
-    public function testSupplierProfile()
+    public function testSupplierProfile(): void
     {
         $supplierProfileNormalizer = new SupplierProfileNormalizer();
-        $result = $supplierProfileNormalizer->denormalize(
-            \json_decode('{"id":386,"name":"SENATOR France","count":199,"slug":"senator-france","country_code":"FR","address_line1":"ZI DE MARTICOT","postal_code":"33612","locality":"CESTAS"}', true)
-        );
+        $result = $supplierProfileNormalizer->denormalize([
+            'id' => 386,
+            'name' => 'SENATOR France',
+            'count' => 199,
+            'slug' => 'senator-france',
+            'country_code' => 'FR',
+            'address_line1' => 'ZI DE MARTICOT',
+            'postal_code' => '33612',
+            'locality' => 'CESTAS',
+        ]);
 
         $this->assertInstanceOf(SupplierProfile::class, $result);
-        $this->assertSame(var_export($result, true), "EuropeanSourcing\Apiv3Client\Model\SupplierProfile::__set_state(array(
-   'id' => 386,
-   'name' => 'SENATOR France',
-   'countryCode' => 'FR',
-   'locality' => 'CESTAS',
-   'association' => NULL,
-   'postalCode' => '33612',
-   'addressLine1' => 'ZI DE MARTICOT',
-   'addressLine2' => NULL,
-))");
+        $this->assertSame(386, $result->getId());
+        $this->assertSame('SENATOR France', $result->getName());
+        $this->assertSame('FR', $result->getCountryCode());
+        $this->assertSame('CESTAS', $result->getLocality());
+        $this->assertNull($result->getAssociation());
+        $this->assertSame('33612', $result->getPostalCode());
+        $this->assertSame('ZI DE MARTICOT', $result->getAddressLine1());
+        $this->assertNull($result->getAddressLine2());
     }
 }
