@@ -13,6 +13,11 @@ To install and update this package we recommend to use [Composer](https://getcom
 composer require european-sourcing/apiv3-client
 ```
 
+## Compatibility
+
+- PHP >= 8.0
+- Guzzle 6.3+, 7.9+ or 8.x
+
 ## Prerequisites 
 
 Since this package isn't directly available on the official Packagist repository, but only on this Github repository,
